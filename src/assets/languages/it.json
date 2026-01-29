@@ -1,0 +1,8 @@
+{
+    "test": "questo è un test",
+    "cartella": {
+        "subcartella": {
+            "test": "ciao hihi"
+        }
+    }
+}

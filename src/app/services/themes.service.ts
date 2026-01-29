@@ -32,8 +32,8 @@ export class ThemesService {
         }));
     }
 
-    changeTheme(theme: Themes): void {
-        this._configService.getThemesConfig().subscribe((themes) => {
+    changeTheme(theme: Themes): Observable<Theme> {
+        return this._configService.getThemesConfig().pipe(map((themes) => {
             for (const property of Object.entries(themes[theme])) {
                 document.documentElement.style.setProperty('--' + property[0], property[1]);
             }
@@ -42,7 +42,9 @@ export class ThemesService {
 
             this._currentThemeName = theme;
             this._currentTheme = themes[theme];
-        });
+
+            return this._currentTheme;
+        }));
     }
 
     private _getThemeFromLocalStorage(): Themes {

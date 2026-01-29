@@ -8,6 +8,7 @@ import { PagesModule } from './pages/pages.module';
 import { ConfigModule } from './config/config.module';
 import { ServicesModule } from './services/services.module';
 import { DirectivesModule } from './directives/directives.module';
+import { PipesModule } from './pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DirectivesModule } from './directives/directives.module';
     GuardsModule,
     PagesModule,
     ServicesModule,
-    DirectivesModule
+    DirectivesModule,
+    PipesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
