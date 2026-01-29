@@ -1,10 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { map, Observable, of, Subscription, tap } from "rxjs";
-import { Api } from "../models/api.model";
-import { Config } from "../models/config.model";
-import { Feature } from "../models/feature.model";
-import { Theme } from "../models/themes.model";
+import { map, Observable, of, tap } from "rxjs";
 import { Language, LanguageCode } from "../models/language.model";
 
 @Injectable()
@@ -15,18 +11,12 @@ export class TranslateService {
 
     constructor(private _http: HttpClient) {}
 
-    translate(msg: string, langCode?: LanguageCode): string | Observable<string> {
-        if (!langCode && this._currentLanguage?.data) {
-            return this._translate(msg.split('.'), 0, this._currentLanguage?.data);
-        }
-        
-        return this._getLanguage(langCode || this._currentLanguageCode).pipe(map((res) => {
-            return this._translate(msg.split('.'), 0, res);
-        }));
+    translate(msg: string): string {
+        return this._translate(msg.split('.'), 0, this._currentLanguage?.data);
     }
 
     private _translate(msg: string[], index: number, data: any): string {
-        if (!data[msg[index]]) {
+        if (!data?.[msg[index]]) {
             return msg.join('.');
         }
 

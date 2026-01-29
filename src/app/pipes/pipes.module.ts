@@ -1,8 +1,7 @@
 import { NgModule } from "@angular/core";
 import { TranslatePipe } from "./translate.pipe";
-import { TranslateAsyncPipe } from "./translate-async.pipe";
 
-const PIPES = [TranslatePipe, TranslateAsyncPipe];
+const PIPES = [TranslatePipe];
 
 @NgModule({
     declarations: [...PIPES],

@@ -5,6 +5,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { FeaturesService } from "./features.service";
 import { ThemesService } from "./themes.service";
 import { TranslateService } from "./translate.service";
+import { LoaderService } from "./loader.service";
 
 @NgModule({
     imports: [HttpClientModule],
@@ -13,7 +14,8 @@ import { TranslateService } from "./translate.service";
         ApiService,
         FeaturesService,
         ThemesService,
-        TranslateService
+        TranslateService,
+        LoaderService
     ]
 })
 export class ServicesModule {}

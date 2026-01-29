@@ -11,15 +11,8 @@ export class ThemesService {
 
     constructor(private _configService: ConfigService) {}
 
-    getCurrentTheme(): Observable<{ name?: string, theme?: Theme }> {
-        if (this._currentTheme) {
-            return of({ name: this._currentThemeName, theme: this._currentTheme });
-        }
-
-        return this.getThemes(this._currentThemeName).pipe(map((theme) => {
-            this._currentTheme = theme as Theme;
-            return { name: this._currentThemeName, theme: this._currentTheme };
-        }));
+    getCurrentTheme(): { name?: string, theme?: Theme } {
+        return { name: this._currentThemeName, theme: this._currentTheme };
     }
 
     getThemes(theme?: Themes): Observable<{ [key: string]: Theme } | Theme> {
