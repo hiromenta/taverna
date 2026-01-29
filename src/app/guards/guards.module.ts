@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
-import { ExampleGuard } from "./example.guard";
+import { AuthGuard } from "./auth.guard";
 
 @NgModule({
-    providers: [ExampleGuard]
+    providers: [AuthGuard]
 })
 export class GuardsModule {}

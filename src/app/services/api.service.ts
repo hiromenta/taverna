@@ -1,18 +1,20 @@
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, of } from "rxjs";
 import { ApiConfig } from "../config/api.config";
 
 @Injectable()
 export class ApiService {
 
+    private _useMocks = true;
+
     constructor(private _apiConfig: ApiConfig) {}
 
-    example(): Observable<any> {
-        return this._apiConfig.send('example', { params: { id: '123' }, queryParams: { section: 'info' } });
-    }
+    login(email: string, password: string): Observable<{ authenticated: boolean }> {
+        if (this._useMocks) {
+            return of({ authenticated: true });
+        }
 
-    test(): Observable<any> {
-        return this._apiConfig.send('test');
+        return this._apiConfig.send('login', { body: { email, password } });
     }
 
 }

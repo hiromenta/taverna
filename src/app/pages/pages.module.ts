@@ -1,9 +1,15 @@
 import { NgModule } from "@angular/core";
-import { ExampleComponent } from "./example/example.component";
 import { DirectivesModule } from "../directives/directives.module";
 import { PipesModule } from "../pipes/pipes.module";
+import { HomeComponent } from "./home/home.component";
+import { LoginComponent } from "./login/login.component";
+import { NotFoundComponent } from "./not-found/not-found.component";
 
-const COMPONENTS = [ExampleComponent];
+const COMPONENTS = [
+    HomeComponent,
+    LoginComponent,
+    NotFoundComponent
+];
 
 @NgModule({
     declarations: [...COMPONENTS],

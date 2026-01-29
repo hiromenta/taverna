@@ -52,7 +52,7 @@ export class AppComponent implements OnInit {
     }
 
     this._loaderService.hide();
-    this._router.navigate(['example']);
+    this._router.navigate([location.pathname.split('/')[1]]);
     return true;
   }
 

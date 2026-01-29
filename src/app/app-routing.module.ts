@@ -1,10 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ExampleComponent } from './pages/example/example.component';
-import { ExampleGuard } from './guards/example.guard';
+import { LoginComponent } from './pages/login/login.component';
+import { HomeComponent } from './pages/home/home.component';
+import { AuthGuard } from './guards/auth.guard';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+
+export enum Paths {
+  LOGIN = 'login'
+}
 
 const routes: Routes = [
-  { path: 'example', component: ExampleComponent, canActivate: [ExampleGuard], canActivateChild: [ExampleGuard] }
+  { path: '', pathMatch: 'full', component: HomeComponent, canActivate: [AuthGuard], canActivateChild: [AuthGuard] },
+  { path: Paths.LOGIN, pathMatch: 'full', component: LoginComponent },
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({

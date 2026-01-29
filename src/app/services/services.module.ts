@@ -6,6 +6,7 @@ import { FeaturesService } from "./features.service";
 import { ThemesService } from "./themes.service";
 import { TranslateService } from "./translate.service";
 import { LoaderService } from "./loader.service";
+import { AuthService } from "./auth.service";
 
 @NgModule({
     imports: [HttpClientModule],
@@ -15,7 +16,8 @@ import { LoaderService } from "./loader.service";
         FeaturesService,
         ThemesService,
         TranslateService,
-        LoaderService
+        LoaderService,
+        AuthService
     ]
 })
 export class ServicesModule {}
