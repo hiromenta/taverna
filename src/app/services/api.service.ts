@@ -17,4 +17,12 @@ export class ApiService {
         return this._apiConfig.send('login', { body: { email, password } });
     }
 
+    register(body: any): Observable<{ authenticated: boolean }> {
+        if (this._useMocks) {
+            return of({ authenticated: true });
+        }
+
+        return this._apiConfig.send('register', body);
+    }
+
 }

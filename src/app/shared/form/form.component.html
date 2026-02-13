@@ -1,0 +1,7 @@
+<div *ngIf="form">
+    <ng-container *ngFor="let control of form.controls">
+        <input *ngIf="control.type === getControlType().TEXT" #textInput (change)="updateValue(control, textInput)" type="text" [required]="control.required" [id]="control.selector" [placeholder]="(control.placeholder || '') | translate">
+        <input *ngIf="control.type === getControlType().PASSWORD" #passwordInput (change)="updateValue(control, passwordInput)" type="password" [required]="control.required" [id]="control.selector" [placeholder]="(control.placeholder || '') | translate">
+        <input *ngIf="control.type === getControlType().EMAIL" #emailInput (change)="updateValue(control, emailInput)" type="email" [required]="control.required" [id]="control.selector" [placeholder]="(control.placeholder || '') | translate">
+    </ng-container>
+</div>

@@ -1,8 +1,11 @@
 {
-    "test": "questo è un test",
-    "cartella": {
-        "subcartella": {
-            "test": "ciao hihi"
-        }
+    "form": {
+        "firstName": "Nome",
+        "lastName": "Cognome",
+        "nickName": "Nickname",
+        "email": "Email",
+        "password": "Password",
+        "register": "Registrati",
+        "login": "Login"
     }
 }

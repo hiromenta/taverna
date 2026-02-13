@@ -51,8 +51,14 @@ export class AppComponent implements OnInit {
       }
     }
 
+    const path = location.pathname.split('/')[1];
+
     this._loaderService.hide();
-    this._router.navigate([location.pathname.split('/')[1]]);
+
+    this._router.navigate(['']).then(() => {
+      this._router.navigate([path]);
+    });
+
     return true;
   }
 

@@ -15,4 +15,10 @@ export class AuthService {
         }));
     }
 
+    register(body: any): Observable<any> {
+        return this._apiService.register(body).pipe(tap(res => {
+            this.authenticated = res.authenticated;
+        }));
+    }
+
 }
