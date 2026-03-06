@@ -4,10 +4,14 @@ import { BrowserModule } from "@angular/platform-browser";
 import { CommonModule } from '@angular/common';
 import { FormComponent } from './form/form.component';
 import { PipesModule } from '../pipes/pipes.module';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 const COMPONENTS = [
   LoaderComponent,
-  FormComponent
+  FormComponent,
+  HeaderComponent,
+  FooterComponent
 ];
 
 @NgModule({

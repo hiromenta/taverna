@@ -1,11 +1,29 @@
 {
     "form": {
-        "firstName": "Nome",
-        "lastName": "Cognome",
-        "nickName": "Nickname",
+        "firstname": "Nome",
+        "lastname": "Cognome",
+        "nickname": "Nome utente",
         "email": "Email",
         "password": "Password",
-        "register": "Registrati",
-        "login": "Login"
+        "actions": {
+            "register": "Registrati",
+            "login": "Login"
+        },
+        "errors": {
+            "badInput": "Valore non valido",
+            "customError": "Valore non valido",
+            "patternMismatch": "Valore non valido per il tipo di input",
+            "rangeOverflow": "Valore massimo superato",
+            "rangeUnderflow": "Valore minimo non raggiunto",
+            "stepMismatch": "Valore non valido",
+            "tooLong": "Valore troppo lungo",
+            "tooShort": "Valore troppo corto",
+            "typeMismatch": "Valore non valido per il tipo di input",
+            "valid": "Valore non valido",
+            "valueMissing": "Valore richiesto"
+        }
+    },
+    "register": {
+        "title": "Crea un nuovo account"
     }
 }

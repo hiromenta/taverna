@@ -1,0 +1,36 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--white);
+
+    .input-container {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        margin-bottom: 1rem;
+        width: 100%;
+
+        .input-element {
+            width: 100%;
+            position: relative;
+
+            input {
+                margin: 0.5rem 0;
+            }
+
+            .icon {
+                color: var(--danger);
+                position: absolute;
+                right: 0.75rem;
+                top: 0.9rem;
+            }
+        }
+
+        .errors {
+            font-size: 0.75rem;
+            font-style: italic;
+        }
+
+    }
+}

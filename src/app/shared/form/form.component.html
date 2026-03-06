@@ -1,7 +1,14 @@
-<div *ngIf="form">
+<div *ngIf="form" class="form">
     <ng-container *ngFor="let control of form.controls">
-        <input *ngIf="control.type === getControlType().TEXT" #textInput (change)="updateValue(control, textInput)" type="text" [required]="control.required" [id]="control.selector" [placeholder]="(control.placeholder || '') | translate">
-        <input *ngIf="control.type === getControlType().PASSWORD" #passwordInput (change)="updateValue(control, passwordInput)" type="password" [required]="control.required" [id]="control.selector" [placeholder]="(control.placeholder || '') | translate">
-        <input *ngIf="control.type === getControlType().EMAIL" #emailInput (change)="updateValue(control, emailInput)" type="email" [required]="control.required" [id]="control.selector" [placeholder]="(control.placeholder || '') | translate">
+        <div class="input-container">
+            <span class="label">{{ (control.label || '') | translate | uppercase }}</span>
+            <div class="input-element">
+                <input #inputElement (blur)="updateFormValueAndValidity()" (focus)="control.touched = true" (input)="updateValue(control, inputElement)" [type]="control.type" [required]="control.required" [id]="control.selector" [placeholder]="(control.placeholder || '') | translate">
+                <div *ngIf="control.errors?.length" class="icon">x</div>
+            </div>
+            <span class="errors">
+                <div *ngFor="let error of control.errors">{{ error | translate}}</div>
+            </span>
+        </div>
     </ng-container>
 </div>

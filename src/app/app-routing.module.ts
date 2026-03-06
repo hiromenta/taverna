@@ -7,6 +7,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { RegisterComponent } from './pages/register/register.component';
 
 export enum Paths {
+  HOME = '',
   LOGIN = 'login',
   REGISTER = 'register'
 }

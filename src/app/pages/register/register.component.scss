@@ -1,0 +1,32 @@
+.main {
+    width: 100%;
+    height: 100%;
+    background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpaperaccess.com%2Ffull%2F1886745.jpg&f=1&nofb=1&ipt=3cadaa9f16db38aeb86472eabc93902f76f1bc3f8e22057f02dde475c808e3ff');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .container {
+        width: 40%;
+        background-color: var(--secondary);
+        padding: 3rem;
+        border-radius: 5px;
+        border: 2px solid var(--accent);
+
+        .title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form {
+            padding: 2rem 0;
+        }
+
+        .button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}

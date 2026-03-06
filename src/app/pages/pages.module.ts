@@ -6,6 +6,7 @@ import { LoginComponent } from "./login/login.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { RegisterComponent } from "./register/register.component";
 import { SharedModule } from "../shared/shared.module";
+import { UpperCasePipe } from "@angular/common";
 
 const COMPONENTS = [
     HomeComponent,
@@ -17,6 +18,6 @@ const COMPONENTS = [
 @NgModule({
     declarations: [...COMPONENTS],
     exports: [...COMPONENTS],
-    imports: [DirectivesModule, PipesModule, SharedModule]
+    imports: [DirectivesModule, PipesModule, SharedModule, UpperCasePipe]
 })
 export class PagesModule {}

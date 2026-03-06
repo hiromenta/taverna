@@ -55,7 +55,7 @@ export class AppComponent implements OnInit {
 
     this._loaderService.hide();
 
-    this._router.navigate(['']).then(() => {
+    this._router.navigate(['randomBullshitGo']).then(() => {
       this._router.navigate([path]);
     });
 
