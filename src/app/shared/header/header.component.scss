@@ -8,61 +8,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 0.25rem;
+        padding: 0.5rem;
         color: var(--light);
         font-size: 0.75rem;
-    }
-
-    .body {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        padding: 0.5rem 1rem;
-        border-bottom: 2px solid var(--accent);
-
-        .logo {
-            width: 30%;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-
-            .icon {
-                width: 3rem;
-                height: 2rem;
-                background-color: var(--accent);
-            }
-
-            .text {
-                width: 6rem;
-                height: 1rem;
-                background-color: var(--accent);
-            }
-        }
-        .search {
-            width: 40%;
-        }
-        .actions {
-            width: 30%;
-            display: flex;
-            justify-content: end;
-            align-items: center;
-            gap: 1rem;
-
-            .loginRegisterButtons {
-                color: var(--light);
-                font-weight: bold;
-                cursor: pointer;
-            }
-
-            .user {
-                width: 2rem;
-                height: 2rem;
-                border-radius: 100%;
-                background-color: red;
-                cursor: pointer;
-            }
-        }
     }
 
     .tabs {
@@ -75,7 +23,7 @@
             align-items: center;
             color: var(--light);
             cursor: pointer;
-            padding: 0.5rem 1rem;
+            padding: 1rem 2rem;
         }
         .tab:hover {
             background-color: var(--secondary);
@@ -85,8 +33,94 @@
     .breadcrumbs {
         background-color: var(--dark);
         color: var(--white);
-        padding: 0.5rem 1rem;
+        padding: 1rem 2rem;
         border-bottom: 2px solid var(--accent);
-        font-size: 0.75rem;
+    }
+}
+
+.floatingHeader {
+    position: sticky;
+    width: 50%;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    animation: show 0.2s ease-in;
+    background-color: var(--primary);
+    border-radius: 5px;
+    border: 2px solid var(--accent);
+}
+
+.disappear {
+    animation: hide 0.2s ease-out;
+}
+
+@keyframes show {
+    0% {
+        transform: translate(-50%, -200%);
+    }
+    100% {
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes hide {
+    0% {
+        transform: translate(-50%, 0);
+    }
+    100% {
+        transform: translate(-50%, -200%);
+    }
+}
+
+.body {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-bottom: 2px solid var(--accent);
+
+    .logo {
+        width: 30%;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+
+        .icon {
+            width: 4rem;
+            height: 3rem;
+            background-color: var(--accent);
+        }
+
+        .text {
+            width: 7rem;
+            height: 2rem;
+            background-color: var(--accent);
+        }
+    }
+    .search {
+        width: 40%;
+    }
+    .actions {
+        width: 30%;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        gap: 1rem;
+
+        .loginRegisterButtons {
+            color: var(--light);
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .user {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 100%;
+            background-color: red;
+            cursor: pointer;
+        }
     }
 }

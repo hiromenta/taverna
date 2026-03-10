@@ -1,4 +1,4 @@
-<div class="main">
+<div class="main" *ngIf="!showFloatingHeader">
     <div class="hint">{{ getTranslation('header.hint') }}</div>
     <div class="body">
         <div class="logo" (click)="navigateHome()">
@@ -25,5 +25,25 @@
             <span (click)="navigateBreadcrumb($i)" style="cursor: pointer;">{{ breadcrumb | titlecase }}</span>
             <span *ngIf="!$last">&nbsp;>&nbsp;</span>
         </ng-container>
+    </div>
+</div>
+
+<div class="floatingHeader" *ngIf="showFloatingHeader" [class.disappear]="setDisappearingAnimation">
+    <div class="body">
+        <div class="logo" (click)="navigateHome()">
+            <div class="icon"></div>
+            <div class="text"></div>
+        </div>
+        <div class="search">
+            <input type="text" [placeholder]="getTranslation('header.search.placeholder')">
+        </div>
+        <div class="actions">
+            <div class="favourites" [myFeature]="'favourites'">cuore</div>
+            <div class="cart" [myFeature]="'cart'">carrello</div>
+            <div class="user" [myFeature]="'userIcon'"></div>
+            <div class="loginRegisterButtons" [myFeature]="'loginRegisterButtons'" (click)="navigateLogin()">
+                {{ getTranslation('header.actions.signIn') }} / {{ getTranslation('header.actions.signUp') }}
+            </div>
+        </div>
     </div>
 </div>

@@ -17,6 +17,8 @@ export class AppComponent implements OnInit {
 
   loadedServices: any[] = [];
 
+  showFloatingHeader = false;
+
   constructor(
     private _router: Router,
     private _loaderService: LoaderService,

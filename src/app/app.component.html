@@ -1,8 +1,11 @@
 <my-loader></my-loader>
 
+<my-header *ngIf="showFloatingHeader" [showFloatingHeader]="true"></my-header>
+<!-- <my-header [showFloatingHeader]="showFloatingHeader" (setFloatingHeader)="showFloatingHeader = $event"></my-header> -->
+
 <div class="body">
     <div class="header">
-        <my-header></my-header>
+        <my-header [showFloatingHeader]="false" (setFloatingHeader)="showFloatingHeader = $event"></my-header>
     </div>
     <div class="main">
         <router-outlet></router-outlet>
