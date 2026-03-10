@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ConfigService } from "./config.service";
 import { Observable, of, switchMap } from "rxjs";
-import { Role } from "../models/feature.model";
+import { Role } from "../models/user.model";
 
 @Injectable()
 export class FeaturesService {

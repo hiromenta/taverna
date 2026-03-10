@@ -1,5 +1,9 @@
 <div class="main">
     <div class="container">
+        <div class="logo">
+            <div class="icon"></div>
+            <div class="text"></div>
+        </div>
         <div class="title">
             <div>{{ 'register.title' | translate | uppercase }}</div>
         </div>
@@ -9,5 +13,7 @@
         <div class="button">
             <button [disabled]="!registerForm.valid" (click)="register()">{{ 'form.actions.register' | translate }}</button>
         </div>
+        <div class="hint">{{ 'register.hint1' |translate }}&nbsp;<a (click)="navigateLogin()">{{ 'register.hint2' | translate }}</a></div>
+        <div class="privacy">{{ 'register.privacy1' | translate }}&nbsp;<a (click)="navigatePrivacy()">{{ 'register.privacy2' | translate }}</a>{{ 'register.privacy3' | translate }}</div>
     </div>
 </div>

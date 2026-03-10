@@ -6,6 +6,7 @@ import { FormComponent } from './form/form.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { DirectivesModule } from "../directives/directives.module";
 
 const COMPONENTS = [
   LoaderComponent,
@@ -17,6 +18,6 @@ const COMPONENTS = [
 @NgModule({
   declarations: [...COMPONENTS],
   exports: [...COMPONENTS],
-  imports: [BrowserModule, CommonModule, PipesModule]
+  imports: [BrowserModule, CommonModule, PipesModule, DirectivesModule]
 })
 export class SharedModule {}

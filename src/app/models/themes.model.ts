@@ -1,6 +1,5 @@
 export enum Themes {
-    LIGHT = 'light',
-    DARK = 'dark'
+    DEFAULT = 'default'
 };
 
 export interface Theme {

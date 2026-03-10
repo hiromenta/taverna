@@ -3,16 +3,32 @@
         "name": "example",
         "description": "Questo è l'esempio per la configurazione delle funzionalità.",
         "enabled": true,
-        "grant": ["guest", "user"],
+        "grant": [0, 1],
         "grantAll": false,
         "grantNone": false
     },
     {
-        "name": "example2",
-        "description": "Questo è l'esempio per la configurazione delle funzionalità.",
+        "name": "favourites",
+        "description": "Add the ability to manage favourite items",
         "enabled": false,
-        "grant": ["guest", "user"],
-        "grantAll": false,
-        "grantNone": false
+        "grant": [1, 2]
+    },
+    {
+        "name": "cart",
+        "description": "Add the ability to manage the user's cart",
+        "enabled": false,
+        "grant": [1, 2]
+    },
+    {
+        "name": "userIcon",
+        "description": "Show the user's icon in the header",
+        "enabled": true,
+        "grant": [1, 2]
+    },
+    {
+        "name": "loginRegisterButtons",
+        "description": "Show the login/register in the header",
+        "enabled": true,
+        "grant": [0]
     }
 ]

@@ -59,4 +59,12 @@ export class RegisterComponent {
         console.log('check errors')
     }
 
+    navigateLogin() {
+        this._router.navigate([Paths.LOGIN]);
+    }
+
+    navigatePrivacy() {
+        // todo: crea pagina privacy
+    }
+
 }

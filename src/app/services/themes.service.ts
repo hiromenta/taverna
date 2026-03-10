@@ -27,14 +27,16 @@ export class ThemesService {
 
     changeTheme(theme: Themes): Observable<Theme> {
         return this._configService.getThemesConfig().pipe(map((themes) => {
-            for (const property of Object.entries(themes[theme])) {
+            const useTheme = themes[theme] ? theme : Themes.DEFAULT
+
+            for (const property of Object.entries(themes[useTheme])) {
                 document.documentElement.style.setProperty('--' + property[0], property[1]);
             }
 
-            localStorage.setItem('theme', theme);
+            localStorage.setItem('theme', useTheme);
 
-            this._currentThemeName = theme;
-            this._currentTheme = themes[theme];
+            this._currentThemeName = useTheme;
+            this._currentTheme = themes[useTheme];
 
             return this._currentTheme;
         }));
@@ -45,7 +47,7 @@ export class ThemesService {
             return (localStorage.getItem('theme')!) as Themes;
         }
 
-        return Themes.LIGHT;
+        return Themes.DEFAULT;
     }
 
 }

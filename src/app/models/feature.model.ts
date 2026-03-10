@@ -1,8 +1,4 @@
-export enum Role {
-    ADMIN = 'admin',
-    USER = 'user',
-    GUEST = 'guest'
-}
+import { Role } from "./user.model";
 
 export interface Feature {
     name: string;

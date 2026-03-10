@@ -46,8 +46,16 @@ button {
     color: var(--black);
     cursor: pointer;
 }
+button.secondary {
+    background-color: var(--light);
+}
 button:disabled {
     background-color: var(--dark);
     color: gray;
     cursor: not-allowed;
+}
+
+a {
+    color: var(--accent);
+    cursor: pointer;
 }

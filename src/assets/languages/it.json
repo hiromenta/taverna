@@ -24,6 +24,26 @@
         }
     },
     "register": {
-        "title": "Crea un nuovo account"
+        "title": "Crea un nuovo account",
+        "hint1": "Sei già iscritto?",
+        "hint2": "Accedi",
+        "privacy1": "I tuoi dati personali verranno utilizzati per supportare la tua esperienza su questo sito web, per gestire l'accesso al tuo account e per altri scopi descritti nella nostra",
+        "privacy2": "privacy policy",
+        "privacy3": "."
+    },
+    "login": {
+        "title": "Accedi con nome utente e password",
+        "hint1": "Non sei ancora registrato?",
+        "hint2": "Registrati"
+    },
+    "header": {
+        "hint": "- Spedizione gratis a partire da €49 -",
+        "search": {
+            "placeholder": "Cerca carte, espansioni, prodotti..."
+        },
+        "actions": {
+            "signIn": "Accedi",
+            "signUp": "Registrati"
+        }
     }
 }
