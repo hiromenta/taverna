@@ -56,7 +56,7 @@ export class RegisterComponent {
     }
 
     checkErrors(form: MyForm) {
-        console.log('check errors')
+        // todo: check if email/username already exists
     }
 
     navigateLogin() {

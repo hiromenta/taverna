@@ -1,7 +1,8 @@
 import { Component } from "@angular/core";
 import { TranslateService } from "../../services/translate.service";
-import { Router } from "@angular/router";
+import { ActivatedRoute, EventType, Router } from "@angular/router";
 import { Paths } from "../../app-routing.module";
+import { filter, switchMap } from "rxjs";
 
 @Component({
     selector: 'my-header',
@@ -10,7 +11,23 @@ import { Paths } from "../../app-routing.module";
 })
 export class HeaderComponent {
 
-    constructor(private _translateService: TranslateService, private _router: Router) {}
+    tabs = [
+        { label: 'header.tabs.carte', path: ['shop', 'cards'] },
+        { label: 'header.tabs.carte', path: ['shop', 'cards'] },
+        { label: 'header.tabs.carte', path: ['shop', 'cards'] }
+    ];
+    breadcrumbs = [];
+
+    constructor(private _translateService: TranslateService, private _router: Router, private _route: ActivatedRoute) {
+        this._router.events
+            .pipe(
+                filter((events) => events.type === EventType.NavigationEnd),
+                switchMap(() => this._route.children.at(0)!.data)
+            )
+            .subscribe(data => {
+                this.breadcrumbs = data['breadcrumbs'] || [];
+            })
+    }
 
     getTranslation(text: string) {
         return this._translateService.translate(text);
@@ -22,6 +39,15 @@ export class HeaderComponent {
 
     navigateLogin() {
         this._router.navigate([Paths.LOGIN]);
+    }
+
+    navigateTab(path: string[]) {
+        this._router.navigate(path);
+    }
+
+    navigateBreadcrumb(index: number) {
+        const path = this.breadcrumbs.filter((el, i) => i <= index);
+        this._router.navigate(path);
     }
 
 }

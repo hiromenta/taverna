@@ -8,16 +8,16 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 0.5rem;
+        padding: 0.25rem;
         color: var(--light);
         font-size: 0.75rem;
     }
 
-    .bodyWide {
+    .body {
         display: flex;
         justify-content: space-around;
         align-items: center;
-        padding: 1rem 2rem;
+        padding: 0.5rem 1rem;
         border-bottom: 2px solid var(--accent);
 
         .logo {
@@ -28,14 +28,14 @@
             cursor: pointer;
 
             .icon {
-                width: 4rem;
-                height: 3rem;
+                width: 3rem;
+                height: 2rem;
                 background-color: var(--accent);
             }
 
             .text {
-                width: 7rem;
-                height: 2rem;
+                width: 6rem;
+                height: 1rem;
                 background-color: var(--accent);
             }
         }
@@ -56,12 +56,37 @@
             }
 
             .user {
-                width: 3rem;
-                height: 3rem;
+                width: 2rem;
+                height: 2rem;
                 border-radius: 100%;
                 background-color: red;
                 cursor: pointer;
             }
         }
+    }
+
+    .tabs {
+        display: flex;
+        border-bottom: 2px solid var(--accent);
+
+        .tab {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--light);
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+        }
+        .tab:hover {
+            background-color: var(--secondary);
+        }
+    }
+
+    .breadcrumbs {
+        background-color: var(--dark);
+        color: var(--white);
+        padding: 0.5rem 1rem;
+        border-bottom: 2px solid var(--accent);
+        font-size: 0.75rem;
     }
 }

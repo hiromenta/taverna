@@ -7,17 +7,48 @@ import { RegisterComponent } from './pages/register/register.component';
 import { FeatureGuard } from './guards/feature.guard';
 
 export enum Paths {
-  HOME = '',
+  HOME = 'home',
   LOGIN = 'login',
   REGISTER = 'register',
   NOT_FOUND = '404'
 }
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', component: HomeComponent, canActivate: [FeatureGuard], data: { grantAll: true } },
-  { path: Paths.LOGIN, pathMatch: 'full', component: LoginComponent, canActivate: [FeatureGuard], data: { grant: [0] } },
-  { path: Paths.REGISTER, pathMatch: 'full', component: RegisterComponent, canActivate: [FeatureGuard], data: { grant: [0] } },
-  { path: '**', component: NotFoundComponent }
+  {
+    path: '',
+    pathMatch: 'full',
+    component: HomeComponent,
+    canActivate: [FeatureGuard],
+    data: {
+      grantAll: true,
+      breadcrumbs: [Paths.HOME]
+    }
+  },
+  {
+    path: Paths.LOGIN,
+    pathMatch: 'full',
+    component: LoginComponent,
+    canActivate: [FeatureGuard],
+    data: {
+      grant: [0],
+      breadcrumbs: [Paths.LOGIN]
+    }
+  },
+  {
+    path: Paths.REGISTER,
+    pathMatch: 'full',
+    component: RegisterComponent,
+    canActivate: [FeatureGuard],
+    data: {
+      grant: [0],
+      breadcrumbs: [Paths.REGISTER]
+    }
+  },
+  { path: 'home', pathMatch: 'full', redirectTo: '' },
+  {
+    path: '**',
+    component: NotFoundComponent
+  }
 ];
 
 @NgModule({

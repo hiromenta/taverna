@@ -44,6 +44,9 @@
         "actions": {
             "signIn": "Accedi",
             "signUp": "Registrati"
+        },
+        "tabs": {
+            "carte": "Carte collezionabili"
         }
     }
 }

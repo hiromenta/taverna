@@ -1,6 +1,6 @@
 <div class="main">
     <div class="hint">{{ getTranslation('header.hint') }}</div>
-    <div class="bodyWide">
+    <div class="body">
         <div class="logo" (click)="navigateHome()">
             <div class="icon"></div>
             <div class="text"></div>
@@ -16,5 +16,14 @@
                 {{ getTranslation('header.actions.signIn') }} / {{ getTranslation('header.actions.signUp') }}
             </div>
         </div>
+    </div>
+    <div class="tabs">
+        <div class="tab" *ngFor="let tab of tabs" (click)="navigateTab(tab.path)">{{ getTranslation(tab.label) }}</div>
+    </div>
+    <div class="breadcrumbs" *ngIf="breadcrumbs.length">
+        <ng-container *ngFor="let breadcrumb of breadcrumbs; index as $i, last as $last">
+            <span (click)="navigateBreadcrumb($i)" style="cursor: pointer;">{{ breadcrumb | titlecase }}</span>
+            <span *ngIf="!$last">&nbsp;>&nbsp;</span>
+        </ng-container>
     </div>
 </div>

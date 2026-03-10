@@ -44,7 +44,7 @@ export class LoginComponent {
     }
 
     checkErrors(form: MyForm) {
-        console.log('check errors')
+        //
     }
 
     navigateRegister() {
