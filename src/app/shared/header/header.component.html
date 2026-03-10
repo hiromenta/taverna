@@ -1,4 +1,4 @@
-<div class="main" *ngIf="!showFloatingHeader">
+<div class="main">
     <div class="hint">{{ getTranslation('header.hint') }}</div>
     <div class="body">
         <div class="logo" (click)="navigateHome()">
@@ -28,7 +28,7 @@
     </div>
 </div>
 
-<div class="floatingHeader" *ngIf="showFloatingHeader" [class.disappear]="setDisappearingAnimation">
+<div class="floatingHeader" [class.disappear]="setDisappearingAnimation" [class.appear]="setAppearingAnimation" [class.hidden]="!showing" [class.shown]="showing">
     <div class="body">
         <div class="logo" (click)="navigateHome()">
             <div class="icon"></div>

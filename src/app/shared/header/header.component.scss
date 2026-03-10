@@ -2,6 +2,8 @@
     background-color: var(--primary);
     top: 0;
     width: 100%;
+    position: relative;
+    z-index: 2;
 
     .hint {
         border-bottom: 2px solid var(--accent);
@@ -41,14 +43,29 @@
 .floatingHeader {
     position: sticky;
     width: 50%;
+    margin-top: -10rem;
+    z-index: 1;
     top: 1.5rem;
     left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-    animation: show 0.2s ease-in;
     background-color: var(--primary);
     border-radius: 5px;
     border: 2px solid var(--accent);
+
+    .body {
+        border: none;
+    }
+}
+
+.hidden {
+    transform: translate(-50%, -200%);
+}
+
+.shown {
+    transform: translate(-50%, 0);
+}
+
+.appear {
+    animation: show 0.2s ease-in;
 }
 
 .disappear {
