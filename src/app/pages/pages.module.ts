@@ -7,12 +7,14 @@ import { NotFoundComponent } from "./not-found/not-found.component";
 import { RegisterComponent } from "./register/register.component";
 import { SharedModule } from "../shared/shared.module";
 import { UpperCasePipe } from "@angular/common";
+import { WorkInProgressComponent } from "./work-in-progress/work-in-progress.component";
 
 const COMPONENTS = [
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    WorkInProgressComponent
 ];
 
 @NgModule({
