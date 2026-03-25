@@ -1,6 +1,133 @@
 .main {
-    height: 2rem;
     background-color: var(--primary);
     bottom: 0;
     width: 100%;
+    color: var(--light);
+    padding: 2rem 1rem 1rem 1rem;
+    border-top: var(--border);
+
+    .top {
+        padding: 0 3rem;
+        display: flex;
+        justify-content: space-between;
+
+        .left {
+            .logo {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 0.5rem;
+                cursor: pointer;
+
+                .icon {
+                    width: 4rem;
+                    height: 3rem;
+                    background-color: var(--accent);
+                }
+
+                .text {
+                    width: 7rem;
+                    height: 2rem;
+                    background-color: var(--accent);
+                }
+            }
+
+            .info {
+                margin-top: 1rem;
+                width: 100%;
+            }
+        }
+
+        .right {
+            width: 50%;
+            padding: 0 4rem;
+            display: flex;
+            justify-content: space-between;
+
+            .section {
+                display: flex;
+                flex-direction: column;
+
+                div, a {
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+    }
+
+    .small-top {
+        padding: 0 1rem;
+
+        .small-left {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .small-logo {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 0.5rem;
+                cursor: pointer;
+
+                .icon {
+                    width: 4rem;
+                    height: 3rem;
+                    background-color: var(--accent);
+                }
+
+                .text {
+                    width: 7rem;
+                    height: 2rem;
+                    background-color: var(--accent);
+                }
+            }
+
+            .small-info {
+                margin-top: 1rem;
+                width: 100%;
+            }
+        }
+
+        .small-right {
+            .section {
+                display: flex;
+                flex-direction: column;
+
+                div, a {
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+    }
+
+    .spacer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1rem 0;
+
+        div {
+            width: 95%;
+            height: 2px;
+            background-color: var(--accent);
+        }
+    }
+
+    .bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 2rem;
+    }
+
+    .small-bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
 }

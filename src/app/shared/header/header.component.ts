@@ -25,6 +25,8 @@ export class HeaderComponent {
 
     showing = false;
 
+    pageSize = window.screen.width;
+
     constructor(private _translateService: TranslateService, private _router: Router, private _route: ActivatedRoute) {
         this._router.events
             .pipe(
@@ -59,6 +61,11 @@ export class HeaderComponent {
         this.lastScroll = window.scrollY;
     }
 
+    @HostListener('window:resize', [])
+    onResize() {
+        this.pageSize = window.screen.width;
+    }
+
     getTranslation(text: string) {
         return this._translateService.translate(text);
     }
@@ -78,6 +85,10 @@ export class HeaderComponent {
     navigateBreadcrumb(index: number) {
         const path = this.breadcrumbs.filter((el, i) => i <= index);
         this._router.navigate(path);
+    }
+
+    isSmallSize() {
+        return this.pageSize < 750;
     }
 
 }

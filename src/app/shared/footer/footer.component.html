@@ -1,1 +1,91 @@
-<div class="main">Footer</div>
+<div class="main" *ngIf="!isSmallSize()">
+    <div class="top">
+        <div class="left">
+            <div class="logo">
+                <div class="icon"></div>
+                <div class="text"></div>
+            </div>
+            <div class="info">
+                <div>Via per Alcamo Marina</div>
+                <div>Alcamo Marina (TP)</div>
+                <div>91011</div>
+                <div>P.IVA: 0000000000</div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="section contacts">
+                <div>CONTATTI</div>
+                <a href="">> Chi siamo</a>
+                <a href="">> Garanzia</a>
+                <a href="">> Contatti</a>
+            </div>
+            <div class="section service">
+                <div>SERVIZIO CLIENTI</div>
+                <a href="">> Spedizione</a>
+                <a href="">> Opzioni di pagamento</a>
+                <a href="">> Resi e rimborsi</a>
+                <a href="">> Preordini</a>
+            </div>
+            <div class="section account">
+                <div>IL MIO ACCOUNT</div>
+                <a href="">> I miei ordini</a>
+                <a href="">> Dettagli account</a>
+                <a href="">> Metodi di pagamento</a>
+                <a href="">> Wishlist</a>
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <a>2026 LA TAVERNA DEL CARRETTIERE</a>
+        <a>PRIVACY POLICY</a>
+    </div>
+</div>
+
+<div class="main" *ngIf="isSmallSize()">
+    <div class="small-top">
+        <div class="small-left">
+            <div class="small-logo">
+                <div class="icon"></div>
+                <div class="text"></div>
+            </div>
+            <div class="info">
+                <div>Via per Alcamo Marina</div>
+                <div>Alcamo Marina (TP)</div>
+                <div>91011</div>
+                <div>P.IVA: 0000000000</div>
+            </div>
+        </div>
+
+        <div class="spacer"><div></div></div>
+
+        <div class="small-right">
+            <div class="section contacts">
+                <div>CONTATTI</div>
+                <a href="">> Chi siamo</a>
+                <a href="">> Garanzia</a>
+                <a href="">> Contatti</a>
+            </div>
+            <div class="section service">
+                <div>SERVIZIO CLIENTI</div>
+                <a href="">> Spedizione</a>
+                <a href="">> Opzioni di pagamento</a>
+                <a href="">> Resi e rimborsi</a>
+                <a href="">> Preordini</a>
+            </div>
+            <div class="section account">
+                <div>IL MIO ACCOUNT</div>
+                <a href="">> I miei ordini</a>
+                <a href="">> Dettagli account</a>
+                <a href="">> Metodi di pagamento</a>
+                <a href="">> Wishlist</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="spacer"><div></div></div>
+
+    <div class="small-bottom">
+        <a>2026 LA TAVERNA DEL CARRETTIERE</a>
+        <a>PRIVACY POLICY</a>
+    </div>
+</div>
