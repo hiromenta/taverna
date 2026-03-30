@@ -1,0 +1,11 @@
+<div class="main">
+    <div class="container">
+        <img class="next" [src]="'../../../../assets/images/' + next?.name" [alt]="next?.name">
+        <img class="active" [src]="'../../../../assets/images/' + active?.name" [alt]="active?.name">
+        <img class="space" [src]="'../../../../assets/images/' + active?.name" [alt]="active?.name">
+    </div>
+
+    <div class="elements">
+        <img *ngFor="let element of elements; index as i$" (click)="setActive(i$)" class="miniature" [class.obscure]="element.id === active?.id" [src]="'../../../../assets/images/' + element.name" [alt]="element.name">
+    </div>
+</div>

@@ -40,7 +40,9 @@ export class HeaderComponent {
 
     @HostListener('window:scroll', [])
     onScroll() {
-        if (this.lastScroll < window.scrollY && this.lastScroll < 115 && window.scrollY >= 115) {
+        const threshold = 300;
+
+        if (this.lastScroll < window.scrollY && this.lastScroll < (threshold - (threshold / 2 - 15)) && window.scrollY >= (threshold - (threshold / 2 - 15))) {
             this.setAppearingAnimation = true;
 
             setTimeout(() => {
@@ -49,7 +51,7 @@ export class HeaderComponent {
             }, 200);
         }
         
-        if (this.lastScroll > window.scrollY && this.lastScroll > 200 && window.scrollY <= 200) {
+        if (this.lastScroll > window.scrollY && this.lastScroll > threshold && window.scrollY <= threshold) {
             this.setDisappearingAnimation = true;
 
             setTimeout(() => {

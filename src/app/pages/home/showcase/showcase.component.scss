@@ -1,0 +1,44 @@
+.main {
+    margin-top: 5rem;
+    position: relative;
+}
+
+.container {
+    position: relative;
+}
+
+.active, .next {
+    width: 100%;
+    position: absolute;
+}
+
+.space {
+    width: 100%;
+    opacity: 0;
+}
+
+.hide {
+    animation: hide 0.2s ease-in-out forwards;
+}
+
+@keyframes hide {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.elements {
+    display: flex;
+    background-color: var(--dark);
+}
+
+.miniature {
+    width: 10%;
+}
+
+.obscure {
+    opacity: 0.50;
+}
