@@ -2,10 +2,12 @@
     "default": {
         "white": "#ccc",
         "black": "#333",
-        "primary": "#22110b",
-        "secondary": "#2d1710",
-        "accent": "#d8ac6b",
-        "light": "#d7c3b1",
+        "primary": "#120a06",
+        "secondary": "#2A1F15",
+        "accent-light": "#F0CEA1",
+        "accent-dark": "#d8ac6b",
+        "accent-dark-transparent": "#d8ac6b25",
+        "light": "#695946",
         "dark": "#0e0a0a",
         "danger": "#721f2a",
         "success": "#3d612e"

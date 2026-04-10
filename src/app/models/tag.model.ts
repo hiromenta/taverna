@@ -1,0 +1,1 @@
+export type Tag = 'info' | 'warn' | 'error' | 'special';

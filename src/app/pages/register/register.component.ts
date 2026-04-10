@@ -15,7 +15,6 @@ export class RegisterComponent {
 
     registerForm: MyForm = {
         controls: [
-            { selector: 'nickname', type: ControlType.TEXT, required: true, label: 'form.nickname', errors: [] },
             { selector: 'email', type: ControlType.EMAIL, required: true, label: 'form.email', errors: [] },
             { selector: 'password', type: ControlType.PASSWORD, required: true, label: 'form.password', errors: [] }
         ]

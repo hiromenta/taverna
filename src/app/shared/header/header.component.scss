@@ -11,8 +11,8 @@
         justify-content: center;
         align-items: center;
         padding: 0.5rem;
-        color: var(--light);
-        font-size: 0.75rem;
+        color: var(--accent-light);
+        font-size: 0.65rem;
     }
 
     .tabs {
@@ -23,9 +23,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            color: var(--light);
+            color: var(--white);
             cursor: pointer;
             padding: 1rem 2rem;
+            font-weight: bold;
+            font-size: 0.75rem;
         }
         .tab:hover {
             background-color: var(--secondary);
@@ -34,22 +36,24 @@
 
     .breadcrumbs {
         background-color: var(--dark);
-        color: var(--white);
-        padding: 1rem 2rem;
+        color: var(--accent-dark);
+        padding: 0.5rem 2rem;
         border-bottom: var(--border);
+        font-size: 0.75rem;
     }
 }
 
 .floatingHeader {
     position: sticky;
     width: 50%;
-    margin-top: -10rem;
+    margin-top: -5rem;
     z-index: 1;
     top: 1.5rem;
     left: 50%;
     background-color: var(--primary);
     border-radius: 5px;
     border: var(--border);
+    opacity: 0;
 
     .body {
         border: none;
@@ -62,10 +66,12 @@
 
 .shown {
     transform: translate(-50%, 0);
+    opacity: 1;
 }
 
 .appear {
     animation: show 0.2s ease-in;
+    opacity: 1;
 }
 
 .disappear {
@@ -99,21 +105,19 @@
 
     .logo {
         width: 30%;
+        height: 2rem;
         display: flex;
         align-items: center;
         gap: 0.5rem;
         cursor: pointer;
+        overflow: visible;
 
         .icon {
-            width: 4rem;
-            height: 3rem;
-            background-color: var(--accent);
+            width: 5rem;
         }
 
-        .text {
-            width: 7rem;
-            height: 2rem;
-            background-color: var(--accent);
+        .brand {
+            width: 9rem;
         }
     }
     .search {
@@ -127,7 +131,7 @@
         gap: 1rem;
 
         .loginRegisterButtons {
-            color: var(--light);
+            color: var(--accent-light);
             font-weight: bold;
             cursor: pointer;
         }

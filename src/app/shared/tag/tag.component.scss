@@ -1,0 +1,10 @@
+div {
+    border-radius: 15px;
+    padding: 0.25rem 0.5rem;
+}
+
+.special {
+    border: 1px solid var(--accent-dark);
+    color: var(--accent-dark);
+    background-color: var(--accent-dark-transparent);
+}

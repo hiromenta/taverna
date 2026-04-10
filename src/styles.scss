@@ -2,14 +2,17 @@
 :root {
     --white: #ccc;
     --black: #111;
-    --primary: #22110b;
-    --secondary: #2d1710;
-    --accent: #d8ac6b;
-    --light: #d7c3b1;
+    --primary: #120a06;
+    --secondary: #2A1F15;
+    --accent-light: #F0CEA1;
+    --accent-dark: #d8ac6b;
+    --accent-dark-transparent: #d8ac6b25;
+    --light: #695946;
     --dark: #0e0a0a;
     --danger: #721f2a;
     --success: #3d612e;
-    --border: 1px solid var(--accent);
+    --border: 1px solid var(--light);
+    --border-light: 1px solid var(--accent-light);
 }
 
 * {
@@ -20,7 +23,7 @@ html, body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    background-color: var(--secondary);
+    background-color: var(--primary);
     color: var(--white);
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -31,9 +34,10 @@ html, body {
 
 input {
     width: 100%;
-    background-color: var(--light);
+    background-color: var(--secondary);
+    color: var(--light);
     outline: none;
-    border: none;
+    border: 1px solid var(--light);
     border-radius: 5px;
     padding: 0.5rem;
 }
@@ -42,7 +46,7 @@ button {
     padding: 0.5rem 1rem;
     outline: none;
     border: none;
-    background-color: var(--accent);
+    background-color: var(--accent-light);
     border-radius: 5px;
     color: var(--black);
     cursor: pointer;
@@ -57,7 +61,7 @@ button:disabled {
 }
 
 a {
-    color: var(--accent);
+    color: var(--accent-dark);
     cursor: pointer;
 }
 

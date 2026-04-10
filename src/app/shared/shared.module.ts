@@ -7,12 +7,14 @@ import { PipesModule } from '../pipes/pipes.module';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { DirectivesModule } from "../directives/directives.module";
+import { TagComponent } from './tag/tag.component';
 
 const COMPONENTS = [
   LoaderComponent,
   FormComponent,
   HeaderComponent,
-  FooterComponent
+  FooterComponent,
+  TagComponent
 ];
 
 @NgModule({

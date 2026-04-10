@@ -6,7 +6,7 @@
         <ng-container *ngTemplateOutlet="actions"></ng-container>
     </div>
     <div class="tabs" *ngIf="!isSmallSize()">
-        <div class="tab" *ngFor="let tab of tabs" (click)="navigateTab(tab.path)">{{ getTranslation(tab.label) }}</div>
+        <div class="tab" *ngFor="let tab of tabs" (click)="navigateTab(tab.path)">{{ getTranslation(tab.label) | uppercase }}</div>
     </div>
     <div class="breadcrumbs" *ngIf="!isSmallSize() && breadcrumbs.length">
         <ng-container *ngFor="let breadcrumb of breadcrumbs; index as $i, last as $last">
@@ -16,18 +16,18 @@
     </div>
 </div>
 
-<div class="floatingHeader" *ngIf="!isSmallSize()" [class.disappear]="setDisappearingAnimation" [class.appear]="setAppearingAnimation" [class.hidden]="!showing" [class.shown]="showing">
+<!-- <div class="floatingHeader" *ngIf="!isSmallSize()" [class.disappear]="setDisappearingAnimation" [class.appear]="setAppearingAnimation" [class.hidden]="!showing" [class.shown]="showing">
     <div class="body">
         <ng-container *ngTemplateOutlet="logo"></ng-container>
         <ng-container *ngTemplateOutlet="search"></ng-container>
         <ng-container *ngTemplateOutlet="actions"></ng-container>
     </div>
-</div>
+</div> -->
 
 <ng-template #logo>
     <div class="logo" (click)="navigateHome()">
-        <div class="icon"></div>
-        <div class="text" *ngIf="!isSmallSize()"></div>
+        <img src="../../../assets/images/logo.png" alt="logo" class="icon">
+        <img src="../../../assets/images/brand.png" alt="brand" class="brand" *ngIf="!isSmallSize()">
     </div>
 </ng-template>
 

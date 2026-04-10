@@ -2,8 +2,8 @@
     "form": {
         "firstname": "Nome",
         "lastname": "Cognome",
-        "nickname": "Nome utente",
-        "email": "Email",
+        "nickname": "Nome utente / Mail",
+        "email": "Indirizzo mail",
         "password": "Password",
         "actions": {
             "register": "Registrati",
@@ -24,7 +24,7 @@
         }
     },
     "register": {
-        "title": "Crea un nuovo account",
+        "title": "Registra un nuovo account",
         "hint1": "Sei già iscritto?",
         "hint2": "Accedi",
         "privacy1": "I tuoi dati personali verranno utilizzati per supportare la tua esperienza su questo sito web, per gestire l'accesso al tuo account e per altri scopi descritti nella nostra",
@@ -47,6 +47,11 @@
         },
         "tabs": {
             "carte": "Carte collezionabili"
+        }
+    },
+    "home": {
+        "welcome": {
+            "tag": "Nuovi arrivi ogni settimana"
         }
     }
 }

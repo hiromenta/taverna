@@ -1,8 +1,8 @@
 <div class="main">
     <div class="container">
         <div class="logo">
-            <div class="icon"></div>
-            <div class="text"></div>
+            <img src="../../../assets/images/logo.png" alt="logo" class="icon">
+            <img src="../../../assets/images/brand.png" alt="brand" class="brand">
         </div>
         <div class="title">
             <div>{{ 'login.title' | translate | uppercase }}</div>
@@ -11,7 +11,7 @@
             <my-form [form]="loginForm" (formChanged)="checkErrors($event)"></my-form>
         </div>
         <div class="button">
-            <button [disabled]="!loginForm.valid" (click)="login()">{{ 'form.actions.login' | translate }}</button>
+            <button [disabled]="!loginForm.valid" (click)="login()">{{ 'form.actions.login' | translate | uppercase }}</button>
         </div>
         <div class="hint">{{ 'login.hint1' |translate }}&nbsp;<a (click)="navigateRegister()">{{ 'login.hint2' | translate }}</a></div>
     </div>
