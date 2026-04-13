@@ -42,9 +42,10 @@
         <div class="favourites" [myFeature]="'favourites'">cuore</div>
         <div class="cart" [myFeature]="'cart'">carrello</div>
         <div class="user" [myFeature]="'userIcon'"></div>
-        <div class="loginRegisterButtons" [myFeature]="'loginRegisterButtons'" (click)="navigateLogin()">
+        <!-- <div class="loginRegisterButtons" [myFeature]="'loginRegisterButtons'" (click)="navigateLogin()">
             <span *ngIf="!isSmallSize()">{{ getTranslation('header.actions.signIn') }} / {{ getTranslation('header.actions.signUp') }}</span>
             <span *ngIf="isSmallSize()">{{ getTranslation('header.actions.signIn') }}</span>
-        </div>
+        </div> -->
+        <button class="secondary" [myFeature]="'loginRegisterButtons'" (click)="navigateLogin()">{{ getTranslation('header.actions.signIn') }}</button>
     </div>
 </ng-template>

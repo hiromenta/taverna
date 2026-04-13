@@ -1,11 +1,12 @@
 :host {
     display: flex;
     flex: 1;
+    flex-direction: column;
 }
 
 .welcome {
     width: 100%;
-    height: 30rem;
+    height: 80vh;
     background-image: url('../../../assets/images/welcome.png');
     background-size: cover;
     background-position: center;
@@ -18,5 +19,25 @@
         justify-content: start;
         align-items: center;
         padding: 2rem;
+    }
+
+    .welcome-text {
+        font-size: 10rem;
+
+        span {
+            background: -webkit-linear-gradient(0deg, var(--accent-dark), var(--accent-light), var(--accent-dark));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+
+    .info {
+        color: var(--accent-light);
+    }
+
+    button {
+        margin: 2rem 0;
+        background-image: linear-gradient(90deg, var(--accent-dark), var(--accent-light), var(--accent-dark));
     }
 }

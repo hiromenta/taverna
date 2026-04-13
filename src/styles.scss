@@ -48,11 +48,12 @@ button {
     border: none;
     background-color: var(--accent-light);
     border-radius: 5px;
-    color: var(--black);
+    color: var(--dark);
     cursor: pointer;
 }
 button.secondary {
-    background-color: var(--light);
+    background-color: var(--secondary);
+    color: var(--accent-dark);
 }
 button:disabled {
     background-color: var(--dark);

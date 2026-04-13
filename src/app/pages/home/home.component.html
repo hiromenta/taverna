@@ -1,12 +1,18 @@
+<!-- <div class="showcase">
+    <my-showcase></my-showcase>
+</div> -->
+
 <div class="welcome">
     <div class="back">
         <div>
             <my-tag [text]="'home.welcome.tag'" [type]="'special'"></my-tag>
-            <div>Benvenuto nella taverna</div>
+            <div class="welcome-text">Benvenuto<br>nella <span>taverna</span></div>
+            <div class="info">{{ 'home.welcome.info' | translate }}</div>
+            <button>{{ 'home.welcome.explore' | translate }}</button>
         </div>
     </div>
 </div>
 
-<!-- <div class="showcase">
-    <my-showcase></my-showcase>
-</div> -->
+<div class="featured">
+    <my-featured></my-featured>
+</div>

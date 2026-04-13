@@ -51,7 +51,13 @@
     },
     "home": {
         "welcome": {
-            "tag": "Nuovi arrivi ogni settimana"
+            "tag": "Nuovi arrivi ogni settimana",
+            "info": "Scopri il più vasto assortimento di carte collezionabili. Buste, mazzi, carte singole e accessori per ogni avventuriero.",
+            "explore": "Esplora il catalogo"
         }
+    },
+    "featured": {
+        "title": "Il bottino del giorno",
+        "subtitle": "I tesori più ambiti della taverna."
     }
 }

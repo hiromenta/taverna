@@ -9,6 +9,7 @@ import { SharedModule } from "../shared/shared.module";
 import { UpperCasePipe, NgForOf } from "@angular/common";
 import { WorkInProgressComponent } from "./work-in-progress/work-in-progress.component";
 import { ShowcaseComponent } from "./home/showcase/showcase.component";
+import { FeaturedComponent } from "./home/featured/featured.component";
 
 const COMPONENTS = [
     HomeComponent,
@@ -16,7 +17,8 @@ const COMPONENTS = [
     RegisterComponent,
     NotFoundComponent,
     WorkInProgressComponent,
-    ShowcaseComponent
+    ShowcaseComponent,
+    FeaturedComponent
 ];
 
 @NgModule({
