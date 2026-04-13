@@ -5,6 +5,7 @@ import { LoaderService } from "../../services/loader.service";
 import { ControlType, MyForm } from "../../models/form.model";
 import { Paths } from "../../app-routing.module";
 import { switchMap } from "rxjs";
+import { ErrorResponse, RegisterResponse } from "../../models/api.model";
 
 @Component({
     selector: 'my-register',
@@ -32,9 +33,9 @@ export class RegisterComponent {
 
         this._authService.register(this.registerForm.value)
             .pipe(
-                switchMap((registerRes) => {
-                    if (registerRes.error) {
-                        throw registerRes.description;
+                switchMap((registerRes: RegisterResponse | ErrorResponse) => {
+                    if ((registerRes as ErrorResponse).code && (registerRes as ErrorResponse).errno) {
+                        throw registerRes;
                     }
 
                     return this._authService.login(this.registerForm.value?.['email'], this.registerForm.value?.['password'])

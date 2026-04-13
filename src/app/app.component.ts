@@ -5,6 +5,7 @@ import { Themes } from './models/themes.model';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { LoaderService } from './services/loader.service';
+import { UtilsService } from './services/utils.service';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit {
   constructor(
     private _router: Router,
     private _loaderService: LoaderService,
+    private _utilsService: UtilsService,
     private _themesService: ThemesService,
     private _translateService: TranslateService
   ) {}
@@ -36,7 +38,7 @@ export class AppComponent implements OnInit {
 
     for (let i = 0; i < servicesToLoad.length; i++) {
       const service = servicesToLoad[i];
-      
+
       (service as Observable<any>).subscribe(() => {
         this.loadedServices[i] = true;
         this._checkAllServicesLoaded();
@@ -50,6 +52,8 @@ export class AppComponent implements OnInit {
         return false;
       }
     }
+
+    this._utilsService.allServicesLoaded = true;
 
     const path = location.pathname.split('/')[1];
 

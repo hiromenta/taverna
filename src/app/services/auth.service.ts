@@ -1,24 +1,24 @@
 import { Injectable } from "@angular/core";
-import { Observable, tap } from "rxjs";
-import { ApiService } from "./api.service";
+import { Observable, of, tap } from "rxjs";
+import { ApiConfig } from "../config/api.config";
+import { ErrorResponse, RegisterResponse } from "../models/api.model";
 
 @Injectable()
 export class AuthService {
 
     authenticated = false;
 
-    constructor(private _apiService: ApiService) {}
+    constructor(private _apiConfig: ApiConfig) {}
 
-    login(email: string, password: string): Observable<any> {
-        return this._apiService.login(email, password).pipe(tap(res => {
+    login(email: string, password: string): Observable<{ authenticated: boolean }> {
+        return of({ authenticated: true });
+        return this._apiConfig.send('login', { body: { email, password } }).pipe(tap(res => {
             this.authenticated = res.authenticated;
         }));
     }
 
-    register(body: any): Observable<any> {
-        return this._apiService.register(body).pipe(tap(res => {
-            this.authenticated = res.authenticated;
-        }));
+    register(body: any): Observable<RegisterResponse | ErrorResponse> {
+        return this._apiConfig.send('register', { body });
     }
 
 }

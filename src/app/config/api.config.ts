@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
 import { ConfigService } from "../services/config.service";
 import { Api, ApiOptions } from "../models/api.model";
-import { delay, Observable, switchMap, throwError } from "rxjs";
+import { delay, Observable, of, switchMap, throwError } from "rxjs";
 import { HttpClient } from "@angular/common/http";
+import { UtilsService } from "../services/utils.service";
 
 @Injectable()
 export class ApiConfig {
@@ -10,7 +11,7 @@ export class ApiConfig {
     baseUrl: string = '';
     apiEndpoints: Api[] = [];
 
-    constructor (private _configService: ConfigService, private _http: HttpClient) {}
+    constructor (private _configService: ConfigService, private _http: HttpClient, private _utilsService: UtilsService) {}
 
     getApi(selector: string): Api | undefined {
         return this.apiEndpoints
@@ -19,6 +20,10 @@ export class ApiConfig {
     }
 
     send(selector: string, options?: ApiOptions): Observable<any> {
+        if (!this._utilsService.allServicesLoaded) {
+            return of(null);
+        }
+
         return this._configService.getAppConfig().pipe(
             switchMap((appConfig) => {
                 this.baseUrl = appConfig.baseUrl;

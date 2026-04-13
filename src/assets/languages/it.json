@@ -59,5 +59,8 @@
     "featured": {
         "title": "Il bottino del giorno",
         "subtitle": "I tesori più ambiti della taverna."
+    },
+    "error": {
+        "ER_DUP_ENTRY": "Utente già esistente"
     }
 }

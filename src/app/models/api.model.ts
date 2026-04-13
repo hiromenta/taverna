@@ -11,3 +11,12 @@ export interface ApiOptions {
     params?: { [param: string]: string | string[] };
     queryParams?: { [queryParam: string]: string | string[] };
 }
+
+export interface ErrorResponse {
+    code: string;
+    errno: number;
+}
+
+export interface RegisterResponse {
+    id: number;
+}

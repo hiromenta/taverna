@@ -1,6 +1,5 @@
 [
     { "selector": "example", "url": "/test/{id}?section=[section]", "method": "GET" },
-    { "selector": "test", "url": "/api/test", "method": "GET" },
-    { "selector": "login", "url": "/api/login", "method": "POST" },
-    { "selector": "register", "url": "/api/register", "method": "POST" }
+    { "selector": "login", "url": "/api/users/login", "method": "POST" },
+    { "selector": "register", "url": "/api/users/register", "method": "POST" }
 ]
