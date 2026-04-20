@@ -11,6 +11,8 @@ import { DirectivesModule } from './directives/directives.module';
 import { PipesModule } from './pipes/pipes.module';
 import { SharedModule } from './shared/shared.module';
 import { CommonModule } from '@angular/common';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { CommonModule } from '@angular/common';
     PipesModule,
     SharedModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

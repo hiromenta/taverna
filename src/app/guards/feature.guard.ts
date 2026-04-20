@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, GuardResult, MaybeAsync, Router, RouterStateSnapshot } from "@angular/router";
 import { Paths } from "../app-routing.module";
-import { FeaturesService } from "../services/features.service";
+import { AuthService } from "../services/auth.service";
 
 @Injectable()
 export class FeatureGuard implements CanActivate, CanActivateChild {
 
-    constructor(private _featuresService: FeaturesService, private _router: Router) {}
+    constructor(private _authService: AuthService, private _router: Router) {}
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<GuardResult> {
         return this._canActivate(route, state);
@@ -23,7 +23,7 @@ export class FeatureGuard implements CanActivate, CanActivateChild {
             return this._fallBack();
         }
 
-        if (grantAll || grant.includes(this._featuresService.activeRole)) {
+        if (grantAll || grant.includes(this._authService.user?.role || 0)) {
             return true;
         }
 

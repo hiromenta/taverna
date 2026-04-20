@@ -44,13 +44,11 @@ export class RegisterComponent {
             .subscribe({
                 next: (res) => {
                     this._loaderService.hide();
-                    console.log(res);
                     this._router.navigate([Paths.HOME]);
                 },
                 error: (err) => {
                     this._loaderService.hide();
                     // TODO: implementare modale errore
-                    console.log(err);
                 }
             });
     }

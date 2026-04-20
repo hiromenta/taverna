@@ -9,6 +9,9 @@
         "accent-dark-transparent": "#d8ac6b25",
         "light": "#695946",
         "dark": "#0e0a0a",
+        "green": "#4A5E3B",
+        "orange": "#7B4425",
+        "pale": "#CFB79D",
         "danger": "#721f2a",
         "success": "#3d612e"
     }

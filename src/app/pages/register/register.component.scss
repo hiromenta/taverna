@@ -17,7 +17,7 @@
         width: 40%;
         background-color: var(--primary);
         padding: 1rem 3rem;
-        border-radius: 5px;
+        border-radius: var(--radius);
         border: var(--border-light);
 
         .logo {

@@ -54,6 +54,12 @@
             "tag": "Nuovi arrivi ogni settimana",
             "info": "Scopri il più vasto assortimento di carte collezionabili. Buste, mazzi, carte singole e accessori per ogni avventuriero.",
             "explore": "Esplora il catalogo"
+        },
+        "featured": {
+            "card": {
+                "available": "Disponibile",
+                "add_to_cart": "Aggiungi al carrello"
+            }
         }
     },
     "featured": {
@@ -61,6 +67,9 @@
         "subtitle": "I tesori più ambiti della taverna."
     },
     "error": {
-        "ER_DUP_ENTRY": "Utente già esistente"
+        "ER_DUP_ENTRY": "Utente già esistente",
+        "ER_BAD_FIELD_ERROR": "Colonna sconosciuta",
+        "ER_PARSE_ERROR": "Valore invalido, impossibile convertire",
+        "ER_WRONG_CREDS": "Le credenziali inserite sono errate"
     }
 }

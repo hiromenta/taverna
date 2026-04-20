@@ -1,8 +1,15 @@
 .main {
     padding: 3rem;
+    padding-bottom: 0;
 
     .title {
         font-size: 3rem;
         color: var(--accent-dark);
     }
+}
+
+.cards {
+    padding: 3rem;
+    display: flex;
+    justify-content: space-between;
 }

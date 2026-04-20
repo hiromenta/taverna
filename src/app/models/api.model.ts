@@ -1,3 +1,5 @@
+import { User } from "./user.model";
+
 export interface Api {
     selector: string;
     url: string;
@@ -19,4 +21,9 @@ export interface ErrorResponse {
 
 export interface RegisterResponse {
     id: number;
+}
+
+export interface LoginResponse {
+    user: User;
+    token: string;
 }

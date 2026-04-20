@@ -14,7 +14,7 @@ export class LoginComponent {
 
     loginForm: MyForm = {
         controls: [
-            { selector: 'nickname', type: ControlType.TEXT, required: true, label: 'form.nickname', errors: [] },
+            { selector: 'email', type: ControlType.EMAIL, required: true, label: 'form.email', errors: [] },
             { selector: 'password', type: ControlType.PASSWORD, required: true, label: 'form.password', errors: [] }
         ]
     };
@@ -32,13 +32,11 @@ export class LoginComponent {
         this._authService.login(this.loginForm.value?.['email'], this.loginForm.value?.['password']).subscribe({
                 next: (res) => {
                     this._loaderService.hide();
-                    console.log(res);
                     this._router.navigate([Paths.HOME]);
                 },
                 error: (err) => {
                     this._loaderService.hide();
                     // TODO: implementare modale errore
-                    console.log(err);
                 }
             });
     }

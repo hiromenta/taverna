@@ -1,19 +1,24 @@
 import { Injectable } from "@angular/core";
 import { Observable, of, tap } from "rxjs";
 import { ApiConfig } from "../config/api.config";
-import { ErrorResponse, RegisterResponse } from "../models/api.model";
+import { ErrorResponse, LoginResponse, RegisterResponse } from "../models/api.model";
+import { User } from "../models/user.model";
 
 @Injectable()
 export class AuthService {
 
     authenticated = false;
+    user?: User;
 
     constructor(private _apiConfig: ApiConfig) {}
 
-    login(email: string, password: string): Observable<{ authenticated: boolean }> {
-        return of({ authenticated: true });
+    login(email: string, password: string): Observable<LoginResponse | ErrorResponse> {
         return this._apiConfig.send('login', { body: { email, password } }).pipe(tap(res => {
-            this.authenticated = res.authenticated;
+            if ((res as LoginResponse)?.token) {
+                sessionStorage.setItem('token', (res as LoginResponse)?.token);
+                this.authenticated = true;
+                this.user = (res as LoginResponse)?.user;
+            }
         }));
     }
 

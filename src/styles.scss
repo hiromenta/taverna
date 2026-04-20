@@ -9,10 +9,15 @@
     --accent-dark-transparent: #d8ac6b25;
     --light: #695946;
     --dark: #0e0a0a;
+    --green: #4A5E3B;
+    --orange: #7B4425;
+    --pale: #CFB79D;
     --danger: #721f2a;
     --success: #3d612e;
     --border: 1px solid var(--light);
     --border-light: 1px solid var(--accent-light);
+    --radius: 5px;
+    --radius-round: 10px;
 }
 
 * {
@@ -38,7 +43,7 @@ input {
     color: var(--light);
     outline: none;
     border: 1px solid var(--light);
-    border-radius: 5px;
+    border-radius: var(--radius);
     padding: 0.5rem;
 }
 
@@ -47,8 +52,11 @@ button {
     outline: none;
     border: none;
     background-color: var(--accent-light);
-    border-radius: 5px;
+    border-radius: var(--radius);
     color: var(--dark);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     cursor: pointer;
 }
 button.secondary {

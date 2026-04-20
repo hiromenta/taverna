@@ -6,10 +6,11 @@ import { LoginComponent } from "./login/login.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { RegisterComponent } from "./register/register.component";
 import { SharedModule } from "../shared/shared.module";
-import { UpperCasePipe, NgForOf } from "@angular/common";
+import { UpperCasePipe, NgForOf, CurrencyPipe } from "@angular/common";
 import { WorkInProgressComponent } from "./work-in-progress/work-in-progress.component";
 import { ShowcaseComponent } from "./home/showcase/showcase.component";
 import { FeaturedComponent } from "./home/featured/featured.component";
+import { FeaturedCardComponent } from "./home/featured/featured-card/featured-card.component";
 
 const COMPONENTS = [
     HomeComponent,
@@ -18,12 +19,13 @@ const COMPONENTS = [
     NotFoundComponent,
     WorkInProgressComponent,
     ShowcaseComponent,
-    FeaturedComponent
+    FeaturedComponent,
+    FeaturedCardComponent
 ];
 
 @NgModule({
     declarations: [...COMPONENTS],
     exports: [...COMPONENTS],
-    imports: [DirectivesModule, PipesModule, SharedModule, UpperCasePipe, NgForOf]
+    imports: [DirectivesModule, PipesModule, SharedModule, UpperCasePipe, NgForOf, CurrencyPipe]
 })
 export class PagesModule {}
