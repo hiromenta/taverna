@@ -1,3 +1,27 @@
 <div class="actions">
     <a (click)="navigateShop()">{{ 'shop.product.back_to_shop' | translate }}</a>
 </div>
+<div class="main">
+    <div class="img">
+        <img src="../../../../../assets/images/box.webp" alt="product">
+    </div>
+    <div class="info">
+        <div>
+            <div class="brand">
+                Pokémon - ETB
+                <div class="heart"><img src="../../../../../assets/icons/cuore_vuoto.svg" alt="icon"></div>
+            </div>
+            <div class="title">Segreto fiabesco</div>
+        </div>
+        <div>
+            <div class="price">{{ 29.90 | currency:'EUR' }}</div>
+            <div class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, doloribus. Ea magnam eveniet architecto illo in voluptatum qui praesentium, corporis unde quae enim eum vero ex ipsam? Numquam, expedita omnis!</div>
+            <div class="availability">{{ 'shop.product.available' | translate }}</div>
+
+            <div class="spacer start"><div></div></div>
+
+            <div class="amount">{{ 'shop.product.amount' | translate }}: <div class="change-amount" (click)="decrease()">-</div> <span>{{ amount }}</span> <div class="change-amount" (click)="increase()">+</div></div>
+            <button>{{ 'shop.product.add_to_cart' | translate | uppercase }} <img src="../../../../../assets/icons/carrello_vuoto.svg" alt="icon"></button>
+        </div>
+    </div>
+</div>

@@ -13,8 +13,10 @@ export class HeaderComponent {
 
     tabs = [
         { label: 'header.tabs.carte', path: [Paths.SHOP] },
-        { label: 'header.tabs.carte', path: [Paths.SHOP] },
-        { label: 'header.tabs.carte', path: [Paths.SHOP] }
+        { label: 'header.tabs.accessori', path: [Paths.SHOP] },
+        { label: 'header.tabs.live', path: [Paths.SHOP] },
+        { label: 'header.tabs.spedizioni', path: [Paths.SHOP] },
+        { label: 'header.tabs.nino', path: [Paths.SHOP] }
     ];
     breadcrumbs = [];
 

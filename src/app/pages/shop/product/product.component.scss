@@ -1,3 +1,108 @@
+:host {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
 .actions {
     padding: 1rem 2rem;
+}
+
+.main {
+    padding: 0 2rem;
+    width: 100%;
+    display: flex;
+
+    .img {
+        width: 30%;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .info {
+        padding-left: 15rem;
+        width: 70%;
+
+        .brand {
+            font-size: 2rem;
+            color: var(--accent-light);
+            position: relative;
+
+            .heart {
+                position: absolute;
+                right: 0;
+                top: 0;
+                cursor: pointer;
+            }
+        }
+
+        .title {
+            font-size: 2rem;
+            color: var(--accent-light);
+        }
+
+        .price {
+            color: var(--accent-dark);
+            font-weight: var(--bold);
+            margin: 1rem 0;
+            font-size: 2rem;
+        }
+
+        .description {
+            margin: 0.5rem 0;
+        }
+
+        .availability {
+            font-size: 0.75rem;
+            color: var(--green);
+        }
+
+        .spacer {
+            margin: 1rem 0;
+        }
+
+        .amount {
+            display: flex;
+            align-items: center;
+            margin: 1rem 0;
+
+            .change-amount {
+                font-size: 1.5rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 1.5rem;
+                height: 1.5rem;
+                cursor: pointer;
+                border-radius: var(--radius);
+                border: var(--border);
+                margin: 0 1rem;
+                background-color: var(--secondary);
+                color: var(--accent-light);
+                font-weight: var(--bold);
+                user-select: none;
+                -ms-user-select: none;
+            }
+
+            span {
+                font-size: 1.5rem;
+                color: var(--accent-light);
+            }
+        }
+
+        button {
+            color: var(--pale);
+            background-color: var(--orange);
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            font-weight: var(--bold);
+
+            img {
+                margin-left: 0.5rem;
+                width: 1.5rem;
+            }
+        }
+    }
 }

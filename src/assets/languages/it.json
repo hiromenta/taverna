@@ -47,7 +47,11 @@
             "signUp": "Registrati"
         },
         "tabs": {
-            "carte": "Carte collezionabili"
+            "carte": "Carte collezionabili",
+            "accessori": "Accessori",
+            "live": "Live",
+            "spedizioni": "Spedizioni",
+            "nino": "Ninolab"
         }
     },
     "home": {
@@ -69,7 +73,10 @@
     },
     "shop": {
         "product": {
-            "back_to_shop": "Torna al catalogo"
+            "back_to_shop": "Torna al catalogo",
+            "available": "Disponibile",
+            "amount": "Quantità",
+            "add_to_cart": "Aggiungi al carrello"
         }
     },
     "error": {
