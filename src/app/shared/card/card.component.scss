@@ -1,10 +1,11 @@
 .card {
     border: var(--border-light);
-    width: 15rem;
-    height: 20rem;
+    width: 17rem;
+    height: 25rem;
     border-radius: var(--radius-round);
     position: relative;
     background-color: var(--dark);
+    cursor: pointer;
 
     .heart {
         position: absolute;

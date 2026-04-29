@@ -5,7 +5,8 @@ import { LoaderService } from "../../services/loader.service";
 import { ControlType, MyForm } from "../../models/form.model";
 import { Paths } from "../../app-routing.module";
 import { switchMap } from "rxjs";
-import { ErrorResponse, RegisterResponse } from "../../models/api.model";
+import { ErrorResponse } from "../../models/api.model";
+import { RegisterResponse } from "../../models/user.model";
 
 @Component({
     selector: 'my-register',
@@ -16,6 +17,7 @@ export class RegisterComponent {
 
     registerForm: MyForm = {
         controls: [
+            { selector: 'username', type: ControlType.TEXT, required: false, label: 'form.username', errors: [] },
             { selector: 'email', type: ControlType.EMAIL, required: true, label: 'form.email', errors: [] },
             { selector: 'password', type: ControlType.PASSWORD, required: true, label: 'form.password', errors: [] }
         ]
@@ -31,14 +33,14 @@ export class RegisterComponent {
 
         this._loaderService.show();
 
-        this._authService.register(this.registerForm.value)
+        this._authService.register({ username: this.registerForm.value?.['username'], email: this.registerForm.value?.['email'], password: this.registerForm.value?.['password'] })
             .pipe(
                 switchMap((registerRes: RegisterResponse | ErrorResponse) => {
                     if ((registerRes as ErrorResponse).code && (registerRes as ErrorResponse).errno) {
                         throw registerRes;
                     }
 
-                    return this._authService.login(this.registerForm.value?.['email'], this.registerForm.value?.['password'])
+                    return this._authService.login({ usermail: this.registerForm.value?.['email'], password: this.registerForm.value?.['password'] });
                 })
             )
             .subscribe({

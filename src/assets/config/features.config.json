@@ -10,13 +10,13 @@
     {
         "name": "favourites",
         "description": "Add the ability to manage favourite items",
-        "enabled": false,
+        "enabled": true,
         "grant": [1, 2]
     },
     {
         "name": "cart",
         "description": "Add the ability to manage the user's cart",
-        "enabled": false,
+        "enabled": true,
         "grant": [1, 2]
     },
     {

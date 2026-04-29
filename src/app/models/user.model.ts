@@ -10,3 +10,12 @@ export interface User {
     email: string;
     role: Role;
 }
+
+export interface RegisterResponse {
+    id: number;
+}
+
+export interface LoginResponse {
+    user: User;
+    token: string;
+}

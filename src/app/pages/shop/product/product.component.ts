@@ -1,13 +1,13 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
-import { Paths } from "../../app-routing.module";
+import { Paths } from "../../../app-routing.module";
 
 @Component({
-    selector: 'my-home',
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.scss']
+    selector: 'my-product',
+    templateUrl: './product.component.html',
+    styleUrls: ['./product.component.scss']
 })
-export class HomeComponent {
+export class ProductComponent {
 
     constructor(private _router: Router) {}
 

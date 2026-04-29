@@ -14,7 +14,7 @@ export class LoginComponent {
 
     loginForm: MyForm = {
         controls: [
-            { selector: 'email', type: ControlType.EMAIL, required: true, label: 'form.email', errors: [] },
+            { selector: 'usermail', type: ControlType.TEXT, required: true, label: 'form.usermail', errors: [] },
             { selector: 'password', type: ControlType.PASSWORD, required: true, label: 'form.password', errors: [] }
         ]
     };
@@ -29,7 +29,7 @@ export class LoginComponent {
 
         this._loaderService.show();
 
-        this._authService.login(this.loginForm.value?.['email'], this.loginForm.value?.['password']).subscribe({
+        this._authService.login({ usermail: this.loginForm.value?.['usermail'], password: this.loginForm.value?.['password'] }).subscribe({
                 next: (res) => {
                     this._loaderService.hide();
                     this._router.navigate([Paths.HOME]);

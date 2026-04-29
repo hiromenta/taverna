@@ -8,7 +8,7 @@
             <my-tag [text]="'home.welcome.tag'" [type]="'special'"></my-tag>
             <div class="welcome-text">Benvenuto<br>nella <span>taverna</span></div>
             <div class="info">{{ 'home.welcome.info' | translate }}</div>
-            <button>{{ 'home.welcome.explore' | translate }}</button>
+            <button (click)="navigateShop()">{{ 'home.welcome.explore' | translate }}</button>
         </div>
     </div>
 </div>

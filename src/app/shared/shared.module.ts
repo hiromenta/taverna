@@ -8,13 +8,15 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { DirectivesModule } from "../directives/directives.module";
 import { TagComponent } from './tag/tag.component';
+import { CardComponent } from './card/card.component';
 
 const COMPONENTS = [
   LoaderComponent,
   FormComponent,
   HeaderComponent,
   FooterComponent,
-  TagComponent
+  TagComponent,
+  CardComponent
 ];
 
 @NgModule({

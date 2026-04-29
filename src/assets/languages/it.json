@@ -2,7 +2,8 @@
     "form": {
         "firstname": "Nome",
         "lastname": "Cognome",
-        "nickname": "Nome utente / Mail",
+        "usermail": "Nome utente / Mail",
+        "username": "Nome utente",
         "email": "Indirizzo mail",
         "password": "Password",
         "actions": {
@@ -65,6 +66,11 @@
     "featured": {
         "title": "Il bottino del giorno",
         "subtitle": "I tesori più ambiti della taverna."
+    },
+    "shop": {
+        "product": {
+            "back_to_shop": "Torna al catalogo"
+        }
     },
     "error": {
         "ER_DUP_ENTRY": "Utente già esistente",

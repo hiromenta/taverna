@@ -1,69 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { ThemesService } from './services/themes.service';
-import { TranslateService } from './services/translate.service';
-import { Themes } from './models/themes.model';
-import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
-import { LoaderService } from './services/loader.service';
-import { UtilsService } from './services/utils.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
   title = 'la-taverna-del-carrettiere';
-
-  loadedServices: any[] = [];
-
-  constructor(
-    private _router: Router,
-    private _loaderService: LoaderService,
-    private _utilsService: UtilsService,
-    private _themesService: ThemesService,
-    private _translateService: TranslateService
-  ) {}
-
-  ngOnInit(): void {
-    const servicesToLoad = [
-      this._themesService.changeTheme(this._themesService.getCurrentTheme().name as Themes),
-      this._translateService.setLanguage(this._translateService.getCurrentLanguageCode())
-    ];
-
-    this.loadedServices = new Array(servicesToLoad.length).fill(false);
-
-    this._loaderService.show();
-
-    for (let i = 0; i < servicesToLoad.length; i++) {
-      const service = servicesToLoad[i];
-
-      (service as Observable<any>).subscribe(() => {
-        this.loadedServices[i] = true;
-        this._checkAllServicesLoaded();
-      });
-    }
-  }
-
-  private _checkAllServicesLoaded() {
-    for (const loaded of this.loadedServices) {
-      if (!loaded) {
-        return false;
-      }
-    }
-
-    this._utilsService.allServicesLoaded = true;
-
-    const path = location.pathname.split('/')[1];
-
-    this._loaderService.hide();
-
-    this._router.navigate(['randomBullshitGo']).then(() => {
-      this._router.navigate([path]);
-    });
-
-    return true;
-  }
 
 }

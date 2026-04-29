@@ -8,6 +8,7 @@ import { TranslateService } from "./translate.service";
 import { LoaderService } from "./loader.service";
 import { AuthService } from "./auth.service";
 import { ProductsService } from "./products.service";
+import { StartupService } from "./startup.service";
 
 @NgModule({
     imports: [HttpClientModule],
@@ -19,7 +20,8 @@ import { ProductsService } from "./products.service";
         TranslateService,
         LoaderService,
         AuthService,
-        ProductsService
+        ProductsService,
+        StartupService
     ]
 })
 export class ServicesModule {}

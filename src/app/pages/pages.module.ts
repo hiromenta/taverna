@@ -10,7 +10,8 @@ import { UpperCasePipe, NgForOf, CurrencyPipe } from "@angular/common";
 import { WorkInProgressComponent } from "./work-in-progress/work-in-progress.component";
 import { ShowcaseComponent } from "./home/showcase/showcase.component";
 import { FeaturedComponent } from "./home/featured/featured.component";
-import { FeaturedCardComponent } from "./home/featured/featured-card/featured-card.component";
+import { ShopComponent } from "./shop/shop.component";
+import { ProductComponent } from "./shop/product/product.component";
 
 const COMPONENTS = [
     HomeComponent,
@@ -20,7 +21,8 @@ const COMPONENTS = [
     WorkInProgressComponent,
     ShowcaseComponent,
     FeaturedComponent,
-    FeaturedCardComponent
+    ShopComponent,
+    ProductComponent
 ];
 
 @NgModule({

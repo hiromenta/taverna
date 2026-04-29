@@ -1,5 +1,3 @@
-import { User } from "./user.model";
-
 export interface Api {
     selector: string;
     url: string;
@@ -17,13 +15,4 @@ export interface ApiOptions {
 export interface ErrorResponse {
     code: string;
     errno: number;
-}
-
-export interface RegisterResponse {
-    id: number;
-}
-
-export interface LoginResponse {
-    user: User;
-    token: string;
 }

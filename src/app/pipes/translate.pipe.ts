@@ -1,15 +1,27 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { ChangeDetectorRef, OnDestroy, Pipe, PipeTransform } from '@angular/core';
 import { TranslateService } from '../services/translate.service';
+import { Subscription } from 'rxjs';
 
 @Pipe({
-  name: 'translate'
+  name: 'translate',
+  pure: false
 })
-export class TranslatePipe implements PipeTransform {
+export class TranslatePipe implements PipeTransform, OnDestroy {
 
-  constructor(private _translateService: TranslateService) {}
+  private _sub!: Subscription;
+
+  constructor(private _translateService: TranslateService, private _cdr: ChangeDetectorRef) {
+    this._sub = this._translateService.langChanged$.subscribe(() => {
+      this._cdr.markForCheck();
+    });
+  }
 
   transform(key: string): string {
     return this._translateService.translate(key) as string;
+  }
+
+  ngOnDestroy() {
+    this._sub?.unsubscribe();
   }
 
 }

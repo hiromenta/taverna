@@ -2,7 +2,7 @@ import { Component, HostListener } from "@angular/core";
 import { TranslateService } from "../../services/translate.service";
 import { ActivatedRoute, EventType, Router } from "@angular/router";
 import { Paths } from "../../app-routing.module";
-import { filter, switchMap } from "rxjs";
+import { filter, Observable, of, switchMap } from "rxjs";
 
 @Component({
     selector: 'my-header',
@@ -12,9 +12,9 @@ import { filter, switchMap } from "rxjs";
 export class HeaderComponent {
 
     tabs = [
-        { label: 'header.tabs.carte', path: ['shop', 'cards'] },
-        { label: 'header.tabs.carte', path: ['shop', 'cards'] },
-        { label: 'header.tabs.carte', path: ['shop', 'cards'] }
+        { label: 'header.tabs.carte', path: [Paths.SHOP] },
+        { label: 'header.tabs.carte', path: [Paths.SHOP] },
+        { label: 'header.tabs.carte', path: [Paths.SHOP] }
     ];
     breadcrumbs = [];
 
@@ -31,11 +31,19 @@ export class HeaderComponent {
         this._router.events
             .pipe(
                 filter((events) => events.type === EventType.NavigationEnd),
-                switchMap(() => this._route.children.at(0)!.data)
+                switchMap(() => this._getLastChild(_route.children)?.data as Observable<any>)
             )
-            .subscribe(data => {
+            .subscribe((data: any) => {
                 this.breadcrumbs = data['breadcrumbs'] || [];
             })
+    }
+
+    private _getLastChild(children?: ActivatedRoute[], last?: ActivatedRoute): ActivatedRoute | undefined {
+        if (!children?.length) {
+            return last;
+        }
+
+        return this._getLastChild(children?.at(0)?.children, children?.at(0));
     }
 
     @HostListener('window:scroll', [])

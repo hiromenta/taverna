@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { map, Observable, of, tap } from "rxjs";
+import { map, Observable, of, Subject, tap } from "rxjs";
 import { Language, LanguageCode } from "../models/language.model";
 
 @Injectable()
@@ -8,6 +8,8 @@ export class TranslateService {
 
     private _currentLanguageCode: LanguageCode = this._getCurrentLanguageFromLocalStorage();    
     private _currentLanguage?: Language;
+
+    langChanged$ = new Subject();
 
     constructor(private _http: HttpClient) {}
 
@@ -43,6 +45,8 @@ export class TranslateService {
 
     setLanguage(langCode: LanguageCode): Observable<Language> {
         return this._getLanguage(langCode).pipe(map((res) => {
+            this.langChanged$.next(langCode);
+
             localStorage.setItem('language', langCode);
 
             this._currentLanguageCode = langCode;
