@@ -1,17 +1,18 @@
 <div class="card" (click)="navigate()">
     <div class="heart" [myFeature]="'favourites'"><img src="../../../../../assets/icons/cuore_vuoto.svg" alt="icon"></div>
     <div class="top">
-        <img src="../../../../../assets/images/box.webp" alt="product">
+        <img [src]="'../../../../../assets/images/' + product?.image_name" alt="product">
     </div>
     <div class="bottom">
         <div>
-            <div class="brand">Pokémon - ETB</div>
-            <div class="title">Segreto fiabesco</div>
+            <div class="brand">{{ product?.brand }}</div>
+            <div class="title">{{ product?.name }}</div>
         </div>
         <div>
-            <div class="price">{{ 29.90 | currency:'EUR' }}</div>
+            <div class="price">{{ product?.price | currency:'EUR' }}</div>
             <div class="actions">
-                <div class="availability">{{ 'home.featured.card.available' | translate }}</div>
+                <div class="availability" *ngIf="product?.availability">{{ 'home.featured.card.available' | translate }}</div>
+                <div class="unavailability" *ngIf="!product?.availability">{{ 'home.featured.card.unavailable' | translate }}</div>
                 <button [myFeature]="'cart'">{{ 'home.featured.card.add_to_cart' | translate | uppercase }} <img src="../../../../../assets/icons/carrello_vuoto.svg" alt="icon"></button>
             </div>
         </div>

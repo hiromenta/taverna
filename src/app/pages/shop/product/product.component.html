@@ -3,20 +3,21 @@
 </div>
 <div class="main">
     <div class="img">
-        <img src="../../../../../assets/images/box.webp" alt="product">
+        <img [src]="'../../../../../assets/images/' + product?.image_name" alt="product">
     </div>
     <div class="info">
         <div>
             <div class="brand">
-                Pokémon - ETB
+                {{ product?.brand }}
                 <div class="heart" [myFeature]="'favourites'"><img src="../../../../../assets/icons/cuore_vuoto.svg" alt="icon"></div>
             </div>
-            <div class="title">Segreto fiabesco</div>
+            <div class="title">{{ product?.name }}</div>
         </div>
         <div>
-            <div class="price">{{ 29.90 | currency:'EUR' }}</div>
-            <div class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, doloribus. Ea magnam eveniet architecto illo in voluptatum qui praesentium, corporis unde quae enim eum vero ex ipsam? Numquam, expedita omnis!</div>
-            <div class="availability">{{ 'shop.product.available' | translate }}</div>
+            <div class="price">{{ product?.price| currency:'EUR' }}</div>
+            <div class="description">{{ product?.description }}</div>
+            <div class="availability" *ngIf="product?.availability">{{ 'shop.product.available' | translate }}</div>
+            <div class="unavailability" *ngIf="!product?.availability">{{ 'shop.product.unavailable' | translate }}</div>
 
             <div class="spacer start"><div></div></div>
 

@@ -1,7 +1,12 @@
 import { Component } from "@angular/core";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Paths } from "../../../app-routing.module";
+import { LoaderService } from "../../../services/loader.service";
+import { ProductsService } from "../../../services/products.service";
+import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
+import { Product } from "../../../models/product.model";
 
+@UntilDestroy()
 @Component({
     selector: 'my-product',
     templateUrl: './product.component.html',
@@ -9,10 +14,28 @@ import { Paths } from "../../../app-routing.module";
 })
 export class ProductComponent {
 
-    amount = 1;
-    max = Infinity;
+    product?: Product;
 
-    constructor(private _router: Router) {}
+    amount = 1;
+
+    constructor(private _router: Router, private _route: ActivatedRoute, private _loaderService: LoaderService, private _productsService: ProductsService) {}
+
+    ngOnInit(): void {
+        this._loaderService.show();
+
+        this._productsService.getProduct(this._route.snapshot.queryParams['id'])
+            .pipe(untilDestroyed(this))
+            .subscribe({
+                next: (res) => {
+                    this._loaderService.hide();
+                    this.product = res as Product;
+                },
+                error: (err) => {
+                    this._loaderService.hide();
+                    // TODO: implementare modale errore
+                }
+            });
+    }
 
     navigateShop() {
         this._router.navigate([Paths.SHOP]);
@@ -29,8 +52,8 @@ export class ProductComponent {
     increase() {
         this.amount++;
 
-        if (this.amount > this.max) {
-            this.amount = this.max;
+        if (this.amount > (this.product?.availability || Infinity)) {
+            this.amount = (this.product?.availability || Infinity);
         }
     }
 

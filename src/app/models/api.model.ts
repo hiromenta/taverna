@@ -9,7 +9,7 @@ export interface ApiOptions {
     body?: any;
     headers?: { [header: string]: string | string[] };
     params?: { [param: string]: string | string[] };
-    queryParams?: { [queryParam: string]: string | string[] };
+    queryParams?: { [queryParam: string]: string | string[] | number | number[] };
 }
 
 export interface ErrorResponse {

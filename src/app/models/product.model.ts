@@ -26,4 +26,5 @@ export interface Product {
     type: ProductTypes;
     game: Games;
     language: ProductLanguages;
+    image_name: string;
 }

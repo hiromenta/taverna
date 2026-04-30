@@ -1,6 +1,7 @@
 import { Component, Input } from "@angular/core";
 import { Router } from "@angular/router";
 import { Paths } from "../../app-routing.module";
+import { Product } from "../../models/product.model";
 
 @Component({
     selector: 'my-card',
@@ -9,12 +10,12 @@ import { Paths } from "../../app-routing.module";
 })
 export class CardComponent {
 
-    @Input() id: number = -1;
+    @Input() product?: Product;
 
     constructor(private _router: Router) {}
 
     navigate() {
-        this._router.navigate([Paths.SHOP, Paths.PRODUCT], { queryParams: { id: this.id } });
+        this._router.navigate([Paths.SHOP, Paths.PRODUCT], { queryParams: { id: this.product?.id } });
     }
 
 }

@@ -66,6 +66,7 @@
         "featured": {
             "card": {
                 "available": "Disponibile",
+                "unavailable": "Non disponibile",
                 "add_to_cart": "Aggiungi al carrello"
             }
         }
@@ -80,6 +81,7 @@
         "product": {
             "back_to_shop": "Torna al catalogo",
             "available": "Disponibile",
+            "unavailable": "Non disponibile",
             "amount": "Quantità",
             "add_to_cart": "Aggiungi al carrello"
         }

@@ -22,6 +22,10 @@ export class ProductsService {
         return this._apiConfig.send('getShowcaseElements');
     }
 
+    getProduct(id: number): Observable<Product | ErrorResponse> {
+        return this._apiConfig.send('product', { queryParams: { id } });
+    }
+
     getProducts(): Observable<{ products: Product[]; size: number } | ErrorResponse> {
         return this._apiConfig.send('products');
     }

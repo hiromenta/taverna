@@ -53,7 +53,7 @@ export class ApiConfig {
         );
     }
 
-    private _patchParams(url: string, params?: { [key: string]: string | string[] }, queryParams?: { [key: string]: string | string[] }): string {
+    private _patchParams(url: string, params?: { [key: string]: string | string[] }, queryParams?: { [key: string]: string | string[] | number | number[] }): string {
         let processedUrl = url;
 
         Object.keys(params || {}).forEach(key => {
