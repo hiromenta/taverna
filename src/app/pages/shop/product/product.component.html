@@ -1,5 +1,5 @@
 <div class="actions">
-    <a (click)="navigateShop()">{{ 'shop.product.back_to_shop' | translate }}</a>
+    <!-- <a (click)="navigateShop()">{{ 'shop.product.back_to_shop' | translate }}</a> -->
 </div>
 <div class="main">
     <div class="img">
@@ -9,7 +9,7 @@
         <div>
             <div class="brand">
                 Pokémon - ETB
-                <div class="heart"><img src="../../../../../assets/icons/cuore_vuoto.svg" alt="icon"></div>
+                <div class="heart" [myFeature]="'favourites'"><img src="../../../../../assets/icons/cuore_vuoto.svg" alt="icon"></div>
             </div>
             <div class="title">Segreto fiabesco</div>
         </div>
@@ -20,8 +20,8 @@
 
             <div class="spacer start"><div></div></div>
 
-            <div class="amount">{{ 'shop.product.amount' | translate }}: <div class="change-amount" (click)="decrease()">-</div> <span>{{ amount }}</span> <div class="change-amount" (click)="increase()">+</div></div>
-            <button>{{ 'shop.product.add_to_cart' | translate | uppercase }} <img src="../../../../../assets/icons/carrello_vuoto.svg" alt="icon"></button>
+            <div class="amount" [myFeature]="'cart'">{{ 'shop.product.amount' | translate }}: <div class="change-amount" (click)="decrease()">-</div> <span>{{ amount }}</span> <div class="change-amount" (click)="increase()">+</div></div>
+            <button [myFeature]="'cart'">{{ 'shop.product.add_to_cart' | translate | uppercase }} <img src="../../../../../assets/icons/carrello_vuoto.svg" alt="icon"></button>
         </div>
     </div>
 </div>

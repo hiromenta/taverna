@@ -1,13 +1,8 @@
-<div class="main">
+<div class="main" *ngIf="products.length">
     <div class="title">{{ 'featured.title' | translate }}</div>
     <div class="subtitle">{{ 'featured.subtitle' | translate }}</div>
 </div>
 
-<div class="cards">
-    <my-card [id]="'id'"></my-card>
-    <my-card [id]="'id'"></my-card>
-    <my-card [id]="'id'"></my-card>
-    <my-card [id]="'id'"></my-card>
-    <my-card [id]="'id'"></my-card>
-    <my-card [id]="'id'"></my-card>
+<div class="cards" *ngIf="products.length">
+    <my-card *ngFor="let product of products" [id]="product.id"></my-card>
 </div>

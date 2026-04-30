@@ -6,7 +6,7 @@
     <div class="back">
         <div>
             <my-tag [text]="'home.welcome.tag'" [type]="'special'"></my-tag>
-            <div class="welcome-text">Benvenuto<br>nella <span>taverna</span></div>
+            <div class="welcome-text">{{ 'home.welcome.text1' | translate }}<br>{{ 'home.welcome.text2' | translate }} <span>{{ 'home.welcome.text3' | translate }}</span></div>
             <div class="info">{{ 'home.welcome.info' | translate }}</div>
             <button (click)="navigateShop()">{{ 'home.welcome.explore' | translate }}</button>
         </div>

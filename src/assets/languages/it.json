@@ -58,7 +58,10 @@
         "welcome": {
             "tag": "Nuovi arrivi ogni settimana",
             "info": "Scopri il più vasto assortimento di carte collezionabili. Buste, mazzi, carte singole e accessori per ogni avventuriero.",
-            "explore": "Esplora il catalogo"
+            "explore": "Esplora il catalogo",
+            "text1": "Benvenuto",
+            "text2": "nella",
+            "text3": "taverna"
         },
         "featured": {
             "card": {
@@ -72,6 +75,8 @@
         "subtitle": "I tesori più ambiti della taverna."
     },
     "shop": {
+        "title1": "Catalogo",
+        "title2": "prodotti",
         "product": {
             "back_to_shop": "Torna al catalogo",
             "available": "Disponibile",

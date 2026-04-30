@@ -22,11 +22,11 @@ export class FeaturesService {
                     return of(this._buildResponse(featureName, false, 'Feature is disabled'));
                 }
 
-                if (feature.grantNone || !feature.grant.includes(role || (this._authService.user?.role as Role) || 0)) {
-                    return of(this._buildResponse(featureName, false, `Role not granted (Needs: ${feature.grant.join(', ')} - Selected: ${role || (this._authService.user?.role as Role) || 0})`));
+                if (feature.grantNone || (feature.grant?.length && !feature.grant?.includes(role || (this._authService.user?.role as Role) || 0))) {
+                    return of(this._buildResponse(featureName, false, `Role not granted (Needs: ${feature.grant?.join(', ')} - Selected: ${role || (this._authService.user?.role as Role) || 0})`));
                 }
 
-                if (feature.grantAll || feature.grant.includes(role || (this._authService.user?.role as Role) || 0)) {
+                if (feature.grantAll || feature.grant?.includes(role || (this._authService.user?.role as Role) || 0)) {
                     return of(this._buildResponse(featureName, true));
                 }
 

@@ -17,7 +17,7 @@
         "name": "cart",
         "description": "Add the ability to manage the user's cart",
         "enabled": true,
-        "grant": [1, 2]
+        "grantAll": true
     },
     {
         "name": "userIcon",

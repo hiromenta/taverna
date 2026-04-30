@@ -130,6 +130,14 @@
         align-items: center;
         gap: 1rem;
 
+        img {
+            width: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         .loginRegisterButtons {
             color: var(--accent-light);
             font-weight: var(--bold);

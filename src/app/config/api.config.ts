@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ConfigService } from "../services/config.service";
 import { Api, ApiOptions } from "../models/api.model";
-import { delay, Observable, of, switchMap, throwError } from "rxjs";
+import { delay, Observable, switchMap } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { UtilsService } from "../services/utils.service";
 
@@ -21,7 +21,7 @@ export class ApiConfig {
 
     send(selector: string, options?: ApiOptions): Observable<any> {
         if (!this._utilsService.allServicesLoaded) {
-            return of(null);
+            throw new Error(`APIs not loaded`);
         }
 
         return this._configService.getAppConfig().pipe(
@@ -35,7 +35,7 @@ export class ApiConfig {
                 const api = this.getApi(selector);
 
                 if (!api) {
-                    return throwError(() => new Error(`API not found for selector: ${selector}`));
+                    throw new Error(`API not found for selector: ${selector}`);
                 }
 
                 if (api.method === 'GET') {

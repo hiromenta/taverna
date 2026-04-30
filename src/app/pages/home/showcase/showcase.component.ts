@@ -32,10 +32,10 @@ export class ShowcaseComponent implements OnInit {
             .pipe(untilDestroyed(this))
             .subscribe({
                 next: (data) => {
-                    this.elements.push(...data);
+                    this.elements.push(...(data as ShowcaseElement[]));
 
-                    this.active = data[0];
-                    this.next = data[1];
+                    this.active = (data as ShowcaseElement[])[0];
+                    this.next = (data as ShowcaseElement[])[1];
 
                     this._clearAllIntervalAndTimeouts();
 

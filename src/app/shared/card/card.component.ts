@@ -9,7 +9,7 @@ import { Paths } from "../../app-routing.module";
 })
 export class CardComponent {
 
-    @Input() id: string = '';
+    @Input() id: number = -1;
 
     constructor(private _router: Router) {}
 
