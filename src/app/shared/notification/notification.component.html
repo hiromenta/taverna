@@ -1,0 +1,8 @@
+<div class="main">
+    <div class="container">
+        <div [class]="'notification ' + notification.type" [id]="getId(notification.id)" *ngFor="let notification of getNotifications()">
+            <div class="title">{{ ('notification.' + notification.type) | translate }}</div>
+            <div class="description">{{ notification.message | translate }}</div>
+        </div>
+    </div>
+</div>

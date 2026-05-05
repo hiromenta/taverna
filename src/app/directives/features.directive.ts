@@ -2,7 +2,9 @@ import { Directive, ElementRef, Input, OnChanges, OnInit } from "@angular/core";
 import { FeaturesService } from "../services/features.service";
 import { AuthService } from "../services/auth.service";
 import { switchMap } from "rxjs";
+import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
 
+@UntilDestroy()
 @Directive({
     selector: '[myFeature]'
 })
@@ -19,12 +21,15 @@ export class FeaturesDirective implements OnInit, OnChanges {
     }
 
     ngOnChanges(): void {
-        this._featuresService.isFeatureActive(this.feature).subscribe(res => {
-            this._manage(res);
-        });
+        this._featuresService.isFeatureActive(this.feature)
+            .pipe(untilDestroyed(this))
+            .subscribe(res => {
+                this._manage(res);
+            });
 
         this._authService.roleChanged$
             .pipe(
+                untilDestroyed(this),
                 switchMap((role) => this._featuresService.isFeatureActive(this.feature, role))
             )
             .subscribe(res => {

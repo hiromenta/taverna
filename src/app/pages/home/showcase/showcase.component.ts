@@ -2,9 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { ShowcaseElement } from "../../../models/showcase.model";
 import { ProductsService } from "../../../services/products.service";
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { take } from "rxjs";
+import { NotificationsService } from "../../../services/notification.service";
+import { LoaderService } from "../../../services/loader.service";
 
-// TODO: add this everywhere there's a subscription
 @UntilDestroy()
 @Component({
     selector: 'my-showcase',
@@ -23,15 +23,19 @@ export class ShowcaseComponent implements OnInit {
 
     hasListener = false;
 
-    constructor(private _productsService: ProductsService) {}
+    constructor(private _productsService: ProductsService, private _loaderService: LoaderService, private _notificationsService: NotificationsService) {}
 
     ngOnInit(): void {
         this.elements = [];
+
+        this._loaderService.show();
 
         this._productsService.getShowcaseElements()
             .pipe(untilDestroyed(this))
             .subscribe({
                 next: (data) => {
+                    this._loaderService.hide();
+
                     this.elements.push(...(data as ShowcaseElement[]));
 
                     this.active = (data as ShowcaseElement[])[0];
@@ -44,7 +48,8 @@ export class ShowcaseComponent implements OnInit {
                     }, 5000);
                 },
                 error: (err) => {
-                    // TODO: implement error
+                    this._loaderService.hide();
+                    this._notificationsService.addNotification('danger', err.code);
                 }
             });
     }

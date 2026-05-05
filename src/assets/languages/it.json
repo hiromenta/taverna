@@ -93,5 +93,10 @@
         "ER_WRONG_CREDS": "Le credenziali inserite sono errate",
         "ER_NO_AVAILABILITY": "La quantità disponibile non è sufficiente",
         "ER_NO_ELEMENT": "Elemento non trovato"
+    },
+    "notification": {
+        "success": "Successo",
+        "warning": "Attenzione",
+        "danger": "Errore"
     }
 }

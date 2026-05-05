@@ -7,7 +7,10 @@ import { Paths } from "../../app-routing.module";
 import { switchMap } from "rxjs";
 import { ErrorResponse } from "../../models/api.model";
 import { RegisterResponse } from "../../models/user.model";
+import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
+import { NotificationsService } from "../../services/notification.service";
 
+@UntilDestroy()
 @Component({
     selector: 'my-register',
     templateUrl: './register.component.html',
@@ -23,7 +26,7 @@ export class RegisterComponent {
         ]
     };
 
-    constructor(private _authService: AuthService, private _router: Router, private _loaderService: LoaderService) {}
+    constructor(private _authService: AuthService, private _router: Router, private _loaderService: LoaderService, private _notificationsService: NotificationsService) {}
 
     register() {
         if (!this.registerForm.valid) {
@@ -35,6 +38,7 @@ export class RegisterComponent {
 
         this._authService.register({ username: this.registerForm.value?.['username'], email: this.registerForm.value?.['email'], password: this.registerForm.value?.['password'] })
             .pipe(
+                untilDestroyed(this),
                 switchMap((registerRes: RegisterResponse | ErrorResponse) => {
                     if ((registerRes as ErrorResponse).code && (registerRes as ErrorResponse).errno) {
                         throw registerRes;
@@ -50,7 +54,7 @@ export class RegisterComponent {
                 },
                 error: (err) => {
                     this._loaderService.hide();
-                    // TODO: implementare modale errore
+                    this._notificationsService.addNotification('danger', err.code);
                 }
             });
     }

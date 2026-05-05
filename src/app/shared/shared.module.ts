@@ -9,6 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import { DirectivesModule } from "../directives/directives.module";
 import { TagComponent } from './tag/tag.component';
 import { CardComponent } from './card/card.component';
+import { NotificationComponent } from './notification/notification.component';
 
 const COMPONENTS = [
   LoaderComponent,
@@ -16,7 +17,8 @@ const COMPONENTS = [
   HeaderComponent,
   FooterComponent,
   TagComponent,
-  CardComponent
+  CardComponent,
+  NotificationComponent
 ];
 
 @NgModule({

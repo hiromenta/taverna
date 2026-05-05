@@ -1,0 +1,65 @@
+.main {
+    .container {
+        position: fixed;
+        z-index: 3;
+        top: 1rem;
+        right: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        .notification {
+            width: 20rem;
+            height: 5rem;
+            border-radius: var(--radius);
+            padding: 0 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            animation: show 0.1s ease-in;
+
+            .title {
+                font-size: 1.25rem;
+                font-weight: var(--bold);
+            }
+
+            .description {
+                font-size: 1rem;
+            }
+        }
+
+        .notification.success {
+            background-color: var(--success);
+        }
+
+        .notification.warning {
+            background-color: var(--warning);
+        }
+
+        .notification.danger {
+            background-color: var(--danger);
+        }
+
+        .notification.hide {
+            animation: hide 0.1s ease-in forwards;
+        }
+
+        @keyframes show {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes hide {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+    }
+}

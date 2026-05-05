@@ -3,7 +3,9 @@ import { TranslateService } from "../../services/translate.service";
 import { ActivatedRoute, EventType, Router } from "@angular/router";
 import { Paths } from "../../app-routing.module";
 import { filter, Observable, of, switchMap } from "rxjs";
+import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
 
+@UntilDestroy()
 @Component({
     selector: 'my-header',
     templateUrl: './header.component.html',
@@ -32,6 +34,7 @@ export class HeaderComponent {
     constructor(private _translateService: TranslateService, private _router: Router, private _route: ActivatedRoute) {
         this._router.events
             .pipe(
+                untilDestroyed(this),
                 filter((events) => events.type === EventType.NavigationEnd),
                 switchMap(() => this._getLastChild(_route.children)?.data as Observable<any>)
             )
