@@ -2,6 +2,7 @@ import { Component, Input } from "@angular/core";
 import { Router } from "@angular/router";
 import { Paths } from "../../app-routing.module";
 import { Product } from "../../models/product.model";
+import { UtilsService } from "../../services/utils.service";
 
 @Component({
     selector: 'my-card',
@@ -12,10 +13,20 @@ export class CardComponent {
 
     @Input() product?: Product;
 
-    constructor(private _router: Router) {}
+    constructor(private _router: Router, private _utilsService: UtilsService) {}
 
     navigate() {
         this._router.navigate([Paths.SHOP, Paths.PRODUCT], { queryParams: { id: this.product?.id } });
+    }
+
+    addToCart() {
+        if (this.product) {
+            try {
+                this._utilsService.addToCart(this.product, 1);
+            } catch(e) {
+                // todo: implementa modale errore
+            }
+        }
     }
 
 }

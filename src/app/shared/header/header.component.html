@@ -40,7 +40,7 @@
 <ng-template #actions>
     <div class="actions">
         <div class="favourites" [myFeature]="'favourites'"><img src="../../../../../assets/icons/cuore_vuoto.svg" alt="icon"></div>
-        <div class="cart" [myFeature]="'cart'"><img src="../../../../../assets/icons/carrello_vuoto.svg" alt="icon"></div>
+        <div class="cart" [myFeature]="'cart'"><img src="../../../../../assets/icons/carrello_vuoto.svg" alt="icon"><div class="quantity" *ngIf="getCartSize() as size">{{ size }}</div></div>
         <div class="user" [myFeature]="'userIcon'"></div>
         <button class="secondary" [myFeature]="'loginRegisterButtons'" (click)="navigateLogin()">{{ getTranslation('header.actions.signIn') }}</button>
     </div>

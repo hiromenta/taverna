@@ -103,4 +103,8 @@ export class HeaderComponent {
         return this.pageSize < 750;
     }
 
+    getCartSize() {
+        return JSON.parse(localStorage.getItem('cart') || '[]').length;
+    }
+
 }

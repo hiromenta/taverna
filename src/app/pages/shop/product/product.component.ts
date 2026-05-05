@@ -5,6 +5,7 @@ import { LoaderService } from "../../../services/loader.service";
 import { ProductsService } from "../../../services/products.service";
 import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
 import { Product } from "../../../models/product.model";
+import { UtilsService } from "../../../services/utils.service";
 
 @UntilDestroy()
 @Component({
@@ -18,7 +19,7 @@ export class ProductComponent {
 
     amount = 1;
 
-    constructor(private _router: Router, private _route: ActivatedRoute, private _loaderService: LoaderService, private _productsService: ProductsService) {}
+    constructor(private _router: Router, private _route: ActivatedRoute, private _loaderService: LoaderService, private _productsService: ProductsService, private _utilsService: UtilsService) {}
 
     ngOnInit(): void {
         this._loaderService.show();
@@ -54,6 +55,16 @@ export class ProductComponent {
 
         if (this.amount > (this.product?.availability || Infinity)) {
             this.amount = (this.product?.availability || Infinity);
+        }
+    }
+
+    addToCart() {
+        if (this.product) {
+            try {
+                this._utilsService.addToCart(this.product, this.amount);
+            } catch(e) {
+                // todo: implementa modale errore
+            }
         }
     }
 

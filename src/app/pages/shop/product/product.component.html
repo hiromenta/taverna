@@ -14,7 +14,7 @@
             <div class="title">{{ product?.name }}</div>
         </div>
         <div>
-            <div class="price">{{ product?.price| currency:'EUR' }}</div>
+            <div class="price">{{ product?.price | currency:'EUR' }}</div>
             <div class="description">{{ product?.description }}</div>
             <div class="availability" *ngIf="product?.availability">{{ 'shop.product.available' | translate }}</div>
             <div class="unavailability" *ngIf="!product?.availability">{{ 'shop.product.unavailable' | translate }}</div>
@@ -22,7 +22,7 @@
             <div class="spacer start"><div></div></div>
 
             <div class="amount" [myFeature]="'cart'">{{ 'shop.product.amount' | translate }}: <div class="change-amount" (click)="decrease()">-</div> <span>{{ amount }}</span> <div class="change-amount" (click)="increase()">+</div></div>
-            <button [myFeature]="'cart'">{{ 'shop.product.add_to_cart' | translate | uppercase }} <img src="../../../../../assets/icons/carrello_vuoto.svg" alt="icon"></button>
+            <button [myFeature]="'cart'" (click)="addToCart()">{{ 'shop.product.add_to_cart' | translate | uppercase }} <img src="../../../../../assets/icons/carrello_vuoto.svg" alt="icon"></button>
         </div>
     </div>
 </div>
