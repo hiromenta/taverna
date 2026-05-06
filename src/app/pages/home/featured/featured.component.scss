@@ -11,5 +11,12 @@
 .cards {
     padding: 3rem;
     display: flex;
+}
+
+.cards.between {
     justify-content: space-between;
+}
+
+.cards.around {
+    justify-content: space-around;
 }

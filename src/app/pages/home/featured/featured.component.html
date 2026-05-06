@@ -3,6 +3,6 @@
     <div class="subtitle">{{ 'featured.subtitle' | translate }}</div>
 </div>
 
-<div class="cards" *ngIf="products.length">
+<div class="cards" [class.between]="products.length > 3" [class.around]="products.length <= 3" *ngIf="products.length">
     <my-card *ngFor="let product of products" [product]="product"></my-card>
 </div>

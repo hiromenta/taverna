@@ -20,7 +20,7 @@ export class FeaturedComponent implements OnInit {
     ngOnInit(): void {
         this._loaderService.show();
 
-        this._productsService.getProducts()
+        this._productsService.getFeaturedProducts()
             .pipe(untilDestroyed(this))
             .subscribe({
                 next: (res) => {
@@ -29,7 +29,10 @@ export class FeaturedComponent implements OnInit {
                 },
                 error: (err) => {
                     this._loaderService.hide();
-                    this._notificationsService.addNotification('danger', err.code);
+
+                    if (err.error.code !== 'ER_NO_ITEMS') {
+                        this._notificationsService.addNotification('danger', 'error.' + err.error.code);
+                    }
                 }
             });
     }

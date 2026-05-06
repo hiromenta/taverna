@@ -92,7 +92,9 @@
         "ER_PARSE_ERROR": "Valore invalido, impossibile convertire",
         "ER_WRONG_CREDS": "Le credenziali inserite sono errate",
         "ER_NO_AVAILABILITY": "La quantità disponibile non è sufficiente",
-        "ER_NO_ELEMENT": "Elemento non trovato"
+        "ER_NO_ELEMENT": "Elemento non trovato",
+        "ER_NO_ITEM": "L'elemento che cerchi non esiste",
+        "ER_NO_ITEMS": "Nessun elemento presente"
     },
     "notification": {
         "success": "Successo",

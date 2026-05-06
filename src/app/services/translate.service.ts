@@ -14,12 +14,12 @@ export class TranslateService {
     constructor(private _http: HttpClient) {}
 
     translate(msg: string): string {
-        return this._translate(msg.split('.'), 0, this._currentLanguage?.data);
+        return this._translate(msg?.split('.'), 0, this._currentLanguage?.data);
     }
 
     private _translate(msg: string[], index: number, data: any): string {
-        if (!data?.[msg[index]]) {
-            return msg.join('.');
+        if (!data?.[msg?.[index]]) {
+            return msg?.join('.');
         }
 
         if (typeof data[msg[index]] === 'string') {

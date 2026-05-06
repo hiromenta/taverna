@@ -1,12 +1,12 @@
-<div class="card" (click)="navigate()">
+<div class="card">
     <div class="heart" [myFeature]="'favourites'"><img src="../../../../../assets/icons/cuore_vuoto.svg" alt="icon"></div>
-    <div class="top">
+    <div class="top" (click)="navigate()">
         <img [src]="'../../../../../assets/images/' + product?.image_name" alt="product">
     </div>
     <div class="bottom">
         <div>
-            <div class="brand">{{ product?.brand }}</div>
-            <div class="title">{{ product?.name }}</div>
+            <div class="brand" (click)="navigate()">{{ product?.brand }}</div>
+            <div class="title" (click)="navigate()">{{ product?.name }}</div>
         </div>
         <div>
             <div class="price">{{ product?.price | currency:'EUR' }}</div>

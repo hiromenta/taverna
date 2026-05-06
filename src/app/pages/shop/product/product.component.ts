@@ -34,7 +34,7 @@ export class ProductComponent {
                 },
                 error: (err) => {
                     this._loaderService.hide();
-                    this._notificationsService.addNotification('danger', err.code);
+                    this._notificationsService.addNotification('danger', 'error.' + err.error.code);
                 }
             });
     }

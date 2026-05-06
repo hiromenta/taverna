@@ -30,4 +30,8 @@ export class ProductsService {
         return this._apiConfig.send('products');
     }
 
+    getFeaturedProducts(): Observable<{ products: Product[]; size: number } | ErrorResponse> {
+        return this._apiConfig.send('featuredProducts');
+    }
+
 }
