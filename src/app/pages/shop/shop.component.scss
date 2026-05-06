@@ -1,8 +1,52 @@
+:host {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
 .header {
     font-size: 2rem;
     margin: 2rem;
 
     span {
         color: var(--accent-dark);
+    }
+}
+
+.main {
+    padding: 0 2rem;
+    width: 100%;
+    display: flex;
+
+    .left {
+        width: 20%;
+
+        .filters {
+            width: 90%;
+            background-color: var(--secondary);
+            border-radius: var(--radius);
+            padding: 1rem;
+
+            .title {
+                font-size: 1.5rem;
+                color: var(--accent-light);
+                font-weight: var(--bold);
+            }
+
+            .accordion {
+                margin-top: 1rem;
+            }
+        }
+    }
+
+    .right {
+        width: 80%;
+
+        .cards {
+            padding: 3rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 1.5rem;
+        }
     }
 }

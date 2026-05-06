@@ -1,1 +1,17 @@
 <div class="header">{{ 'shop.title1' | translate | uppercase }} <span>{{ 'shop.title2' | translate | uppercase }}</span></div>
+<div class="main">
+    <div class="left">
+        <div class="filters">
+            <div class="title">{{ 'shop.filters.title' | translate }}</div>
+            <div class="accordion">
+                <my-accordion [title]="'shop.filters.game'">todo: checkbox</my-accordion>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="spacer start"><div></div></div>
+        <div class="cards" *ngIf="products.length">
+            <my-card *ngFor="let product of products" [product]="product"></my-card>
+        </div>
+    </div>
+</div>

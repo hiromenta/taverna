@@ -10,6 +10,7 @@ import { DirectivesModule } from "../directives/directives.module";
 import { TagComponent } from './tag/tag.component';
 import { CardComponent } from './card/card.component';
 import { NotificationComponent } from './notification/notification.component';
+import { AccordionComponent } from './accordion/accordion.component';
 
 const COMPONENTS = [
   LoaderComponent,
@@ -18,7 +19,8 @@ const COMPONENTS = [
   FooterComponent,
   TagComponent,
   CardComponent,
-  NotificationComponent
+  NotificationComponent,
+  AccordionComponent
 ];
 
 @NgModule({

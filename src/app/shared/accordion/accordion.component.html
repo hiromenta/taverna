@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="title" (click)="toggle()">
+        {{ title | translate | uppercase }}
+        <div class="button" [class.expand]="!show" [class.hide]="show">></div>
+    </div>
+    <div class="content" [class.open]="show" [class.closed]="!show">
+        <ng-content></ng-content>
+    </div>
+</div>

@@ -84,6 +84,10 @@
             "unavailable": "Non disponibile",
             "amount": "Quantità",
             "add_to_cart": "Aggiungi al carrello"
+        },
+        "filters": {
+            "title": "Filtri",
+            "game": "Gioco"
         }
     },
     "error": {
