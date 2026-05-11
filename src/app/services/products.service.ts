@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
 import { ShowcaseElement } from "../models/showcase.model";
 import { ApiConfig } from "../config/api.config";
-import { Product } from "../models/product.model";
+import { Games, Product, ProductLanguages, ProductTypes } from "../models/product.model";
 import { ErrorResponse } from "../models/api.model";
 
 @Injectable()
@@ -26,12 +26,24 @@ export class ProductsService {
         return this._apiConfig.send('product', { queryParams: { id } });
     }
 
-    getProducts(): Observable<{ products: Product[]; size: number } | ErrorResponse> {
-        return this._apiConfig.send('products');
+    getProducts(filters?: { games: Games[], types: ProductTypes[], languages: ProductLanguages[] }): Observable<{ products: Product[]; size: number } | ErrorResponse> {
+        return this._apiConfig.send('products', { body: filters });
     }
 
     getFeaturedProducts(): Observable<{ products: Product[]; size: number } | ErrorResponse> {
         return this._apiConfig.send('featuredProducts');
+    }
+
+    getGames(): Observable<{ games: { id: number; description: string }[] } | ErrorResponse> {
+        return this._apiConfig.send('games');
+    }
+
+    getGameTypes(): Observable<{ types: { id: number; description: string }[] } | ErrorResponse> {
+        return this._apiConfig.send('types');
+    }
+
+    getGameLanguages(): Observable<{ languages: { id: number; description: string }[] } | ErrorResponse> {
+        return this._apiConfig.send('languages');
     }
 
 }

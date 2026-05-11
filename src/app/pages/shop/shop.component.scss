@@ -35,6 +35,10 @@
 
             .accordion {
                 margin-top: 1rem;
+
+                .accordion-content {
+                    margin-top: 0.5rem;
+                }
             }
         }
     }
@@ -47,6 +51,13 @@
             display: flex;
             flex-wrap: wrap;
             gap: 1rem 1.5rem;
+        }
+
+        .no-items {
+            margin-top: 2rem;
+            font-size: 2rem;
+            font-style: italic;
+            color: var(--accent-light);
         }
     }
 }

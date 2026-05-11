@@ -1,0 +1,4 @@
+<div class="container" (click)="onSelect()">
+    <div class="checkbox" [class.selected]="selected"><span *ngIf="selected">x</span></div>
+    <div class="description">{{ (description || '') | translate }}</div>
+</div>

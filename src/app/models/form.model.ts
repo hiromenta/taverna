@@ -1,7 +1,8 @@
 export enum ControlType {
     TEXT = 'text',
     PASSWORD = 'password',
-    EMAIL = 'email'
+    EMAIL = 'email',
+    CHECKBOX = 'checkbox'
 }
 
 export const Errors = {
@@ -29,6 +30,7 @@ export interface Control {
     label?: string;
     errors?: string[];
     touched?: boolean;
+    description?: string;
 }
 
 export interface MyForm {

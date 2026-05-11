@@ -4,5 +4,8 @@
     { "selector": "register", "url": "/api/users/register", "method": "POST" },
     { "selector": "products", "url": "/api/products", "method": "POST" },
     { "selector": "product", "url": "/api/products?id=[id]", "method": "GET" },
-    { "selector": "featuredProducts", "url": "/api/products/featured", "method": "GET" }
+    { "selector": "featuredProducts", "url": "/api/products/featured", "method": "GET" },
+    { "selector": "games", "url": "/api/products/games", "method": "GET" },
+    { "selector": "types", "url": "/api/products/types", "method": "GET" },
+    { "selector": "languages", "url": "/api/products/languages", "method": "GET" }
 ]

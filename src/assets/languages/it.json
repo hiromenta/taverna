@@ -24,6 +24,18 @@
             "valueMissing": "Valore richiesto"
         }
     },
+    "products": {
+        "bundle": "Bundles",
+        "box": "Display box",
+        "set": "Set",
+        "collection": "Collezioni",
+        "tin": "Tin & Mini tin",
+        "pack": "Bustine singole",
+        "languages": {
+            "it": "Italiano",
+            "en": "Inglese"
+        }
+    },
     "register": {
         "title": "Registra un nuovo account",
         "hint1": "Sei già iscritto?",
@@ -87,7 +99,9 @@
         },
         "filters": {
             "title": "Filtri",
-            "game": "Gioco"
+            "game": "Gioco",
+            "type": "Tipo di prodotto",
+            "language": "Lingua"
         }
     },
     "error": {

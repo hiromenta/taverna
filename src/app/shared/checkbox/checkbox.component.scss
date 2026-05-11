@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.checkbox {
+    width: 1rem;
+    height: 1rem;
+    border: var(--border-light);
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+        margin-bottom: 0.25rem;
+        color: var(--accent-light);
+    }
+}
+
+.checkbox.selected {
+    background-color: var(--light);
+}

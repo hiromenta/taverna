@@ -11,6 +11,7 @@ import { TagComponent } from './tag/tag.component';
 import { CardComponent } from './card/card.component';
 import { NotificationComponent } from './notification/notification.component';
 import { AccordionComponent } from './accordion/accordion.component';
+import { CheckboxComponent } from './checkbox/checkbox.component';
 
 const COMPONENTS = [
   LoaderComponent,
@@ -20,7 +21,8 @@ const COMPONENTS = [
   TagComponent,
   CardComponent,
   NotificationComponent,
-  AccordionComponent
+  AccordionComponent,
+  CheckboxComponent
 ];
 
 @NgModule({

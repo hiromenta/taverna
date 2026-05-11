@@ -1,5 +1,6 @@
-import { AfterContentInit, AfterViewInit, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from "@angular/core";
+import { AfterContentInit, AfterViewInit, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild, ViewChildren } from "@angular/core";
 import { Control, ControlType, Errors, MyForm } from "../../models/form.model";
+import { CheckboxComponent } from "../checkbox/checkbox.component";
 
 @Component({
     selector: 'my-form',
@@ -11,6 +12,10 @@ export class FormComponent implements AfterContentInit, AfterViewInit {
     @Input('form') form?: MyForm;
 
     @Output() formChanged: EventEmitter<MyForm> = new EventEmitter();
+
+    @ViewChildren('checkboxElement') checkboxElements?: CheckboxComponent[];
+
+    unregularInputs = [ControlType.CHECKBOX];
 
     constructor() {}
 
@@ -26,7 +31,14 @@ export class FormComponent implements AfterContentInit, AfterViewInit {
 
     private _updateValueAfterInit() {
         for (const control of (this.form?.controls || [])) {
-            this.updateValue(control, document.querySelector('#' + control.selector) as HTMLInputElement);
+            if (!this.unregularInputs.includes(control.type)) {
+                this.updateValue(control, document.querySelector('#' + control.selector) as HTMLInputElement);
+            } else {
+                switch (control.type) {
+                    case ControlType.CHECKBOX:
+                        this.updateValue(control, this.checkboxElements!.find(c => c.id === control.selector)!);
+                }
+            }
         }
     }
 
@@ -34,7 +46,7 @@ export class FormComponent implements AfterContentInit, AfterViewInit {
         return ControlType;
     }
 
-    updateValue(control: Control, input: HTMLInputElement) {
+    updateValue(control: Control, input: HTMLInputElement | CheckboxComponent) {
         const selectedControl = this.form!.controls.find(c => c.selector === control.selector);
 
         selectedControl!.value = input?.value;
