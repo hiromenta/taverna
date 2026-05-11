@@ -14,11 +14,11 @@ import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
 export class HeaderComponent {
 
     tabs = [
-        { label: 'header.tabs.carte', path: [Paths.SHOP] },
-        { label: 'header.tabs.accessori', path: [Paths.SHOP] },
-        { label: 'header.tabs.live', path: [Paths.SHOP] },
-        { label: 'header.tabs.spedizioni', path: [Paths.SHOP] },
-        { label: 'header.tabs.nino', path: [Paths.SHOP] }
+        { label: 'header.tabs.carte', path: [Paths.SHOP_MENU] },
+        // { label: 'header.tabs.accessori', path: [Paths.SHOP] },
+        // { label: 'header.tabs.live', path: [Paths.SHOP] },
+        // { label: 'header.tabs.spedizioni', path: [Paths.SHOP] },
+        // { label: 'header.tabs.nino', path: [Paths.SHOP] }
     ];
     breadcrumbs = [];
 
@@ -108,6 +108,14 @@ export class HeaderComponent {
 
     getCartSize() {
         return JSON.parse(localStorage.getItem('cart') || '[]').length;
+    }
+
+    mapBreadcrumb(breadcrumb: string) {
+        if (breadcrumb.includes('-')) {
+            return breadcrumb.split('-').join(' ');
+        }
+
+        return breadcrumb;
     }
 
 }

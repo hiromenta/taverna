@@ -6,21 +6,21 @@
             <div class="accordion">
                 <my-accordion [title]="'shop.filters.game'">
                     <div class="accordion-content">
-                        <my-form [form]="gamesForm" (formChanged)="updateSearch()"></my-form>
+                        <my-form #gamesFormComponent [form]="gamesForm" (formChanged)="updateSearch()"></my-form>
                     </div>
                 </my-accordion>
             </div>
             <div class="accordion">
                 <my-accordion [title]="'shop.filters.type'">
                     <div class="accordion-content">
-                        <my-form [form]="typesForm" (formChanged)="updateSearch()"></my-form>
+                        <my-form #typesFormComponent [form]="typesForm" (formChanged)="updateSearch()"></my-form>
                     </div>
                 </my-accordion>
             </div>
             <div class="accordion">
                 <my-accordion [title]="'shop.filters.language'">
                     <div class="accordion-content">
-                        <my-form [form]="languagesForm" (formChanged)="updateSearch()"></my-form>
+                        <my-form #languagesFormComponent [form]="languagesForm" (formChanged)="updateSearch()"></my-form>
                     </div>
                 </my-accordion>
             </div>

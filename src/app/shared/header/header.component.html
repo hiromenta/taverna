@@ -10,7 +10,7 @@
     </div>
     <div class="breadcrumbs" *ngIf="!isSmallSize() && breadcrumbs.length">
         <ng-container *ngFor="let breadcrumb of breadcrumbs; index as $i, last as $last">
-            <span (click)="!$last ? navigateBreadcrumb($i) : null" style="cursor: pointer;">{{ breadcrumb | titlecase }}</span>
+            <span (click)="!$last ? navigateBreadcrumb($i) : null" style="cursor: pointer;">{{ mapBreadcrumb(breadcrumb) | titlecase }}</span>
             <span *ngIf="!$last">&nbsp;>&nbsp;</span>
         </ng-container>
     </div>

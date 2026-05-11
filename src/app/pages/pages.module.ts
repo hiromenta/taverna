@@ -12,6 +12,8 @@ import { ShowcaseComponent } from "./home/showcase/showcase.component";
 import { FeaturedComponent } from "./home/featured/featured.component";
 import { ShopComponent } from "./shop/shop.component";
 import { ProductComponent } from "./shop/product/product.component";
+import { ShopMenuComponent } from "./shop/shop-menu/shop-menu.component";
+import { ShopMenuItemComponent } from "./shop/shop-menu/shop-menu-item/shop-menu-item.component";
 
 const COMPONENTS = [
     HomeComponent,
@@ -22,7 +24,9 @@ const COMPONENTS = [
     ShowcaseComponent,
     FeaturedComponent,
     ShopComponent,
-    ProductComponent
+    ProductComponent,
+    ShopMenuComponent,
+    ShopMenuItemComponent
 ];
 
 @NgModule({

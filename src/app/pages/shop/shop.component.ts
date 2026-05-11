@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ViewChild } from "@angular/core";
 import { Games, Product, ProductLanguages, ProductTypes } from "../../models/product.model";
 import { LoaderService } from "../../services/loader.service";
 import { ProductsService } from "../../services/products.service";
@@ -6,6 +6,8 @@ import { NotificationsService } from "../../services/notification.service";
 import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
 import { ControlType, MyForm } from "../../models/form.model";
 import { switchMap } from "rxjs";
+import { ActivatedRoute } from "@angular/router";
+import { FormComponent } from "../../shared/form/form.component";
 
 @UntilDestroy()
 @Component({
@@ -15,17 +17,23 @@ import { switchMap } from "rxjs";
 })
 export class ShopComponent {
 
+    @ViewChild('gamesFormComponent') gamesFormComponent?: FormComponent;
+    @ViewChild('typesFormComponent') typesFormComponent?: FormComponent;
+    @ViewChild('languagesFormComponent') languagesFormComponent?: FormComponent;
+
     products: Product[] = [];
 
     gamesForm: MyForm = { controls: [] };
     typesForm: MyForm = { controls: [] };
     languagesForm: MyForm = { controls: [] };
 
+    lastFilters: { gamesFilters: Games[]; typesFilters: ProductTypes[]; languagesFilters: ProductLanguages[] } = { gamesFilters: [], typesFilters: [], languagesFilters: [] };
+
     private _games: { id: Games; description: string }[] = [];
     private _types: { id: ProductTypes; description: string }[] = [];
     private _languages: { id: ProductLanguages; description: string }[] = [];
 
-    constructor(private _loaderService: LoaderService, private _productsService: ProductsService, private _notificationsService: NotificationsService) {}
+    constructor(private _loaderService: LoaderService, private _productsService: ProductsService, private _notificationsService: NotificationsService, private _route: ActivatedRoute) {}
 
     ngOnInit(): void {
         this._loaderService.show();
@@ -45,6 +53,24 @@ export class ShopComponent {
                 switchMap((languages) => {
                     this._languages = (languages as { languages: { id: number; description: string }[] }).languages || [];
                     this.languagesForm.controls.push(...(languages as { languages: { id: number; description: string }[] }).languages.map((language) => ({ selector: language.description, type: ControlType.CHECKBOX, description: 'products.languages.' + language.description, errors: [] })));
+
+                    const queryParams = this._route?.snapshot?.queryParams;
+
+                    if (queryParams['game']) {
+                        const description = this._games?.find(t => t.id === +(queryParams['game']))?.description;
+                        this.gamesFormComponent?.updateCheckbox(description || '', true);
+                    }
+
+                    if (queryParams['type']) {
+                        const description = this._types?.find(t => t.id === +(queryParams['type']))?.description;
+                        this.typesFormComponent?.updateCheckbox(description || '', true);
+                    }
+
+                    if (queryParams['language']) {
+                        const description = this._languages?.find(t => t.id === +(queryParams['language']))?.description;
+                        this.languagesFormComponent?.updateCheckbox(description || '', true);
+                    }
+
                     return this._productsService.getProducts({ games: this._getFilters().gamesFilters, types: this._getFilters().typesFilters, languages: this._getFilters().languagesFilters });
                 }),
                 untilDestroyed(this)
@@ -67,9 +93,17 @@ export class ShopComponent {
     }
 
     updateSearch() {
+        const newFilters = this._getFilters();
+
+        if (JSON.stringify(this.lastFilters) === JSON.stringify(newFilters)) {
+            return;
+        }
+
+        this.lastFilters = newFilters;
+
         this._loaderService.show();
 
-        this._productsService.getProducts({ games: this._getFilters().gamesFilters, types: this._getFilters().typesFilters, languages: this._getFilters().languagesFilters })
+        this._productsService.getProducts({ games: newFilters.gamesFilters, types: newFilters.typesFilters, languages: newFilters.languagesFilters })
             .subscribe({
                 next: (res) => {
                     this._loaderService.hide();

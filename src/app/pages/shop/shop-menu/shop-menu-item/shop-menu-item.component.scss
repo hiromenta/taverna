@@ -1,0 +1,23 @@
+.item {
+    width: 15rem;
+    height: 15rem;
+    border: var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    color: var(--accent-dark);
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    .description {
+        font-size: 1.5rem;
+        font-weight: var(--bold);
+        margin-bottom: 1rem;
+    }
+}
+
+.item:hover {
+    border: var(--border-light);
+}
