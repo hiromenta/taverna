@@ -7,5 +7,8 @@
     { "selector": "featuredProducts", "url": "/api/products/featured", "method": "GET" },
     { "selector": "games", "url": "/api/products/games", "method": "GET" },
     { "selector": "types", "url": "/api/products/types", "method": "GET" },
-    { "selector": "languages", "url": "/api/products/languages", "method": "GET" }
+    { "selector": "languages", "url": "/api/products/languages", "method": "GET" },
+    { "selector": "favorites", "url": "/api/users/favorites?userId=[userId]", "method": "GET" },
+    { "selector": "addFavorite", "url": "/api/users/favorite", "method": "POST" },
+    { "selector": "removeFavorite", "url": "/api/users/favorite?userId=[userId]&productId=[productId]", "method": "DELETE" }
 ]

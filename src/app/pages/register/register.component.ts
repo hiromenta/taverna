@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { AuthService } from "../../services/auth.service";
+import { Component } from "@angular/core";
+import { UserService } from "../../services/user.service";
 import { Router } from "@angular/router";
 import { LoaderService } from "../../services/loader.service";
 import { ControlType, MyForm } from "../../models/form.model";
@@ -26,7 +26,7 @@ export class RegisterComponent {
         ]
     };
 
-    constructor(private _authService: AuthService, private _router: Router, private _loaderService: LoaderService, private _notificationsService: NotificationsService) {}
+    constructor(private _userService: UserService, private _router: Router, private _loaderService: LoaderService, private _notificationsService: NotificationsService) {}
 
     register() {
         if (!this.registerForm.valid) {
@@ -36,7 +36,7 @@ export class RegisterComponent {
 
         this._loaderService.show();
 
-        this._authService.register({ username: this.registerForm.value?.['username'], email: this.registerForm.value?.['email'], password: this.registerForm.value?.['password'] })
+        this._userService.register({ username: this.registerForm.value?.['username'], email: this.registerForm.value?.['email'], password: this.registerForm.value?.['password'] })
             .pipe(
                 untilDestroyed(this),
                 switchMap((registerRes: RegisterResponse | ErrorResponse) => {
@@ -44,7 +44,7 @@ export class RegisterComponent {
                         throw registerRes;
                     }
 
-                    return this._authService.login({ usermail: this.registerForm.value?.['email'], password: this.registerForm.value?.['password'] });
+                    return this._userService.login({ usermail: this.registerForm.value?.['email'], password: this.registerForm.value?.['password'] });
                 })
             )
             .subscribe({

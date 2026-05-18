@@ -48,6 +48,11 @@ export class ApiConfig {
                     return this._http.post(patchedUrl, options?.body, { headers: options?.headers }).pipe(delay(api.delay || 0));
                 }
 
+                if (api.method === 'DELETE') {
+                    const patchedUrl = this._patchParams(api.url, options?.params, options?.queryParams);
+                    return this._http.delete(patchedUrl, { headers: options?.headers }).pipe(delay(api.delay || 0));
+                }
+
                 throw new Error(`Method ${api.method} not implemented yet`);
             })
         );

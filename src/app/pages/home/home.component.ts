@@ -12,7 +12,7 @@ export class HomeComponent {
     constructor(private _router: Router) {}
 
     navigateShop() {
-        this._router.navigate([Paths.SHOP]);
+        this._router.navigate([Paths.SHOP_MENU]);
     }
 
 }

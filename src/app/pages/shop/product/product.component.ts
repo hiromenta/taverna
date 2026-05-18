@@ -7,6 +7,7 @@ import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
 import { Product } from "../../../models/product.model";
 import { UtilsService } from "../../../services/utils.service";
 import { NotificationsService } from "../../../services/notification.service";
+import { UserService } from "../../../services/user.service";
 
 @UntilDestroy()
 @Component({
@@ -20,7 +21,15 @@ export class ProductComponent {
 
     amount = 1;
 
-    constructor(private _router: Router, private _route: ActivatedRoute, private _loaderService: LoaderService, private _productsService: ProductsService, private _utilsService: UtilsService, private _notificationsService: NotificationsService) {}
+    constructor(
+        private _router: Router,
+        private _route: ActivatedRoute,
+        private _loaderService: LoaderService,
+        private _productsService: ProductsService,
+        private _utilsService: UtilsService,
+        private _notificationsService: NotificationsService,
+        private _userService: UserService
+    ) {}
 
     ngOnInit(): void {
         this._loaderService.show();
@@ -67,6 +76,53 @@ export class ProductComponent {
                 this._notificationsService.addNotification('warning', 'error.' + e.error);
             }
         }
+    }
+
+    toggleFavorite() {
+        if (!this.isFavorite()) {
+            this._addFavorite();
+        } else {
+            this._removeFavorite();
+        }
+    }
+
+    private _addFavorite() {
+        if (this.product) {
+            this._userService.addFavorite(this.product.id)
+                .pipe(untilDestroyed(this))
+                .subscribe({
+                    next: (res) => {
+                        this._userService.favorites.push(this.product!.id);
+                    },
+                    error: (err) => {
+                        this._notificationsService.addNotification('danger', 'error.' + err.error.code);
+                    }
+                });
+        }
+    }
+
+    private _removeFavorite() {
+        if (this.product) {
+            this._userService.removeFavorite(this.product.id)
+                .pipe(untilDestroyed(this))
+                .subscribe({
+                    next: (res) => {
+                        const idx = this._userService.favorites.indexOf(this.product!.id);
+                        this._userService.favorites.splice(idx, 1);
+                    },
+                    error: (err) => {
+                        this._notificationsService.addNotification('danger', 'error.' + err.error.code);
+                    }
+                });
+        }
+    }
+
+    isFavorite() {
+        if (!this.product) {
+            return false;
+        }
+
+        return this._userService.favorites.includes(this.product!.id);
     }
 
 }

@@ -1,3 +1,5 @@
+import { FavoriteProduct } from "./product.model";
+
 export enum Role {
     GUEST,
     USER,
@@ -18,4 +20,8 @@ export interface RegisterResponse {
 export interface LoginResponse {
     user: User;
     token: string;
+}
+
+export interface FavoritesResponse {
+    favorites: FavoriteProduct[];
 }

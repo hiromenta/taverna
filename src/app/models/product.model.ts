@@ -28,3 +28,9 @@ export interface Product {
     language: ProductLanguages;
     image_name: string;
 }
+
+export interface FavoriteProduct {
+    id: number;
+    userId: number;
+    productId: number;
+}

@@ -1,11 +1,12 @@
 import { Component } from "@angular/core";
-import { AuthService } from "../../services/auth.service";
 import { Router } from "@angular/router";
 import { LoaderService } from "../../services/loader.service";
 import { ControlType, MyForm } from "../../models/form.model";
 import { Paths } from "../../app-routing.module";
 import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
 import { NotificationsService } from "../../services/notification.service";
+import { UserService } from "../../services/user.service";
+import { switchMap } from "rxjs";
 
 @UntilDestroy()
 @Component({
@@ -22,7 +23,7 @@ export class LoginComponent {
         ]
     };
 
-    constructor(private _authService: AuthService, private _router: Router, private _loaderService: LoaderService, private _notificationsService: NotificationsService) {}
+    constructor(private _userService: UserService, private _router: Router, private _loaderService: LoaderService, private _notificationsService: NotificationsService) {}
 
     login() {
         if (!this.loginForm.valid) {
@@ -32,8 +33,11 @@ export class LoginComponent {
 
         this._loaderService.show();
 
-        this._authService.login({ usermail: this.loginForm.value?.['usermail'], password: this.loginForm.value?.['password'] })
-            .pipe(untilDestroyed(this))
+        this._userService.login({ usermail: this.loginForm.value?.['usermail'], password: this.loginForm.value?.['password'] })
+            .pipe(
+                untilDestroyed(this),
+                switchMap((user) => this._userService.getFavorites())
+            )
             .subscribe({
                 next: (res) => {
                     this._loaderService.hide();

@@ -82,12 +82,7 @@ export class ShopComponent {
                 },
                 error: (err) => {
                     this._loaderService.hide();
-
-                    if (err.error.code !== 'ER_NO_ITEMS') {
-                        this._notificationsService.addNotification('danger', 'error.' + err.error.code);
-                    } else {
-                        this.products = [];
-                    }
+                    this._notificationsService.addNotification('danger', 'error.' + err.error.code);
                 }
             });
     }
@@ -111,12 +106,7 @@ export class ShopComponent {
                 },
                 error: (err) => {
                     this._loaderService.hide();
-
-                    if (err.error.code !== 'ER_NO_ITEMS') {
-                        this._notificationsService.addNotification('danger', 'error.' + err.error.code);
-                    } else {
-                        this.products = [];
-                    }
+                    this._notificationsService.addNotification('danger', 'error.' + err.error.code);
                 }
             });
     }

@@ -112,7 +112,8 @@
         "ER_NO_AVAILABILITY": "La quantità disponibile non è sufficiente",
         "ER_NO_ELEMENT": "Elemento non trovato",
         "ER_NO_ITEM": "L'elemento che cerchi non esiste",
-        "ER_NO_ITEMS": "Nessun elemento presente"
+        "ER_NO_ITEMS": "Nessun elemento presente",
+        "ER_TRUNCATED_WRONG_VALUE": "Valore invalido per l'eliminazione"
     },
     "notification": {
         "success": "Successo",

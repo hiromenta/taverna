@@ -6,9 +6,9 @@ import { FeaturesService } from "./features.service";
 import { ThemesService } from "./themes.service";
 import { TranslateService } from "./translate.service";
 import { LoaderService } from "./loader.service";
-import { AuthService } from "./auth.service";
 import { ProductsService } from "./products.service";
 import { NotificationsService } from "./notification.service";
+import { UserService } from "./user.service";
 
 @NgModule({
     imports: [HttpClientModule],
@@ -19,7 +19,7 @@ import { NotificationsService } from "./notification.service";
         ThemesService,
         TranslateService,
         LoaderService,
-        AuthService,
+        UserService,
         ProductsService,
         NotificationsService
     ]

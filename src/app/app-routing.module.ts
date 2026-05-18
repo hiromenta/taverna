@@ -53,7 +53,7 @@ const routes: Routes = [
     component: ShopComponent,
     canActivate: [FeatureGuard],
     data: {
-      grant: [0],
+      grantAll: true,
       breadcrumbs: [Paths.SHOP]
     }
   },
@@ -62,7 +62,7 @@ const routes: Routes = [
     component: ProductComponent,
     canActivate: [FeatureGuard],
     data: {
-      grant: [0],
+      grantAll: true,
       breadcrumbs: [Paths.SHOP, Paths.PRODUCT]
     }
   },
@@ -71,7 +71,7 @@ const routes: Routes = [
     component: ShopMenuComponent,
     canActivate: [FeatureGuard],
     data: {
-      grant: [0],
+      grantAll: true,
       breadcrumbs: [Paths.SHOP, Paths.SHOP_MENU]
     }
   },

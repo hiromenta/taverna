@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, GuardResult, MaybeAsync, Router, RouterStateSnapshot } from "@angular/router";
-import { AuthService } from "../services/auth.service";
 import { Paths } from "../app-routing.module";
+import { UserService } from "../services/user.service";
 
 @Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild {
 
-    constructor(private _authService: AuthService, private _router: Router) {}
+    constructor(private _userService: UserService, private _router: Router) {}
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<GuardResult> {
         return this._canActivate(route, state);
@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     }
 
     private _canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        if (this._authService.authenticated) {
+        if (this._userService.authenticated) {
             return true;
         }
 

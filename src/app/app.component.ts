@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +9,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   title = 'la-taverna-del-carrettiere';
+
+  constructor(private _userService: UserService) {
+    // TODO: handle session token decoding
+  }
 
 }

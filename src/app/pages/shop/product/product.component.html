@@ -9,7 +9,10 @@
         <div>
             <div class="brand">
                 {{ product?.brand }}
-                <div class="heart" [myFeature]="'favourites'"><img src="../../../../../assets/icons/cuore_vuoto.svg" alt="icon"></div>
+                <div class="heart" (click)="toggleFavorite()" [myFeature]="'favourites'">
+                    <img *ngIf="!isFavorite()" src="../../../../../assets/icons/cuore_vuoto.svg" alt="icon">
+                    <img *ngIf="isFavorite()" src="../../../../../assets/icons/cuore_pieno.svg" alt="icon">
+                </div>
             </div>
             <div class="title">{{ product?.name }}</div>
         </div>
