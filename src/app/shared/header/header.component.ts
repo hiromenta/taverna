@@ -4,6 +4,7 @@ import { ActivatedRoute, EventType, Router } from "@angular/router";
 import { Paths } from "../../app-routing.module";
 import { filter, Observable, of, switchMap } from "rxjs";
 import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
+import { SidebarService } from "../../services/sidebar.service";
 
 @UntilDestroy()
 @Component({
@@ -31,7 +32,7 @@ export class HeaderComponent {
 
     pageSize = window.screen.width;
 
-    constructor(private _translateService: TranslateService, private _router: Router, private _route: ActivatedRoute) {
+    constructor(private _translateService: TranslateService, private _router: Router, private _route: ActivatedRoute, private _sidebarService: SidebarService) {
         this._router.events
             .pipe(
                 untilDestroyed(this),
@@ -116,6 +117,14 @@ export class HeaderComponent {
         }
 
         return breadcrumb;
+    }
+
+    openFavorites() {
+        this._sidebarService.showFavorites();
+    }
+
+    openCart() {
+        this._sidebarService.showCart();
     }
 
 }

@@ -104,6 +104,9 @@
             "language": "Lingua"
         }
     },
+    "sidebar": {
+        "remove": "Rimuovi"
+    },
     "error": {
         "ER_DUP_ENTRY": "Utente già esistente",
         "ER_BAD_FIELD_ERROR": "Colonna sconosciuta",

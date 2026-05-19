@@ -12,6 +12,7 @@ import { CardComponent } from './card/card.component';
 import { NotificationComponent } from './notification/notification.component';
 import { AccordionComponent } from './accordion/accordion.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 const COMPONENTS = [
   LoaderComponent,
@@ -22,7 +23,8 @@ const COMPONENTS = [
   CardComponent,
   NotificationComponent,
   AccordionComponent,
-  CheckboxComponent
+  CheckboxComponent,
+  SidebarComponent
 ];
 
 @NgModule({

@@ -1,0 +1,24 @@
+<div class="backdrop" [class.open]="!!showing" [class.closed]="closing" *ngIf="!!showing">
+    <div class="w-100 h-100" (click)="close()"></div>
+    <div class="main" [class.open]="!!showing" [class.closed]="closing">
+        <div (click)="close()" class="close-icon"><img src="../../../../../assets/icons/x.svg" alt="icon"></div>
+
+        <div *ngFor="let item of products; last as last$">
+            <div class="product">
+                <div class="img">
+                    <img [src]="'../../../../../assets/images/' + item.product.image_name" alt="product">
+                </div>
+                <div class="info">
+                    <div class="brand">{{ item.product.brand }}</div>
+                    <div class="title">{{ item.product.name }}</div>
+                    <div class="price">{{ item.product.price | currency:'EUR' }}</div>
+
+                    <div class="quantity" *ngIf="showing === 'cart'">{{ item.quantity }} - <span (click)="remove(item.product.id)">{{ 'sidebar.remove' | translate }}</span></div>
+                    <div class="quantity" *ngIf="showing === 'favorites'"><span (click)="remove(item.product.id)">{{ 'sidebar.remove' | translate }}</span></div>
+                </div>
+            </div>
+
+            <div class="spacer" *ngIf="!last$"><div></div></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,111 @@
+.backdrop {
+    position: fixed;
+    background-color: transparent;
+    z-index: 3;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000;
+
+    &.open {
+        animation: fadeIn 0.5s ease-out forwards;
+    }
+    &.closed {
+        animation: fadeOut 0.5s ease-in forwards;
+    }
+}
+
+.main {
+    position: absolute;
+    right: -100%;
+    top: 0;
+    width: 30rem;
+    height: 100%;
+    background-color: var(--dark);
+    border: var(--border);
+
+    &.open {
+        animation: slideIn 0.5s ease-out forwards;
+    }
+    &.closed {
+        animation: slideOut 0.5s ease-in forwards;
+    }
+
+    .close-icon {
+        position: absolute;
+        top: 0;
+        right: 1rem;
+        padding: 1rem;
+        cursor: pointer;
+        color: var(--accent-dark);
+        font-size: 2rem;
+    }
+
+    .product {
+        padding: 1rem;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+
+        .img {
+            width: 30%;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .info {
+            .brand, .title {
+                color: var(--accent-light);
+            }
+
+            .price {
+                color: var(--accent-dark);
+            }
+
+            .quantity {
+                user-select: none;
+
+                span {
+                    color: var(--danger);
+                    font-weight: var(--bold);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        background-color: #00000000;
+    }
+    100% {
+        background-color: #00000075;
+    }
+}
+@keyframes fadeOut {
+    0% {
+        background-color: #00000075;
+    }
+    100% {
+        background-color: #00000000;
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        right: -100%;
+    }
+    100% {
+        right: 0;
+    }
+}
+@keyframes slideOut {
+    0% {
+        right: 0;
+    }
+    100% {
+        right: -100%;
+    }
+}

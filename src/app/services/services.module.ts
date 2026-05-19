@@ -9,6 +9,7 @@ import { LoaderService } from "./loader.service";
 import { ProductsService } from "./products.service";
 import { NotificationsService } from "./notification.service";
 import { UserService } from "./user.service";
+import { SidebarService } from "./sidebar.service";
 
 @NgModule({
     imports: [HttpClientModule],
@@ -21,7 +22,8 @@ import { UserService } from "./user.service";
         LoaderService,
         UserService,
         ProductsService,
-        NotificationsService
+        NotificationsService,
+        SidebarService
     ]
 })
 export class ServicesModule {}
