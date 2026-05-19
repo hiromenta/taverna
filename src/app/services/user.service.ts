@@ -29,6 +29,15 @@ export class UserService {
         }));
     }
 
+    logout() {
+        sessionStorage.setItem('token', '');
+
+        this.authenticated = false;
+        this.user = undefined;
+
+        this.roleChanged$.next(Role.GUEST);
+    }
+
     register(body: { username?: string; email: string; password: string }): Observable<RegisterResponse | ErrorResponse> {
         return this._apiConfig.send('register', { body });
     }
@@ -47,6 +56,21 @@ export class UserService {
 
     removeFavorite(productId: number): Observable<FavoriteProduct | ErrorResponse> {
         return this._apiConfig.send('removeFavorite', { queryParams: { userId: this.user?.id || -1, productId } } );
+    }
+
+    getUserData() {
+        const token = sessionStorage.getItem('token');
+
+        if (!token) {
+            return of(null);
+        }
+
+        return this._apiConfig.send('user', { body: { token } }).pipe(tap(res => {
+            this.authenticated = true;
+            this.user = (res as LoginResponse)?.user;
+
+            this.roleChanged$.next(this.user.role);
+        }));
     }
 
 }

@@ -10,5 +10,6 @@
     { "selector": "languages", "url": "/api/products/languages", "method": "GET" },
     { "selector": "favorites", "url": "/api/users/favorites?userId=[userId]", "method": "GET" },
     { "selector": "addFavorite", "url": "/api/users/favorite", "method": "POST" },
-    { "selector": "removeFavorite", "url": "/api/users/favorite?userId=[userId]&productId=[productId]", "method": "DELETE" }
+    { "selector": "removeFavorite", "url": "/api/users/favorite?userId=[userId]&productId=[productId]", "method": "DELETE" },
+    { "selector": "user", "url": "/api/users", "method": "POST" }
 ]

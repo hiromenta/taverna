@@ -5,6 +5,7 @@ import { Paths } from "../../app-routing.module";
 import { filter, Observable, of, switchMap } from "rxjs";
 import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
 import { SidebarService } from "../../services/sidebar.service";
+import { UserService } from "../../services/user.service";
 
 @UntilDestroy()
 @Component({
@@ -32,7 +33,7 @@ export class HeaderComponent {
 
     pageSize = window.screen.width;
 
-    constructor(private _translateService: TranslateService, private _router: Router, private _route: ActivatedRoute, private _sidebarService: SidebarService) {
+    constructor(private _translateService: TranslateService, private _router: Router, private _route: ActivatedRoute, private _sidebarService: SidebarService, private _userService: UserService) {
         this._router.events
             .pipe(
                 untilDestroyed(this),
@@ -125,6 +126,11 @@ export class HeaderComponent {
 
     openCart() {
         this._sidebarService.showCart();
+    }
+
+    logout() {
+        this._userService.logout();
+        this._router.navigate([Paths.HOME]);
     }
 
 }
