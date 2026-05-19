@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
 import { ShowcaseElement } from "../models/showcase.model";
 import { ApiConfig } from "../config/api.config";
-import { Games, Product, ProductLanguages, ProductTypes } from "../models/product.model";
+import { Filters, ForcedFilters, Product } from "../models/product.model";
 import { ErrorResponse } from "../models/api.model";
 
 @Injectable()
@@ -26,7 +26,29 @@ export class ProductsService {
         return this._apiConfig.send('product', { queryParams: { id } });
     }
 
-    getProducts(filters?: { games: Games[], types: ProductTypes[], languages: ProductLanguages[] }): Observable<{ products: Product[]; size: number } | ErrorResponse> {
+    getProducts(filters?: Filters): Observable<{ products: Product[]; size: number } | ErrorResponse> {
+        const parsedFilters = filters || { games: [], types: [], languages: [], ids: [] };
+
+        if (!parsedFilters.games) {
+            parsedFilters.games = [];
+        }
+
+        if (!parsedFilters.types) {
+            parsedFilters.types = [];
+        }
+
+        if (!parsedFilters.languages) {
+            parsedFilters.languages = [];
+        }
+
+        if (!parsedFilters.ids) {
+            parsedFilters.ids = [];
+        }
+
+        return this._getProducts(parsedFilters as ForcedFilters);
+    }
+
+    private _getProducts(filters: ForcedFilters): Observable<{ products: Product[]; size: number } | ErrorResponse> {
         return this._apiConfig.send('products', { body: filters });
     }
 

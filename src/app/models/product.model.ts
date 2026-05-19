@@ -34,3 +34,17 @@ export interface FavoriteProduct {
     userId: number;
     productId: number;
 }
+
+export interface ForcedFilters {
+    games: Games[];
+    types: ProductTypes[];
+    languages: ProductLanguages[];
+    ids: number[]
+}
+
+export interface Filters {
+    games?: Games[];
+    types?: ProductTypes[];
+    languages?: ProductLanguages[];
+    ids?: number[]
+}
