@@ -116,7 +116,8 @@
         "ER_NO_ELEMENT": "Elemento non trovato",
         "ER_NO_ITEM": "L'elemento che cerchi non esiste",
         "ER_NO_ITEMS": "Nessun elemento presente",
-        "ER_TRUNCATED_WRONG_VALUE": "Valore invalido per l'eliminazione"
+        "ER_TRUNCATED_WRONG_VALUE": "Valore invalido per l'eliminazione",
+        "ER_SESSION_EXPIRED": "Sessione scaduta"
     },
     "notification": {
         "success": "Successo",

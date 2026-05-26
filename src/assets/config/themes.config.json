@@ -1,7 +1,5 @@
 {
     "default": {
-        "white": "#ccc",
-        "black": "#333",
         "primary": "#120a06",
         "secondary": "#2A1F15",
         "accent-light": "#F0CEA1",
@@ -11,8 +9,6 @@
         "dark": "#0e0a0a",
         "green": "#4A5E3B",
         "orange": "#7B4425",
-        "pale": "#CFB79D",
-        "danger": "#721f2a",
-        "success": "#3d612e"
+        "pale": "#CFB79D"
     }
 }

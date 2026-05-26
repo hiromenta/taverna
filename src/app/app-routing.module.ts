@@ -8,6 +8,7 @@ import { FeatureGuard } from './guards/feature.guard';
 import { ProductComponent } from './pages/shop/product/product.component';
 import { ShopComponent } from './pages/shop/shop.component';
 import { ShopMenuComponent } from './pages/shop/shop-menu/shop-menu.component';
+import { LiveComponent } from './pages/live/live.component';
 
 export enum Paths {
   HOME = 'home',
@@ -16,6 +17,7 @@ export enum Paths {
   SHOP = 'shop',
   PRODUCT = 'product',
   SHOP_MENU = 'shop-menu',
+  LIVE = 'live',
   NOT_FOUND = '404'
 }
 
@@ -73,6 +75,15 @@ const routes: Routes = [
     data: {
       grantAll: true,
       breadcrumbs: [Paths.SHOP, Paths.SHOP_MENU]
+    }
+  },
+  {
+    path: Paths.LIVE,
+    component: LiveComponent,
+    canActivate: [FeatureGuard],
+    data: {
+      grantAll: true,
+      breadcrumbs: [Paths.LIVE]
     }
   },
   { path: 'home', pathMatch: 'full', redirectTo: '' },

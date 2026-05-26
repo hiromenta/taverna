@@ -14,6 +14,7 @@ import { ShopComponent } from "./shop/shop.component";
 import { ProductComponent } from "./shop/product/product.component";
 import { ShopMenuComponent } from "./shop/shop-menu/shop-menu.component";
 import { ShopMenuItemComponent } from "./shop/shop-menu/shop-menu-item/shop-menu-item.component";
+import { LiveComponent } from "./live/live.component";
 
 const COMPONENTS = [
     HomeComponent,
@@ -26,7 +27,8 @@ const COMPONENTS = [
     ShopComponent,
     ProductComponent,
     ShopMenuComponent,
-    ShopMenuItemComponent
+    ShopMenuItemComponent,
+    LiveComponent
 ];
 
 @NgModule({

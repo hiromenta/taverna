@@ -17,10 +17,10 @@ export class HeaderComponent {
 
     tabs = [
         { label: 'header.tabs.carte', path: [Paths.SHOP_MENU] },
-        // { label: 'header.tabs.accessori', path: [Paths.SHOP] },
-        // { label: 'header.tabs.live', path: [Paths.SHOP] },
-        // { label: 'header.tabs.spedizioni', path: [Paths.SHOP] },
-        // { label: 'header.tabs.nino', path: [Paths.SHOP] }
+        // { label: 'header.tabs.accessori', path: [Paths.] },
+        { label: 'header.tabs.live', path: [Paths.LIVE] },
+        // { label: 'header.tabs.spedizioni', path: [Paths.] },
+        // { label: 'header.tabs.nino', path: [Paths.] }
     ];
     breadcrumbs = [];
 
@@ -106,6 +106,10 @@ export class HeaderComponent {
 
     isSmallSize() {
         return this.pageSize < 750;
+    }
+
+    getFavoritesSize() {
+        return this._userService.favorites.length;
     }
 
     getCartSize() {
