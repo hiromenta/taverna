@@ -15,6 +15,8 @@ import { ProductComponent } from "./shop/product/product.component";
 import { ShopMenuComponent } from "./shop/shop-menu/shop-menu.component";
 import { ShopMenuItemComponent } from "./shop/shop-menu/shop-menu-item/shop-menu-item.component";
 import { LiveComponent } from "./live/live.component";
+import { UserComponent } from "./user/user.component";
+import { AppRoutingModule } from "../app-routing.module";
 
 const COMPONENTS = [
     HomeComponent,
@@ -28,12 +30,13 @@ const COMPONENTS = [
     ProductComponent,
     ShopMenuComponent,
     ShopMenuItemComponent,
-    LiveComponent
+    LiveComponent,
+    UserComponent
 ];
 
 @NgModule({
     declarations: [...COMPONENTS],
     exports: [...COMPONENTS],
-    imports: [DirectivesModule, PipesModule, SharedModule, UpperCasePipe, NgForOf, CurrencyPipe, NgIf]
+    imports: [DirectivesModule, PipesModule, SharedModule, UpperCasePipe, NgForOf, CurrencyPipe, NgIf, AppRoutingModule]
 })
 export class PagesModule {}

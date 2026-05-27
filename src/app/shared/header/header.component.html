@@ -45,7 +45,10 @@
         <div class="cart" (click)="openCart()" [myFeature]="'cart'" *ngIf="!getCartSize() as siz"><img src="../../../../../assets/icons/carrello_vuoto.svg" alt="icon"></div>
         <div class="cart" (click)="openCart()" [myFeature]="'cart'" *ngIf="getCartSize() as size"><img src="../../../../../assets/icons/carrello_pieno.svg" alt="icon"><div class="quantity">{{ size }}</div></div>
 
-        <div class="user" (click)="logout()" [myFeature]="'userIcon'"><img src="../../../../../assets/icons/profilo.svg" alt="icon"></div>
+        <div class="user" (click)="goToUser()" [myFeature]="'userIcon'">
+            <img *ngIf="getUserAvatar()" [src]="getUserAvatar()" alt="icon">
+            <img *ngIf="!getUserAvatar()" src="../../../../../assets/icons/profilo.svg" alt="icon">
+        </div>
         <button class="secondary" [myFeature]="'loginRegisterButtons'" (click)="navigateLogin()">{{ getTranslation('header.actions.signIn') }}</button>
     </div>
 </ng-template>

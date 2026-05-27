@@ -9,16 +9,18 @@
     --accent-light: #F0CEA1;
     --accent-dark: #d8ac6b;
     --accent-dark-transparent: #d8ac6b25;
-    --light: #695946;
+    --pale: #695946;
     --dark: #0e0a0a;
     --green: #4A5E3B;
     --orange: #7B4425;
-    --pale: #CFB79D;
-    --danger: #721f2a;
+    --light: #CFB79D;
+    --danger: #dd1e38;
     --warning: #ac8815;
     --success: #3d612e;
-    --border: 1px solid var(--light);
+    --border: 1px solid var(--pale);
     --border-light: 1px solid var(--accent-light);
+    --border-dark: 1px solid var(--accent-dark);
+    --border-transparent: 1px solid transparent;
     --radius: 5px;
     --radius-round: 10px;
     --bold: 700;
@@ -44,9 +46,9 @@ html, body {
 input {
     width: 100%;
     background-color: var(--secondary);
-    color: var(--light);
+    color: var(--pale);
     outline: none;
-    border: 1px solid var(--light);
+    border: 1px solid var(--pale);
     border-radius: var(--radius);
     padding: 0.5rem;
 }
@@ -119,7 +121,7 @@ a {
     div {
         width: 95%;
         height: 1px;
-        background-color: var(--light);
+        background-color: var(--pale);
     }
 }
 

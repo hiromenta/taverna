@@ -107,6 +107,12 @@
     "sidebar": {
         "remove": "Rimuovi"
     },
+    "user": {
+        "menu": {
+            "profile": "Il mio profilo",
+            "logout": "Esci"
+        }
+    },
     "error": {
         "ER_DUP_ENTRY": "Utente già esistente",
         "ER_BAD_FIELD_ERROR": "Colonna sconosciuta",

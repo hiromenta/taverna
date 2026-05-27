@@ -3,7 +3,7 @@ import { Observable, of, Subject, tap } from "rxjs";
 import { ApiConfig } from "../config/api.config";
 import { ErrorResponse } from "../models/api.model";
 import { FavoritesResponse, LoginResponse, RegisterResponse, Role, User } from "../models/user.model";
-import { FavoriteProduct, Product } from "../models/product.model";
+import { FavoriteProduct } from "../models/product.model";
 
 @Injectable()
 export class UserService {
@@ -17,16 +17,18 @@ export class UserService {
     constructor(private _apiConfig: ApiConfig) {}
 
     login(body: { usermail: string, password: string }): Observable<LoginResponse | ErrorResponse> {
-        return this._apiConfig.send('login', { body }).pipe(tap(res => {
-            if ((res as LoginResponse)?.token) {
-                sessionStorage.setItem('token', (res as LoginResponse)?.token);
+        return this._apiConfig.send('login', { body }).pipe(
+            tap(res => {
+                if ((res as LoginResponse)?.token) {
+                    sessionStorage.setItem('token', (res as LoginResponse)?.token);
 
-                this.authenticated = true;
-                this.user = (res as LoginResponse)?.user;
+                    this.authenticated = true;
+                    this.user = (res as LoginResponse)?.user;
 
-                this.roleChanged$.next(this.user.role);
+                    this.roleChanged$.next(this.user.role);
+                }
             }
-        }));
+        ));
     }
 
     logout() {
@@ -65,12 +67,22 @@ export class UserService {
             return of(null);
         }
 
-        return this._apiConfig.send('user', { body: { token } }).pipe(tap(res => {
-            this.authenticated = true;
-            this.user = (res as LoginResponse)?.user;
+        return this._apiConfig.send('user', { body: { token } }).pipe(
+            tap(res => {
+                this.authenticated = true;
+                this.user = (res as LoginResponse)?.user;
 
-            this.roleChanged$.next(this.user.role);
-        }));
+                this.roleChanged$.next(this.user.role);
+            }
+        ));
+    }
+
+    uploadAvatar(file: File) {
+        const formData = new FormData();
+
+        formData.append('avatar', file);
+
+        return this._apiConfig.send('avatar', { body: formData } );
     }
 
 }

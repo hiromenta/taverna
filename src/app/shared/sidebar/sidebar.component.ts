@@ -96,7 +96,7 @@ export class SidebarComponent implements OnInit {
                 this.products = JSON.parse(localStorage.getItem('cart') || '[]');
                 break
             case 'favorites':
-                this._loaderService.show();
+                // this._loaderService.show();
 
                 this._productsService.getProducts({ ids: this._userService.favorites })
                     .pipe(untilDestroyed(this))

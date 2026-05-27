@@ -132,9 +132,12 @@ export class HeaderComponent {
         this._sidebarService.showCart();
     }
 
-    logout() {
-        this._userService.logout();
-        this._router.navigate([Paths.HOME]);
+    goToUser() {
+        this._router.navigate([Paths.USER]);
+    }
+
+    getUserAvatar() {
+        return this._userService.user?.avatarUrl;
     }
 
 }

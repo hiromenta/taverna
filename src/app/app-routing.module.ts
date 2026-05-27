@@ -9,6 +9,9 @@ import { ProductComponent } from './pages/shop/product/product.component';
 import { ShopComponent } from './pages/shop/shop.component';
 import { ShopMenuComponent } from './pages/shop/shop-menu/shop-menu.component';
 import { LiveComponent } from './pages/live/live.component';
+import { UserComponent } from './pages/user/user.component';
+import { AuthGuard } from './guards/auth.guard';
+import { Role } from './models/user.model';
 
 export enum Paths {
   HOME = 'home',
@@ -18,6 +21,7 @@ export enum Paths {
   PRODUCT = 'product',
   SHOP_MENU = 'shop-menu',
   LIVE = 'live',
+  USER = 'user',
   NOT_FOUND = '404'
 }
 
@@ -37,7 +41,7 @@ const routes: Routes = [
     component: LoginComponent,
     canActivate: [FeatureGuard],
     data: {
-      grant: [0],
+      grant: [Role.GUEST],
       breadcrumbs: [Paths.LOGIN]
     }
   },
@@ -46,7 +50,7 @@ const routes: Routes = [
     component: RegisterComponent,
     canActivate: [FeatureGuard],
     data: {
-      grant: [0],
+      grant: [Role.GUEST],
       breadcrumbs: [Paths.REGISTER]
     }
   },
@@ -84,6 +88,15 @@ const routes: Routes = [
     data: {
       grantAll: true,
       breadcrumbs: [Paths.LIVE]
+    }
+  },
+  {
+    path: Paths.USER,
+    component: UserComponent,
+    canActivate: [FeatureGuard, AuthGuard],
+    data: {
+      grant: [Role.USER, Role.ADMIN],
+      breadcrumbs: [Paths.USER]
     }
   },
   { path: 'home', pathMatch: 'full', redirectTo: '' },

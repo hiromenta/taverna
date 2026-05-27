@@ -23,7 +23,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            color: var(--pale);
+            color: var(--light);
             cursor: pointer;
             padding: 1rem 2rem;
             font-weight: var(--bold);
@@ -149,6 +149,8 @@
             height: 3rem;
             border-radius: 100%;
             cursor: pointer;
+            border-radius: 100%;
+            overflow: hidden;
 
             img {
                 width: 100%;

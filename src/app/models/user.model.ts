@@ -11,6 +11,8 @@ export interface User {
     username: string;
     email: string;
     role: Role;
+    avatarUrl?: string;
+    posterUrl?: string;
 }
 
 export interface RegisterResponse {
