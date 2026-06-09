@@ -2,9 +2,7 @@ import { Component } from "@angular/core";
 import { UserService } from "../../services/user.service";
 import { Router } from "@angular/router";
 import { Paths } from "../../app-routing.module";
-import { LoaderService } from "../../services/loader.service";
-import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
-import { NotificationsService } from "../../services/notification.service";
+import { UntilDestroy } from "@ngneat/until-destroy";
 
 @UntilDestroy()
 @Component({
@@ -15,12 +13,13 @@ import { NotificationsService } from "../../services/notification.service";
 export class UserComponent {
 
     active = 0;
+    activeButton?: any;
 
     buttons = [
-        { label: 'user.menu.profile', icon: 'profilo.svg', url: Paths.USER }
+        { label: 'user.menu.profile', icon: 'profilo.svg', url: Paths.PROFILE }
     ];
 
-    constructor(private _userService: UserService, private _router: Router, private _loaderService: LoaderService, private _notificationsService: NotificationsService) {}
+    constructor(private _userService: UserService, private _router: Router) {}
 
     logout() {
         this._userService.logout();
@@ -28,29 +27,26 @@ export class UserComponent {
     }
 
     isActive(button: typeof this.buttons[0]) {
-        return this.buttons.indexOf(button) === this.active;
-    }
+        const paths = location.pathname.split('/');
+        const path = paths[paths.length - 1];
 
-    onAvatarSelected(event: Event) {
-        const input = event.target as HTMLInputElement;
+        const isActive = button.url === path;
 
-        if (!input.files?.length) {
-            return;
+        if (isActive) {
+            this.activeButton = button;
+        } else {
+            this.activeButton = undefined;
         }
 
-        this._loaderService.show();
+        if (!this.activeButton) {
+            this._router.navigate([Paths.USER, Paths.PROFILE]);
+        }
 
-        this._userService.uploadAvatar(input.files[0])
-            .pipe(untilDestroyed(this))
-            .subscribe({
-                next: (res) => {
-                    this._loaderService.hide();
-                },
-                error: (err) => {
-                    this._loaderService.hide();
-                    this._notificationsService.addNotification('danger', 'error.' + err.error.code);
-                }
-            });
+        return isActive;
+    }
+
+    navigateUrl(button: typeof this.buttons[0]) {
+        this._router.navigate([Paths.USER, button.url]);
     }
 
 }

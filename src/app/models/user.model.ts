@@ -13,6 +13,8 @@ export interface User {
     role: Role;
     avatarUrl?: string;
     posterUrl?: string;
+    subscriptionDate?: string;
+    bio?: string;
 }
 
 export interface RegisterResponse {

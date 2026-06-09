@@ -85,4 +85,12 @@ export class UserService {
         return this._apiConfig.send('avatar', { body: formData } );
     }
 
+    uploadPoster(file: File) {
+        const formData = new FormData();
+
+        formData.append('poster', file);
+
+        return this._apiConfig.send('poster', { body: formData } );
+    }
+
 }

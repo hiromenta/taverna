@@ -1,0 +1,33 @@
+<div class="poster">
+    <img [src]="getUserPoster()" alt="poster">
+
+    <div class="cover">
+        <div class="user">
+            <div class="avatar">
+                <img *ngIf="getUserAvatar()" [src]="getUserAvatar()" alt="avatar">
+            </div>
+            <div></div>
+            <div class="info">
+                <div class="name">{{ getUser()?.username }}</div>
+                <div class="email">{{ getUser()?.email }}</div>
+                <div class="subscriptionDate">{{ 'user.profile.since' | translate }}{{ getUser()?.subscriptionDate | date:'dd/MM/yyyy' }}</div>
+            </div>
+        </div>
+        <div class="edit" (click)="edit()">{{ 'user.profile.edit' | translate }}</div>
+    </div>
+</div>
+
+<div class="bio">
+    <div class="label">{{ 'user.profile.bio' | translate }}</div>
+    <div>{{ getUser()?.bio }}</div>
+</div>
+
+<div class="values">
+    <div class="value" *ngFor="let value of values">
+        <div class="amount">{{ value.amount }}</div>
+        <div>{{ value.label | translate }}</div>
+    </div>
+</div>
+
+<!-- <input type="file" (change)="onAvatarSelected($event)">
+<input type="file" (change)="onPosterSelected($event)"> -->

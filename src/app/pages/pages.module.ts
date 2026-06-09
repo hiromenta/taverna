@@ -6,7 +6,7 @@ import { LoginComponent } from "./login/login.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { RegisterComponent } from "./register/register.component";
 import { SharedModule } from "../shared/shared.module";
-import { UpperCasePipe, NgForOf, CurrencyPipe, NgIf } from "@angular/common";
+import { UpperCasePipe, NgForOf, CurrencyPipe, NgIf, DatePipe } from "@angular/common";
 import { WorkInProgressComponent } from "./work-in-progress/work-in-progress.component";
 import { ShowcaseComponent } from "./home/showcase/showcase.component";
 import { FeaturedComponent } from "./home/featured/featured.component";
@@ -17,6 +17,7 @@ import { ShopMenuItemComponent } from "./shop/shop-menu/shop-menu-item/shop-menu
 import { LiveComponent } from "./live/live.component";
 import { UserComponent } from "./user/user.component";
 import { AppRoutingModule } from "../app-routing.module";
+import { ProfileComponent } from "./user/profile/profile.component";
 
 const COMPONENTS = [
     HomeComponent,
@@ -31,12 +32,19 @@ const COMPONENTS = [
     ShopMenuComponent,
     ShopMenuItemComponent,
     LiveComponent,
-    UserComponent
+    UserComponent,
+    ProfileComponent
+];
+
+const PIPES = [
+    UpperCasePipe,
+    CurrencyPipe,
+    DatePipe
 ];
 
 @NgModule({
     declarations: [...COMPONENTS],
     exports: [...COMPONENTS],
-    imports: [DirectivesModule, PipesModule, SharedModule, UpperCasePipe, NgForOf, CurrencyPipe, NgIf, AppRoutingModule]
+    imports: [DirectivesModule, PipesModule, SharedModule, NgForOf, NgIf, AppRoutingModule, ...PIPES]
 })
 export class PagesModule {}

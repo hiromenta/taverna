@@ -111,6 +111,16 @@
         "menu": {
             "profile": "Il mio profilo",
             "logout": "Esci"
+        },
+        "profile": {
+            "since": "Iscritto dal ",
+            "edit": "Modifica",
+            "bio": "Bio",
+            "values": {
+                "orders": "Ordini",
+                "favourites": "Lista dei desideri",
+                "shipping": "Spedizioni"
+            }
         }
     },
     "error": {

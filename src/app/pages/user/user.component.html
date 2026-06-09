@@ -1,15 +1,13 @@
 <div class="container">
     <div class="menu">
         <div class="submenu">
-            <div *ngFor="let button of buttons" class="button" [class.active]="isActive(button)"><img [src]="'../../../../../assets/icons/' + button.icon" alt="icon">&nbsp;{{ button.label | translate }}</div>
+            <div *ngFor="let button of buttons" class="button" (click)="navigateUrl(button)" [class.active]="isActive(button)"><img [src]="'../../../../../assets/icons/' + button.icon" alt="icon">&nbsp;{{ button.label | translate }}</div>
         </div>
         <div class="logout">
             <div class="button" (click)="logout()"><img src="../../../../../assets/icons/logout.svg" alt="icon">&nbsp;{{ 'user.menu.logout' | translate }}</div>
         </div>
     </div>
     <div class="content">
-        <input type="file" (change)="onAvatarSelected($event)">
-        TODO: dividi in sotto pagine
-        <!-- <router-outlet></router-outlet> -->
+        <router-outlet></router-outlet>
     </div>
 </div>

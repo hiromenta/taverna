@@ -12,6 +12,7 @@ import { LiveComponent } from './pages/live/live.component';
 import { UserComponent } from './pages/user/user.component';
 import { AuthGuard } from './guards/auth.guard';
 import { Role } from './models/user.model';
+import { ProfileComponent } from './pages/user/profile/profile.component';
 
 export enum Paths {
   HOME = 'home',
@@ -22,6 +23,8 @@ export enum Paths {
   SHOP_MENU = 'shop-menu',
   LIVE = 'live',
   USER = 'user',
+  PROFILE = 'profile',
+  EDIT_PROFILE = 'edit-profile',
   NOT_FOUND = '404'
 }
 
@@ -97,7 +100,18 @@ const routes: Routes = [
     data: {
       grant: [Role.USER, Role.ADMIN],
       breadcrumbs: [Paths.USER]
-    }
+    },
+    children: [
+      {
+        path: Paths.PROFILE,
+        component: ProfileComponent,
+        canActivate: [FeatureGuard, AuthGuard],
+        data: {
+          grant: [Role.USER, Role.ADMIN],
+          breadcrumbs: [Paths.USER, Paths.PROFILE]
+        }
+      }
+    ]
   },
   { path: 'home', pathMatch: 'full', redirectTo: '' },
   {
