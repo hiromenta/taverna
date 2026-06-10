@@ -26,6 +26,17 @@
             .description {
                 font-size: 1rem;
             }
+
+            .close-icon {
+                position: absolute;
+                top: 0.5rem;
+                right: 0.5rem;
+                cursor: pointer;
+
+                img {
+                    width: 1rem;
+                }
+            }
         }
 
         .notification.success {

@@ -48,9 +48,14 @@ input {
     background-color: var(--secondary);
     color: var(--pale);
     outline: none;
-    border: 1px solid var(--pale);
+    border: var(--border);
     border-radius: var(--radius);
     padding: 0.5rem;
+
+    &.dark {
+        background-color: var(--primary);
+        border: var(--border-transparent);
+    }
 }
 
 button {
@@ -58,6 +63,7 @@ button {
     outline: none;
     border: none;
     background-color: var(--accent-light);
+    border: var(--border-light);
     border-radius: var(--radius);
     color: var(--dark);
     display: flex;
@@ -65,9 +71,15 @@ button {
     align-items: center;
     cursor: pointer;
 }
+button.text {
+    background-color: var(--secondary);
+    color: var(--accent-dark);
+    border: var(--border-transparent);
+}
 button.secondary {
     background-color: var(--secondary);
     color: var(--accent-dark);
+    border: var(--border-dark);
 }
 button:disabled {
     background-color: var(--dark);

@@ -93,4 +93,21 @@ export class UserService {
         return this._apiConfig.send('poster', { body: formData } );
     }
 
+    updateUser(data: { username?: string, email?: string, phone?: string, bio?: string }) {
+        const token = sessionStorage.getItem('token');
+
+        if (!token) {
+            return of(null);
+        }
+
+        const sanified = {
+            username: data.username || this.user?.username,
+            email: data.email || this.user?.email,
+            phone: data.phone?.replaceAll(' ', '').replaceAll('-', '') || this.user?.phone,
+            bio: data.bio || this.user?.bio
+        };
+
+        return this._apiConfig.send('updateUser', { body: { token, ...sanified } } );
+    }
+
 }

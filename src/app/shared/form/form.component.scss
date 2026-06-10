@@ -11,6 +11,10 @@
         margin-bottom: 1rem;
         width: 100%;
 
+        .label.dark {
+            color: var(--light);
+        }
+
         .input-element {
             width: 100%;
             position: relative;

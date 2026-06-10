@@ -49,6 +49,6 @@
             <img *ngIf="getUserAvatar()" [src]="getUserAvatar()" alt="icon">
             <img *ngIf="!getUserAvatar()" src="../../../../../assets/icons/profilo.svg" alt="icon">
         </div>
-        <button class="secondary" [myFeature]="'loginRegisterButtons'" (click)="navigateLogin()">{{ getTranslation('header.actions.signIn') }}</button>
+        <button class="text" [myFeature]="'loginRegisterButtons'" (click)="navigateLogin()">{{ getTranslation('header.actions.signIn') }}</button>
     </div>
 </ng-template>

@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { AfterViewInit, Component } from "@angular/core";
 import { UserService } from "../../services/user.service";
 import { Router } from "@angular/router";
 import { Paths } from "../../app-routing.module";
@@ -10,16 +10,23 @@ import { UntilDestroy } from "@ngneat/until-destroy";
     templateUrl: './user.component.html',
     styleUrls: ['./user.component.scss']
 })
-export class UserComponent {
+export class UserComponent implements AfterViewInit {
 
     active = 0;
     activeButton?: any;
 
     buttons = [
-        { label: 'user.menu.profile', icon: 'profilo.svg', url: Paths.PROFILE }
+        { label: 'user.menu.profile', icon: 'profilo.svg', url: Paths.PROFILE },
+        { label: 'user.menu.edit_profile', icon: 'modifica_profilo.svg', url: Paths.EDIT_PROFILE }
     ];
 
     constructor(private _userService: UserService, private _router: Router) {}
+
+    ngAfterViewInit(): void {
+        if (!this.activeButton) {
+            this._router.navigate([Paths.USER, Paths.PROFILE]);
+        }
+    }
 
     logout() {
         this._userService.logout();
@@ -36,10 +43,6 @@ export class UserComponent {
             this.activeButton = button;
         } else {
             this.activeButton = undefined;
-        }
-
-        if (!this.activeButton) {
-            this._router.navigate([Paths.USER, Paths.PROFILE]);
         }
 
         return isActive;

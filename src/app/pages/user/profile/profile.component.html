@@ -1,5 +1,5 @@
 <div class="poster">
-    <img [src]="getUserPoster()" alt="poster">
+    <img *ngIf="getUserPoster()" [src]="getUserPoster()" alt="poster">
 
     <div class="cover">
         <div class="user">
@@ -28,6 +28,3 @@
         <div>{{ value.label | translate }}</div>
     </div>
 </div>
-
-<!-- <input type="file" (change)="onAvatarSelected($event)">
-<input type="file" (change)="onPosterSelected($event)"> -->

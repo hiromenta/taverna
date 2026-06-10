@@ -13,6 +13,7 @@ import { UserComponent } from './pages/user/user.component';
 import { AuthGuard } from './guards/auth.guard';
 import { Role } from './models/user.model';
 import { ProfileComponent } from './pages/user/profile/profile.component';
+import { EditProfileComponent } from './pages/user/edit-profile/edit-profile.component';
 
 export enum Paths {
   HOME = 'home',
@@ -109,6 +110,15 @@ const routes: Routes = [
         data: {
           grant: [Role.USER, Role.ADMIN],
           breadcrumbs: [Paths.USER, Paths.PROFILE]
+        }
+      },
+      {
+        path: Paths.EDIT_PROFILE,
+        component: EditProfileComponent,
+        canActivate: [FeatureGuard, AuthGuard],
+        data: {
+          grant: [Role.USER, Role.ADMIN],
+          breadcrumbs: [Paths.USER, Paths.EDIT_PROFILE]
         }
       }
     ]

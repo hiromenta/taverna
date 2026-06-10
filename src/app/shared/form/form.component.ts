@@ -15,7 +15,7 @@ export class FormComponent implements AfterContentInit, AfterViewInit {
 
     @ViewChildren('checkboxElement') checkboxElements?: CheckboxComponent[];
 
-    unregularInputs = [ControlType.CHECKBOX];
+    unregularInputs = [ControlType.CHECKBOX, ControlType.PHONE];
 
     constructor() {}
 

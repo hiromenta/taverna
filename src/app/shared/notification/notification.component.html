@@ -3,6 +3,7 @@
         <div [class]="'notification ' + notification.type" [id]="getId(notification.id)" *ngFor="let notification of getNotifications()">
             <div class="title">{{ ('notification.' + notification.type) | translate }}</div>
             <div class="description">{{ notification.message | translate }}</div>
+            <div *ngIf="notification.canClose" (click)="close(notification.id)" class="close-icon"><img src="../../../../../assets/icons/x.svg" alt="icon"></div>
         </div>
     </div>
 </div>

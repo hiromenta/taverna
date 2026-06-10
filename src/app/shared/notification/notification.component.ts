@@ -29,4 +29,8 @@ export class NotificationComponent implements OnInit {
         return this._notificationsService.getNotifications();
     }
 
+    close(id: number) {
+        this._notificationsService.deleteNotification(id);
+    }
+
 }

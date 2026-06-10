@@ -1,10 +1,11 @@
 <div *ngIf="form" class="form">
     <ng-container *ngFor="let control of form.controls">
         <div class="input-container">
-            <span class="label" *ngIf="control.label">{{ (control.label || '') | translate | uppercase }}</span>
+            <span class="label" [class.dark]="control.darkStyle" *ngIf="control.label">{{ (control.label || '') | translate | uppercase }}</span>
             <div class="input-element">
-                <input *ngIf="!unregularInputs.includes(control.type)" #inputElement (blur)="updateFormValueAndValidity()" (focus)="control.touched = true" (input)="updateValue(control, inputElement)" [type]="control.type" [required]="control.required" [id]="control.selector" [placeholder]="(control.placeholder || '') | translate">
+                <input [class.dark]="control.darkStyle" *ngIf="!unregularInputs.includes(control.type)" #inputElement (blur)="updateFormValueAndValidity()" (focus)="control.touched = true" (input)="updateValue(control, inputElement)" [type]="control.type" [required]="control.required" [id]="control.selector" [placeholder]="(control.placeholder || '') | translate" [value]="control.value || ''">
                 <my-checkbox *ngIf="control.type === getControlType().CHECKBOX" #checkboxElement (blur)="updateFormValueAndValidity()" (focus)="control.touched = true" (valueChanged$)="updateValue(control, checkboxElement)" [id]="control.selector" [description]="control.description"></my-checkbox>
+                <input [class.dark]="control.darkStyle" *ngIf="control.type === getControlType().PHONE" #phoneElement (blur)="updateFormValueAndValidity()" (focus)="control.touched = true" (input)="updateValue(control, phoneElement)" [type]="control.type" [required]="control.required" [id]="control.selector" [placeholder]="(control.placeholder || '') | translate" [value]="control.value || ''" pattern="^\+?[1-9]\d{5,14}$">
                 <div *ngIf="control.errors?.length" class="icon">x</div>
             </div>
             <span class="errors">

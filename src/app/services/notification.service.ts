@@ -15,19 +15,36 @@ export class NotificationsService {
         return this._notifications;
     }
 
-    addNotification(type: 'success' | 'warning' | 'danger', message: string) {
+    addNotification(type: 'success' | 'warning' | 'danger', message: string, canClose = true) {
         const id = Math.random();
 
-        this._notifications.push({ id, type, message });
+        this._notifications.push({ id, type, message, canClose });
 
         setTimeout(() => {
-            this.deleteNotification$.next(id);
-
-            setTimeout(() => {
-                const idx = this._notifications.findIndex(n => n.id === id);
-                this._notifications.splice(idx, 1);
-            }, 200);
+            this.deleteNotification(id);
         }, 5000);
+    }
+
+    deleteNotification(id: number) {
+        if (!this._notifications.map(n => n.id).includes(id)) {
+            return;
+        }
+
+        this.deleteNotification$.next(id);
+
+        setTimeout(() => {
+            this._cancelNotification(id);
+        }, 200);
+    }
+
+    private _cancelNotification(id: number) {
+        const idx = this._notifications.findIndex(n => n.id === id);
+
+        if (!idx) {
+            return;
+        }
+
+        this._notifications.splice(idx, 1);
     }
 
 }

@@ -1,0 +1,24 @@
+<div class="main">
+    <div class="poster">
+        <div class="user-imgs">
+            <div class="avatar">
+                <img *ngIf="getUserAvatar()" [src]="getUserAvatar()" alt="avatar">
+                <div class="pencil" (click)="onAvatarClick()"><img src="../../../../../assets/icons/matita.svg" alt="icon"></div>
+            </div>
+            <div class="poster">
+                <img *ngIf="getUserPoster()" [src]="getUserPoster()" alt="poster">
+                <div class="pencil" (click)="onPosterClick()"><img src="../../../../../assets/icons/matita.svg" alt="icon"></div>
+            </div>
+        </div>
+
+        <my-form [form]="form" class="form"></my-form>
+
+        <div class="actions">
+            <button class="primary" (click)="save()">{{ 'user.edit_profile.save' | translate }}</button>
+            <button class="secondary" (click)="cancel()">{{ 'user.edit_profile.cancel' | translate }}</button>
+        </div>
+    </div>
+</div>
+
+<input type="file" id="avatarFileInput" (change)="onAvatarSelected($event)">
+<input type="file" id="posterFileInput" (change)="onPosterSelected($event)">

@@ -3,7 +3,7 @@ import { UserService } from './services/user.service';
 import { LoaderService } from './services/loader.service';
 import { NotificationsService } from './services/notification.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { switchMap } from 'rxjs';
+import { of, switchMap } from 'rxjs';
 import { Router } from '@angular/router';
 
 @UntilDestroy()
@@ -26,7 +26,13 @@ export class AppComponent implements OnInit {
     this._userService.getUserData()
       .pipe(
         untilDestroyed(this),
-        switchMap(() => this._userService.getFavorites())
+        switchMap((data) => {
+          if (data) {
+            return this._userService.getFavorites();
+          }
+
+          return of(null);
+        })
       )
       .subscribe({
         next: (res) => {

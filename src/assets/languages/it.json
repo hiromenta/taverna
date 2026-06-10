@@ -5,6 +5,8 @@
         "usermail": "Nome utente / Mail",
         "username": "Nome utente",
         "email": "Indirizzo mail",
+        "phone": "Telefono",
+        "bio": "Bio",
         "password": "Password",
         "actions": {
             "register": "Registrati",
@@ -110,6 +112,7 @@
     "user": {
         "menu": {
             "profile": "Il mio profilo",
+            "edit_profile": "Modifica profilo",
             "logout": "Esci"
         },
         "profile": {
@@ -121,6 +124,10 @@
                 "favourites": "Lista dei desideri",
                 "shipping": "Spedizioni"
             }
+        },
+        "edit_profile": {
+            "save": "Salva modifiche",
+            "cancel": "Annulla"
         }
     },
     "error": {

@@ -13,5 +13,6 @@
     { "selector": "removeFavorite", "url": "/api/users/favorite?userId=[userId]&productId=[productId]", "method": "DELETE" },
     { "selector": "user", "url": "/api/users", "method": "POST" },
     { "selector": "avatar", "url": "/api/users/avatar", "method": "POST" },
-    { "selector": "poster", "url": "/api/users/poster", "method": "POST" }
+    { "selector": "poster", "url": "/api/users/poster", "method": "POST" },
+    { "selector": "updateUser", "url": "/api/users/update", "method": "POST" }
 ]
