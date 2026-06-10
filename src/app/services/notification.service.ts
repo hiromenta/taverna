@@ -40,7 +40,7 @@ export class NotificationsService {
     private _cancelNotification(id: number) {
         const idx = this._notifications.findIndex(n => n.id === id);
 
-        if (!idx) {
+        if (idx === undefined) {
             return;
         }
 
