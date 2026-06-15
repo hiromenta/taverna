@@ -16,6 +16,13 @@ export enum ProductLanguages {
     EN
 }
 
+export enum OrderStatuses {
+    PENDING,
+    PAID,
+    CANCELLED,
+    FAILED
+}
+
 export interface Product {
     id: number;
     brand: string;

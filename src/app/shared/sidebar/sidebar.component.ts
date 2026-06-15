@@ -17,10 +17,17 @@ export class SidebarComponent implements OnInit {
 
     showing?: Sidebar;
     closing = false;
+    showCheckout = false;
 
     products: { product: Product; quantity: number }[] = [];
 
-    constructor(private _sidebarService: SidebarService, private _userService: UserService, private _productsService: ProductsService, private _loaderService: LoaderService, private _notificationsService: NotificationsService) {}
+    constructor(
+        private _sidebarService: SidebarService,
+        private _userService: UserService,
+        private _productsService: ProductsService,
+        private _loaderService: LoaderService,
+        private _notificationsService: NotificationsService
+    ) {}
 
     ngOnInit(): void {
         this._sidebarService.changeSidebar$.subscribe(res => {
@@ -93,10 +100,11 @@ export class SidebarComponent implements OnInit {
 
         switch (type) {
             case 'cart':
+                this.showCheckout = true;
                 this.products = JSON.parse(localStorage.getItem('cart') || '[]');
                 break
             case 'favorites':
-                // this._loaderService.show();
+                this.showCheckout = false;
 
                 this._productsService.getProducts({ ids: this._userService.favorites })
                     .pipe(untilDestroyed(this))
@@ -112,6 +120,25 @@ export class SidebarComponent implements OnInit {
                     });
                 break
         }
+    }
+
+    checkout() {
+        this._loaderService.show();
+
+        this._productsService.createCheckoutSession(this.products)
+            .pipe(
+                untilDestroyed(this)
+            )
+            .subscribe({
+                next: (res) => {
+                    this._loaderService.hide();
+                    location.href = res.url;
+                },
+                error: (err) => {
+                    this._loaderService.hide();
+                    this._notificationsService.addNotification('danger', 'error.' + err.error.code);
+                }
+            });
     }
 
 }

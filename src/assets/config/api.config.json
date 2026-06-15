@@ -14,5 +14,6 @@
     { "selector": "user", "url": "/api/users", "method": "POST" },
     { "selector": "avatar", "url": "/api/users/avatar", "method": "POST" },
     { "selector": "poster", "url": "/api/users/poster", "method": "POST" },
-    { "selector": "updateUser", "url": "/api/users/update", "method": "POST" }
+    { "selector": "updateUser", "url": "/api/users/update", "method": "POST" },
+    { "selector": "createCheckout", "url": "/api/products/create-checkout-session", "method": "POST" }
 ]

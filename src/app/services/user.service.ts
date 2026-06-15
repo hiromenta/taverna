@@ -67,7 +67,7 @@ export class UserService {
             return of(null);
         }
 
-        return this._apiConfig.send('user', { body: { token } }).pipe(
+        return this._apiConfig.send('user').pipe(
             tap(res => {
                 this.authenticated = true;
                 this.user = (res as LoginResponse)?.user;
@@ -107,7 +107,7 @@ export class UserService {
             bio: data.bio || this.user?.bio
         };
 
-        return this._apiConfig.send('updateUser', { body: { token, ...sanified } } );
+        return this._apiConfig.send('updateUser', { body: { ...sanified } } );
     }
 
 }

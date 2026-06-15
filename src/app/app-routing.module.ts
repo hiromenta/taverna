@@ -26,6 +26,8 @@ export enum Paths {
   USER = 'user',
   PROFILE = 'profile',
   EDIT_PROFILE = 'edit-profile',
+  PAYMENT_SUCCESS = 'payment-success',
+  PAYMENT_CANCEL = 'payment-cancel',
   NOT_FOUND = '404'
 }
 
@@ -124,6 +126,8 @@ const routes: Routes = [
     ]
   },
   { path: 'home', pathMatch: 'full', redirectTo: '' },
+  { path: Paths.PAYMENT_SUCCESS, redirectTo: `${Paths.USER}/${Paths.PROFILE}` },
+  { path: Paths.PAYMENT_CANCEL, redirectTo: `${Paths.USER}/${Paths.PROFILE}` },
   {
     path: '**',
     component: NotFoundComponent

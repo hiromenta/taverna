@@ -16,7 +16,7 @@
             <div class="actions">
                 <div class="availability" *ngIf="product?.availability">{{ 'home.featured.card.available' | translate }}</div>
                 <div class="unavailability" *ngIf="!product?.availability">{{ 'home.featured.card.unavailable' | translate }}</div>
-                <button [myFeature]="'cart'" (click)="addToCart()">{{ 'home.featured.card.add_to_cart' | translate | uppercase }} <img src="../../../../../assets/icons/carrello_vuoto.svg" alt="icon"></button>
+                <button class="no-border" [myFeature]="'cart'" (click)="addToCart()">{{ 'home.featured.card.add_to_cart' | translate | uppercase }} <img src="../../../../../assets/icons/carrello_vuoto.svg" alt="icon"></button>
             </div>
         </div>
     </div>

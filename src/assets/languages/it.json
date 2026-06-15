@@ -107,7 +107,8 @@
         }
     },
     "sidebar": {
-        "remove": "Rimuovi"
+        "remove": "Rimuovi",
+        "checkout": "Checkout"
     },
     "user": {
         "menu": {
@@ -131,6 +132,9 @@
         }
     },
     "error": {
+        "Invalid token": "Sessione scaduta",
+        "url_invalid": "URL non valido",
+        "amount_too_small": "Il prezzo del carrello non è valido (almeno €0.50)",
         "ER_DUP_ENTRY": "Utente già esistente",
         "ER_BAD_FIELD_ERROR": "Colonna sconosciuta",
         "ER_PARSE_ERROR": "Valore invalido, impossibile convertire",

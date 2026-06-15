@@ -20,5 +20,9 @@
 
             <div class="spacer" *ngIf="!last$"><div></div></div>
         </div>
+
+        <div class="checkout" *ngIf="showCheckout">
+            <button class="primary" (click)="checkout()">{{ 'sidebar.checkout' | translate }}</button>
+        </div>
     </div>
 </div>
