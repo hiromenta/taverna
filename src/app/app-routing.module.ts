@@ -15,6 +15,7 @@ import { Role } from './models/user.model';
 import { ProfileComponent } from './pages/user/profile/profile.component';
 import { EditProfileComponent } from './pages/user/edit-profile/edit-profile.component';
 import { PaymentSuccessComponent } from './shared/sidebar/payment-success/payment-success.component';
+import { OrdersComponent } from './pages/user/orders/orders.component';
 
 export enum Paths {
   HOME = 'home',
@@ -29,6 +30,7 @@ export enum Paths {
   EDIT_PROFILE = 'edit-profile',
   PAYMENT_SUCCESS = 'payment-success',
   PAYMENT_CANCEL = 'payment-cancel',
+  ORDERS = 'orders',
   NOT_FOUND = '404'
 }
 
@@ -122,6 +124,15 @@ const routes: Routes = [
         data: {
           grant: [Role.USER, Role.ADMIN],
           breadcrumbs: [Paths.USER, Paths.EDIT_PROFILE]
+        }
+      },
+      {
+        path: Paths.ORDERS,
+        component: OrdersComponent,
+        canActivate: [FeatureGuard, AuthGuard],
+        data: {
+          grant: [Role.USER, Role.ADMIN],
+          breadcrumbs: [Paths.USER, Paths.ORDERS]
         }
       }
     ]

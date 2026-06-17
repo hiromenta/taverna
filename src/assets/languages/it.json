@@ -115,6 +115,7 @@
         "menu": {
             "profile": "Il mio profilo",
             "edit_profile": "Modifica profilo",
+            "orders": "Ordini",
             "logout": "Esci"
         },
         "profile": {
@@ -134,6 +135,16 @@
         "checkout": {
             "success": "Pagamento effettuato, ordine in lavorazione",
             "cancel": "Pagamento annullato"
+        },
+        "orders": {
+            "status": {
+                "0": "In corso",
+                "1": "Pagato",
+                "2": "Annullato",
+                "3": "Fallito",
+                "4": "Spedito",
+                "5": "Completato"
+            }
         }
     },
     "error": {

@@ -16,7 +16,7 @@ export class PaymentSuccessComponent implements OnInit {
         this._notificationService.deleteAllNotifications();
         this._notificationService.addNotification('success', 'user.checkout.success');
         // TODO: clear cart
-        this._router.navigate([Paths.USER, Paths.PROFILE]); // TODO: crea pagina ordini e naviga lì
+        this._router.navigate([Paths.USER, Paths.ORDERS]);
     }
 
 }

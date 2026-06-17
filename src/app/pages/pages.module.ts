@@ -19,6 +19,7 @@ import { UserComponent } from "./user/user.component";
 import { AppRoutingModule } from "../app-routing.module";
 import { ProfileComponent } from "./user/profile/profile.component";
 import { EditProfileComponent } from "./user/edit-profile/edit-profile.component";
+import { OrdersComponent } from "./user/orders/orders.component";
 
 const COMPONENTS = [
     HomeComponent,
@@ -35,7 +36,8 @@ const COMPONENTS = [
     LiveComponent,
     UserComponent,
     ProfileComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    OrdersComponent
 ];
 
 const PIPES = [
