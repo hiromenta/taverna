@@ -20,7 +20,8 @@ export enum OrderStatuses {
     PENDING,
     PAID,
     CANCELLED,
-    FAILED
+    FAILED,
+    SHIPPED
 }
 
 export interface Product {

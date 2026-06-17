@@ -14,6 +14,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { Role } from './models/user.model';
 import { ProfileComponent } from './pages/user/profile/profile.component';
 import { EditProfileComponent } from './pages/user/edit-profile/edit-profile.component';
+import { PaymentSuccessComponent } from './shared/sidebar/payment-success/payment-success.component';
 
 export enum Paths {
   HOME = 'home',
@@ -126,7 +127,7 @@ const routes: Routes = [
     ]
   },
   { path: 'home', pathMatch: 'full', redirectTo: '' },
-  { path: Paths.PAYMENT_SUCCESS, redirectTo: `${Paths.USER}/${Paths.PROFILE}` },
+  { path: Paths.PAYMENT_SUCCESS, component: PaymentSuccessComponent },
   { path: Paths.PAYMENT_CANCEL, redirectTo: `${Paths.USER}/${Paths.PROFILE}` },
   {
     path: '**',

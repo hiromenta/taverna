@@ -13,6 +13,7 @@ import { NotificationComponent } from './notification/notification.component';
 import { AccordionComponent } from './accordion/accordion.component';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { PaymentSuccessComponent } from './sidebar/payment-success/payment-success.component';
 
 const COMPONENTS = [
   LoaderComponent,
@@ -24,7 +25,8 @@ const COMPONENTS = [
   NotificationComponent,
   AccordionComponent,
   CheckboxComponent,
-  SidebarComponent
+  SidebarComponent,
+  PaymentSuccessComponent
 ];
 
 @NgModule({

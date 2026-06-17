@@ -16,6 +16,7 @@ export interface User {
     subscriptionDate?: string;
     bio?: string;
     phone?: string;
+    address?: string;
 }
 
 export interface RegisterResponse {

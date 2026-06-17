@@ -93,7 +93,7 @@ export class UserService {
         return this._apiConfig.send('poster', { body: formData } );
     }
 
-    updateUser(data: { username?: string, email?: string, phone?: string, bio?: string }) {
+    updateUser(data: { username?: string, email?: string, phone?: string, bio?: string, address?: string }) {
         const token = sessionStorage.getItem('token');
 
         if (!token) {

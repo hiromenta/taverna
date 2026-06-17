@@ -8,6 +8,7 @@
         "phone": "Telefono",
         "bio": "Bio",
         "password": "Password",
+        "address": "Indirizzo",
         "actions": {
             "register": "Registrati",
             "login": "Login"
@@ -129,6 +130,10 @@
         "edit_profile": {
             "save": "Salva modifiche",
             "cancel": "Annulla"
+        },
+        "checkout": {
+            "success": "Pagamento effettuato, ordine in lavorazione",
+            "cancel": "Pagamento annullato"
         }
     },
     "error": {
@@ -144,7 +149,8 @@
         "ER_NO_ITEM": "L'elemento che cerchi non esiste",
         "ER_NO_ITEMS": "Nessun elemento presente",
         "ER_TRUNCATED_WRONG_VALUE": "Valore invalido per l'eliminazione",
-        "ER_SESSION_EXPIRED": "Sessione scaduta"
+        "ER_SESSION_EXPIRED": "Sessione scaduta",
+        "ER_ADDRESS_MISSING": "Aggiungere un indirizzo prima di continuare"
     },
     "notification": {
         "success": "Successo",

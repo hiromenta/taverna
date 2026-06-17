@@ -17,6 +17,7 @@ export class ProfileComponent {
         { label: 'user.profile.values.favourites', amount: this.getFavouritesNumber() },
         { label: 'user.profile.values.shipping', amount: 0 }
     ];
+    // TODO: inserisci valori reali
 
     constructor(private _userService: UserService, private _router: Router) {}
 

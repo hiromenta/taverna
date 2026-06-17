@@ -6,6 +6,8 @@ import { ProductsService } from "../../services/products.service";
 import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
 import { LoaderService } from "../../services/loader.service";
 import { NotificationsService } from "../../services/notification.service";
+import { Router } from "@angular/router";
+import { Paths } from "../../app-routing.module";
 
 @UntilDestroy()
 @Component({
@@ -26,7 +28,8 @@ export class SidebarComponent implements OnInit {
         private _userService: UserService,
         private _productsService: ProductsService,
         private _loaderService: LoaderService,
-        private _notificationsService: NotificationsService
+        private _notificationsService: NotificationsService,
+        private _router: Router
     ) {}
 
     ngOnInit(): void {
@@ -100,7 +103,7 @@ export class SidebarComponent implements OnInit {
 
         switch (type) {
             case 'cart':
-                this.showCheckout = true;
+                this.showCheckout = this._userService.authenticated;
                 this.products = JSON.parse(localStorage.getItem('cart') || '[]');
                 break
             case 'favorites':
@@ -123,6 +126,18 @@ export class SidebarComponent implements OnInit {
     }
 
     checkout() {
+        if (this._userService.user?.address) {
+            this._doCheckout();
+            return;
+        }
+
+        this._router.navigate([Paths.USER, Paths.EDIT_PROFILE]).then(() => {
+            this.close();
+            this._notificationsService.addNotification('warning', 'error.ER_ADDRESS_MISSING');
+        });
+    }
+
+    private _doCheckout() {
         this._loaderService.show();
 
         this._productsService.createCheckoutSession(this.products)

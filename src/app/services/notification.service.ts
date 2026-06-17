@@ -37,6 +37,12 @@ export class NotificationsService {
         }, 200);
     }
 
+    deleteAllNotifications() {
+        for (const notif of this._notifications) {
+            this.deleteNotification(notif.id);
+        }
+    }
+
     private _cancelNotification(id: number) {
         const idx = this._notifications.findIndex(n => n.id === id);
 

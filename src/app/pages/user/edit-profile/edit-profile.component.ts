@@ -31,7 +31,8 @@ export class EditProfileComponent implements AfterViewInit {
             { selector: 'username', type: ControlType.TEXT, label: 'form.username', darkStyle: true, value: this.getUser()?.username, errors: [] },
             { selector: 'email', type: ControlType.EMAIL, label: 'form.email', darkStyle: true, value: this.getUser()?.email, errors: [] },
             { selector: 'phone', type: ControlType.PHONE, label: 'form.phone', darkStyle: true, value: this.getUser()?.phone, errors: [] },
-            { selector: 'bio', type: ControlType.TEXT, label: 'form.bio', darkStyle: true, value: this.getUser()?.bio, errors: [] }
+            { selector: 'bio', type: ControlType.TEXT, label: 'form.bio', darkStyle: true, value: this.getUser()?.bio, errors: [] },
+            { selector: 'address', type: ControlType.TEXT, label: 'form.address', darkStyle: true, value: this.getUser()?.address, errors: [] }
         );
     }
 
@@ -94,7 +95,7 @@ export class EditProfileComponent implements AfterViewInit {
     save() {
         this._loaderService.show();
 
-        this._userService.updateUser((this.form.value as { username?: string, email?: string, phone?: string, bio?: string }))
+        this._userService.updateUser((this.form.value as { username?: string, email?: string, phone?: string, bio?: string, address?: string }))
             .pipe(
                 switchMap(() => {
                     if (this.avatarFile) {

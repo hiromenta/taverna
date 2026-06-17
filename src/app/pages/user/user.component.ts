@@ -19,6 +19,7 @@ export class UserComponent implements AfterViewInit {
         { label: 'user.menu.profile', icon: 'profilo.svg', url: Paths.PROFILE },
         { label: 'user.menu.edit_profile', icon: 'modifica_profilo.svg', url: Paths.EDIT_PROFILE }
     ];
+    // TODO: aggiungi pagina ordini
 
     constructor(private _userService: UserService, private _router: Router) {}
 
