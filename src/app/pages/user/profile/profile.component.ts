@@ -1,8 +1,11 @@
-import { Component } from "@angular/core";
-import { UntilDestroy } from "@ngneat/until-destroy";
+import { Component, OnInit } from "@angular/core";
+import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
 import { UserService } from "../../../services/user.service";
 import { Router } from "@angular/router";
 import { Paths } from "../../../app-routing.module";
+import { Order, OrderStatuses } from "../../../models/product.model";
+import { LoaderService } from "../../../services/loader.service";
+import { NotificationsService } from "../../../services/notification.service";
 
 @UntilDestroy()
 @Component({
@@ -10,16 +13,28 @@ import { Paths } from "../../../app-routing.module";
     templateUrl: './profile.component.html',
     styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
 
-    values = [
-        { label: 'user.profile.values.orders', amount: 0 },
-        { label: 'user.profile.values.favourites', amount: this.getFavouritesNumber() },
-        { label: 'user.profile.values.shipping', amount: 0 }
-    ];
-    // TODO: inserisci valori reali
+    private _orders: Order[] = [];
 
-    constructor(private _userService: UserService, private _router: Router) {}
+    constructor(private _userService: UserService, private _router: Router, private _loaderService: LoaderService, private _notificationsService: NotificationsService) {}
+
+    ngOnInit(): void {
+        this._loaderService.show();
+
+        this._userService.getOrders()
+            .pipe(untilDestroyed(this))
+            .subscribe({
+                next: (res) => {
+                    this._loaderService.hide();
+                    this._orders = res.orders;
+                },
+                error: (err) => {
+                    this._loaderService.hide();
+                    this._notificationsService.addNotification('danger', 'error.' + err.error.code);
+                }
+            });
+    }
 
     edit() {
         this._router.navigate([Paths.USER, Paths.EDIT_PROFILE]);
@@ -37,8 +52,16 @@ export class ProfileComponent {
         return this._userService.user?.posterUrl;
     }
 
+    getOrdersNumber() {
+        return this._orders?.length || 0;
+    }
+
     getFavouritesNumber() {
-        return this._userService.favorites.length;
+        return this._userService?.favorites?.length || 0;
+    }
+
+    getShippedOrdersNumber() {
+        return this._orders?.filter(o => o.status === OrderStatuses.SHIPPED)?.length || 0;
     }
 
 }

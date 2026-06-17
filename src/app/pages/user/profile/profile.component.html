@@ -23,8 +23,18 @@
 </div>
 
 <div class="values">
-    <div class="value" *ngFor="let value of values">
-        <div class="amount">{{ value.amount }}</div>
-        <div>{{ value.label | translate }}</div>
+    <div class="value">
+        <div class="amount">{{ getOrdersNumber() }}</div>
+        <div>{{ 'user.profile.values.orders' | translate }}</div>
+    </div>
+
+    <div class="value">
+        <div class="amount">{{ getFavouritesNumber() }}</div>
+        <div>{{ 'user.profile.values.favourites' | translate }}</div>
+    </div>
+
+    <div class="value">
+        <div class="amount">{{ getShippedOrdersNumber() }}</div>
+        <div>{{ 'user.profile.values.shipping' | translate }}</div>
     </div>
 </div>

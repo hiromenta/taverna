@@ -24,6 +24,15 @@ export enum OrderStatuses {
     SHIPPED
 }
 
+export interface Order {
+    id: number;
+    userId: number;
+    total: number;
+    status: OrderStatuses;
+    createdAt: string;
+    sessionId: string;
+}
+
 export interface Product {
     id: number;
     brand: string;

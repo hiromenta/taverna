@@ -110,4 +110,8 @@ export class UserService {
         return this._apiConfig.send('updateUser', { body: { ...sanified } } );
     }
 
+    getOrders() {
+        return this._apiConfig.send('getOrders');
+    }
+
 }
