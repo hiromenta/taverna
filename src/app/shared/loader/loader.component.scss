@@ -5,4 +5,21 @@ div {
     height: 100vh;
     background-color: #00000075;
     color: var(--accent-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        width: 10rem;
+        animation: roll 1.2s infinite linear;
+    }
+}
+
+@keyframes roll {
+    0% {
+        rotate: 0deg;
+    }
+    100% {
+        rotate: 360deg;
+    }
 }

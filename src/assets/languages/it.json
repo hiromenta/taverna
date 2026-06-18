@@ -162,7 +162,8 @@
         "ER_NO_ITEMS": "Nessun elemento presente",
         "ER_TRUNCATED_WRONG_VALUE": "Valore invalido per l'eliminazione",
         "ER_SESSION_EXPIRED": "Sessione scaduta",
-        "ER_ADDRESS_MISSING": "Aggiungere un indirizzo prima di continuare"
+        "ER_ADDRESS_MISSING": "Aggiungere un indirizzo prima di continuare",
+        "ER_NOT_ENOUGH_PRODUCTS": "Non ci sono abbastanza prodotti in stock"
     },
     "notification": {
         "success": "Successo",

@@ -138,7 +138,7 @@ export class HeaderComponent {
     }
 
     goToUser() {
-        this._router.navigate([Paths.USER]);
+        this._router.navigate([Paths.USER, Paths.PROFILE]);
     }
 
     getUserAvatar() {

@@ -15,7 +15,7 @@ export class PaymentSuccessComponent implements OnInit {
     ngOnInit(): void {
         this._notificationService.deleteAllNotifications();
         this._notificationService.addNotification('success', 'user.checkout.success');
-        // TODO: clear cart
+        localStorage.setItem('cart', '[]');
         this._router.navigate([Paths.USER, Paths.ORDERS]);
     }
 
