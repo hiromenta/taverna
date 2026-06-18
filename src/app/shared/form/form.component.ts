@@ -56,6 +56,13 @@ export class FormComponent implements AfterContentInit, AfterViewInit {
         this.updateFormValueAndValidity();
     }
 
+    updateText(selector: string, value: string) {
+        const control = this.form?.controls.find(c => c.selector === selector);
+        const input = document.querySelector('#' + selector) as HTMLInputElement;
+        input.value = value;
+        this.updateValue(control!, input);
+    }
+
     updateCheckbox(selector: string, value: boolean) {
         const control = this.form?.controls.find(c => c.selector === selector);
         this.checkboxElements!.find(c => c.id === control!.selector)!.selected = value;

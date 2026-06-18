@@ -102,6 +102,7 @@
         },
         "filters": {
             "title": "Filtri",
+            "search": "Cerca",
             "game": "Gioco",
             "type": "Tipo di prodotto",
             "language": "Lingua"

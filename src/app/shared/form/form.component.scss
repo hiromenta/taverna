@@ -11,6 +11,10 @@
         margin-bottom: 1rem;
         width: 100%;
 
+        &:only-child {
+            margin-bottom: 0;
+        }
+
         .label.dark {
             color: var(--light);
         }

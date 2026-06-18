@@ -2,7 +2,7 @@
     <div class="hint">{{ getTranslation('header.hint') }}</div>
     <div class="body">
         <ng-container *ngTemplateOutlet="logo"></ng-container>
-        <ng-container *ngTemplateOutlet="search">// TODO: inserisci ricerca vera</ng-container>
+        <ng-container *ngTemplateOutlet="search"></ng-container>
         <ng-container *ngTemplateOutlet="actions"></ng-container>
     </div>
     <div class="tabs" *ngIf="!isSmallSize()">
@@ -33,7 +33,8 @@
 
 <ng-template #search>
     <div class="search">
-        <input type="text" [placeholder]="getTranslation('header.search.placeholder')">
+        <!-- <input type="text" [placeholder]="getTranslation('header.search.placeholder')"> -->
+        <my-form #searchFormComponent [form]="searchForm"></my-form>
     </div>
 </ng-template>
 

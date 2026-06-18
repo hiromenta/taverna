@@ -6,7 +6,7 @@
         <div *ngFor="let item of products; last as last$">
             <div class="product">
                 <div class="img">
-                    <img [src]="'../../../../../assets/images/' + item.product.image_name" alt="product">
+                    <img [src]="'/' + item.product.imageUrl" alt="product">
                 </div>
                 <div class="info">
                     <div class="brand">{{ item.product.brand }}</div>
@@ -21,6 +21,7 @@
             <div class="spacer" *ngIf="!last$"><div></div></div>
         </div>
 
+        <!-- TODO: aggiungi codici sconto -->
         <div class="checkout" *ngIf="showCheckout">
             <button class="primary" (click)="checkout()">{{ 'sidebar.checkout' | translate }}</button>
         </div>

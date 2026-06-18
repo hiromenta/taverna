@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
         },
         error: (err) => {
           this._loaderService.hide();
-          this._notificationsService.addNotification('warning', 'error.' + err.error);
+          this._notificationsService.addNotification('warning', 'error.' + err.error.toString());
 
           this._userService.logout();
         }

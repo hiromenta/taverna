@@ -1,4 +1,4 @@
-import { Component, HostListener } from "@angular/core";
+import { Component, HostListener, ViewChild } from "@angular/core";
 import { TranslateService } from "../../services/translate.service";
 import { ActivatedRoute, EventType, Router } from "@angular/router";
 import { Paths } from "../../app-routing.module";
@@ -6,6 +6,8 @@ import { filter, Observable, of, switchMap } from "rxjs";
 import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
 import { SidebarService } from "../../services/sidebar.service";
 import { UserService } from "../../services/user.service";
+import { ControlType, MyForm } from "../../models/form.model";
+import { FormComponent } from "../form/form.component";
 
 @UntilDestroy()
 @Component({
@@ -32,6 +34,9 @@ export class HeaderComponent {
     showing = false;
 
     pageSize = window.screen.width;
+
+    @ViewChild('searchFormComponent') searchFormComponent?: FormComponent;
+    searchForm: MyForm = { controls: [ { selector: 'searchHeader', type: ControlType.TEXT, placeholder: this.getTranslation('header.search.placeholder'), errors: [] }] };
 
     constructor(private _translateService: TranslateService, private _router: Router, private _route: ActivatedRoute, private _sidebarService: SidebarService, private _userService: UserService) {
         this._router.events
@@ -138,6 +143,15 @@ export class HeaderComponent {
 
     getUserAvatar() {
         return this._userService.user?.avatarUrl;
+    }
+
+    @HostListener('keydown', ['$event'])
+    search(event: KeyboardEvent) {
+        if (event.key === 'Enter') {
+            const value = this.searchForm.value?.['searchHeader'] || '';
+            this.searchFormComponent?.updateText('searchHeader', '');
+            this._router.navigate([Paths.SHOP], { queryParams: { search: value } });
+        }
     }
 
 }

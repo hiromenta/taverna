@@ -17,12 +17,14 @@ import { FormComponent } from "../../shared/form/form.component";
 })
 export class ShopComponent {
 
+    @ViewChild('searchFormComponent') searchFormComponent?: FormComponent;
     @ViewChild('gamesFormComponent') gamesFormComponent?: FormComponent;
     @ViewChild('typesFormComponent') typesFormComponent?: FormComponent;
     @ViewChild('languagesFormComponent') languagesFormComponent?: FormComponent;
 
     products: Product[] = [];
 
+    searchForm: MyForm = { controls: [ { selector: 'search', type: ControlType.TEXT, placeholder: 'shop.filters.search', errors: [] }] };
     gamesForm: MyForm = { controls: [] };
     typesForm: MyForm = { controls: [] };
     languagesForm: MyForm = { controls: [] };
@@ -56,6 +58,11 @@ export class ShopComponent {
 
                     const queryParams = this._route?.snapshot?.queryParams;
 
+                    if (queryParams['search']) {
+                        const value = queryParams['search'];
+                        this.searchFormComponent?.updateText('search', value);
+                    }
+
                     if (queryParams['game']) {
                         const description = this._games?.find(t => t.id === +(queryParams['game']))?.description;
                         this.gamesFormComponent?.updateCheckbox(description || '', true);
@@ -85,6 +92,26 @@ export class ShopComponent {
                     this._notificationsService.addNotification('danger', 'error.' + err.error.code);
                 }
             });
+    }
+
+    getProducts() {
+        const searchFilter = this.searchForm.value?.['search'] || '';
+
+        return this.products.filter((p) => {
+            if (this._cleanString(p.brand).includes(this._cleanString(searchFilter)) || this._cleanString(searchFilter).includes(this._cleanString(p.brand))) {
+                return true;
+            }
+
+            if (this._cleanString(p.name).includes(this._cleanString(searchFilter)) || this._cleanString(searchFilter).includes(this._cleanString(p.name))) {
+                return true;
+            }
+
+            return false;
+        });
+    }
+
+    private _cleanString(s: string) {
+        return s.replaceAll(' ', '').toLowerCase();
     }
 
     updateSearch() {
