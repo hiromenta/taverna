@@ -137,9 +137,9 @@ const routes: Routes = [
       }
     ]
   },
-  { path: 'home', pathMatch: 'full', redirectTo: '' },
+  { path: Paths.HOME, pathMatch: 'full', redirectTo: '' },
   { path: Paths.PAYMENT_SUCCESS, component: PaymentSuccessComponent },
-  { path: Paths.PAYMENT_CANCEL, redirectTo: `${Paths.USER}/${Paths.PROFILE}` },
+  { path: Paths.PAYMENT_CANCEL, redirectTo: '' },
   {
     path: '**',
     component: NotFoundComponent

@@ -163,7 +163,8 @@
         "ER_TRUNCATED_WRONG_VALUE": "Valore invalido per l'eliminazione",
         "ER_SESSION_EXPIRED": "Sessione scaduta",
         "ER_ADDRESS_MISSING": "Aggiungere un indirizzo prima di continuare",
-        "ER_NOT_ENOUGH_PRODUCTS": "Non ci sono abbastanza prodotti in stock"
+        "ER_NOT_ENOUGH_PRODUCTS": "Non ci sono abbastanza prodotti in stock",
+        "ER_NO_DISCOUNTS": "Il codice inserito non è valido"
     },
     "notification": {
         "success": "Successo",

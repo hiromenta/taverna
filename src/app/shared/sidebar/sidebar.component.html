@@ -21,8 +21,7 @@
             <div class="spacer" *ngIf="!last$"><div></div></div>
         </div>
 
-        <!-- TODO: aggiungi codici sconto -->
-        <div class="checkout" *ngIf="showCheckout">
+        <div class="checkout" *ngIf="showCheckout && products.length">
             <button class="primary" (click)="checkout()">{{ 'sidebar.checkout' | translate }}</button>
         </div>
     </div>
