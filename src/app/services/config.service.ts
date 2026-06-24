@@ -5,6 +5,7 @@ import { Api } from "../models/api.model";
 import { Config } from "../models/config.model";
 import { Feature } from "../models/feature.model";
 import { Theme } from "../models/themes.model";
+import { environment } from "../../environments/environment";
 
 @Injectable()
 export class ConfigService {
@@ -38,7 +39,7 @@ export class ConfigService {
             return of(this._configs[config].data);
         }
 
-        return this._http.get<T>(`/assets/config/${config}.config.json`).pipe(tap((res) => {
+        return this._http.get<T>(`/assets/config/${config}${config === 'app' && environment.production ? '.prod' : ''}.config.json`).pipe(tap((res) => {
             this._configs[config].loading = false;
             this._configs[config].data = res;
         }));
