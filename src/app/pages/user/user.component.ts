@@ -24,6 +24,14 @@ export class UserComponent implements AfterViewInit {
     constructor(private _userService: UserService, private _router: Router) {}
 
     ngAfterViewInit(): void {
+        for (const button of this.buttons) {
+            const active = this.isActive(button);
+
+            if (active) {
+                break;
+            }
+        }
+
         if (!this.activeButton) {
             this._router.navigate([Paths.USER, Paths.PROFILE]);
         }

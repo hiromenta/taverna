@@ -16,6 +16,31 @@ export class UserService {
 
     constructor(private _apiConfig: ApiConfig) {}
 
+    private _sanitizeUser() {
+        if (!this.user) {
+            return;
+        }
+
+        if (['null', 'undefined', null, undefined].includes(this.user.address)) {
+            this.user.address = '';
+        }
+        if (['null', 'undefined', null, undefined].includes(this.user.avatarUrl)) {
+            this.user.avatarUrl = '';
+        }
+        if (['null', 'undefined', null, undefined].includes(this.user.bio)) {
+            this.user.bio = '';
+        }
+        if (['null', 'undefined', null, undefined].includes(this.user.phone)) {
+            this.user.phone = '';
+        }
+        if (['null', 'undefined', null, undefined].includes(this.user.posterUrl)) {
+            this.user.posterUrl = '';
+        }
+        if (['null', 'undefined', null, undefined].includes(this.user.subscriptionDate)) {
+            this.user.subscriptionDate = '';
+        }
+    }
+
     login(body: { usermail: string, password: string }): Observable<LoginResponse | ErrorResponse> {
         return this._apiConfig.send('login', { body }).pipe(
             tap(res => {
@@ -24,6 +49,8 @@ export class UserService {
 
                     this.authenticated = true;
                     this.user = (res as LoginResponse)?.user;
+
+                    this._sanitizeUser();
 
                     this.roleChanged$.next(this.user.role);
                 }
@@ -72,6 +99,8 @@ export class UserService {
                 this.authenticated = true;
                 this.user = (res as LoginResponse)?.user;
 
+                this._sanitizeUser();
+
                 this.roleChanged$.next(this.user.role);
             }
         ));
@@ -104,7 +133,8 @@ export class UserService {
             username: data.username || this.user?.username,
             email: data.email || this.user?.email,
             phone: data.phone?.replaceAll(' ', '').replaceAll('-', '') || this.user?.phone,
-            bio: data.bio || this.user?.bio
+            bio: data.bio || this.user?.bio,
+            address: data.address || this.user?.address
         };
 
         return this._apiConfig.send('updateUser', { body: { ...sanified } } );
