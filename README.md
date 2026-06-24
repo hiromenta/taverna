@@ -1,1 +1,1 @@
-# La Taverna Del Carrettiere (FE)
+# La Taverna Del Carrettiere
