@@ -25,7 +25,7 @@
             <div class="spacer start"><div></div></div>
 
             <div class="amount" [myFeature]="'cart'">{{ 'shop.product.amount' | translate }}: <div class="change-amount" (click)="decrease()">-</div> <span>{{ amount }}</span> <div class="change-amount" (click)="increase()">+</div></div>
-            <button [myFeature]="'cart'" (click)="addToCart()">{{ 'shop.product.add_to_cart' | translate | uppercase }} <img src="../../../../../assets/icons/carrello_vuoto.svg" alt="icon"></button>
+            <button [myFeature]="'cart'" (click)="addToCart()" class="no-border">{{ 'shop.product.add_to_cart' | translate | uppercase }} <img src="../../../../../assets/icons/carrello_vuoto.svg" alt="icon"></button>
         </div>
     </div>
 </div>

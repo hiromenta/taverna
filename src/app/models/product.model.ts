@@ -32,6 +32,8 @@ export interface Order {
     status: OrderStatuses;
     createdAt: string;
     sessionId: string;
+    ship: boolean;
+    open: boolean;
 }
 
 export interface Product {

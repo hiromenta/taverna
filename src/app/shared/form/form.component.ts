@@ -36,7 +36,7 @@ export class FormComponent implements AfterContentInit, AfterViewInit {
             } else {
                 switch (control.type) {
                     case ControlType.CHECKBOX:
-                        this.updateValue(control, this.checkboxElements!.find(c => c.id === control.selector)!);
+                        this.updateValue(control, (this.checkboxElements || []).find(c => c.id === control.selector)!);
                 }
             }
         }

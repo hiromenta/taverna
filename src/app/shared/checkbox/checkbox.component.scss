@@ -15,8 +15,14 @@
     align-items: center;
 
     span {
-        margin-bottom: 0.25rem;
         color: var(--accent-light);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 0.5rem;
+        }
     }
 }
 

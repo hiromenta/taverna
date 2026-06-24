@@ -22,6 +22,7 @@
         </div>
 
         <div class="checkout" *ngIf="showCheckout && products.length">
+            <div class="settings"><my-form [form]="form"></my-form></div>
             <button class="primary" (click)="checkout()">{{ 'sidebar.checkout' | translate }}</button>
         </div>
     </div>

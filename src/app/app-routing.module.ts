@@ -16,11 +16,14 @@ import { ProfileComponent } from './pages/user/profile/profile.component';
 import { EditProfileComponent } from './pages/user/edit-profile/edit-profile.component';
 import { PaymentSuccessComponent } from './shared/sidebar/payment-success/payment-success.component';
 import { OrdersComponent } from './pages/user/orders/orders.component';
+import { WorkInProgressComponent } from './pages/work-in-progress/work-in-progress.component';
+import { WIPGuard } from './guards/wip.guard';
 
 export enum Paths {
   HOME = 'home',
   LOGIN = 'login',
   REGISTER = 'register',
+  WORK_IN_PROGRESS = 'work-in-progress',
   SHOP = 'shop',
   PRODUCT = 'product',
   SHOP_MENU = 'shop-menu',
@@ -61,6 +64,15 @@ const routes: Routes = [
     data: {
       grant: [Role.GUEST],
       breadcrumbs: [Paths.REGISTER]
+    }
+  },
+  {
+    path: Paths.WORK_IN_PROGRESS,
+    component: WorkInProgressComponent,
+    canActivate: [WIPGuard],
+    data: {
+      grantAll: true,
+      breadcrumbs: [Paths.WORK_IN_PROGRESS]
     }
   },
   {

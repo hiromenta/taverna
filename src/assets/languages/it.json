@@ -110,6 +110,8 @@
     },
     "sidebar": {
         "remove": "Rimuovi",
+        "ship": "Spedisci",
+        "open": "Apri in live",
         "checkout": "Checkout"
     },
     "user": {
@@ -138,6 +140,14 @@
             "cancel": "Pagamento annullato"
         },
         "orders": {
+            "table": {
+                "id": "Id",
+                "date": "Data",
+                "total": "Totale",
+                "ship": "Spedisci",
+                "open": "Apri in live",
+                "status": "Stato"
+            },
             "status": {
                 "0": "In corso",
                 "1": "Pagato",
@@ -164,7 +174,8 @@
         "ER_SESSION_EXPIRED": "Sessione scaduta",
         "ER_ADDRESS_MISSING": "Aggiungere un indirizzo prima di continuare",
         "ER_NOT_ENOUGH_PRODUCTS": "Non ci sono abbastanza prodotti in stock",
-        "ER_NO_DISCOUNTS": "Il codice inserito non è valido"
+        "ER_NO_DISCOUNTS": "Il codice inserito non è valido",
+        "ER_TRUNCATED_WRONG_VALUE_FOR_FIELD": "Valore incorretto per il campo"
     },
     "notification": {
         "success": "Successo",

@@ -31,13 +31,19 @@
                 color: var(--danger);
                 position: absolute;
                 right: 0.75rem;
-                top: 0.9rem;
+                top: 55%;
+                transform: translateY(-50%);
+
+                img {
+                    width: 1rem;
+                }
             }
         }
 
         .errors {
             font-size: 0.75rem;
             font-style: italic;
+            color: var(--danger);
         }
 
     }

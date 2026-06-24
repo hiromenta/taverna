@@ -8,6 +8,7 @@ import { LoaderService } from "../../services/loader.service";
 import { NotificationsService } from "../../services/notification.service";
 import { Router } from "@angular/router";
 import { Paths } from "../../app-routing.module";
+import { ControlType, MyForm } from "../../models/form.model";
 
 @UntilDestroy()
 @Component({
@@ -22,6 +23,13 @@ export class SidebarComponent implements OnInit {
     showCheckout = false;
 
     products: { product: Product; quantity: number }[] = [];
+
+    form: MyForm = {
+        controls: [
+            { selector: 'ship', type: ControlType.CHECKBOX, description: 'sidebar.ship' },
+            { selector: 'open', type: ControlType.CHECKBOX, description: 'sidebar.open' }
+        ]
+    };
 
     constructor(
         private _sidebarService: SidebarService,
@@ -140,7 +148,7 @@ export class SidebarComponent implements OnInit {
     private _doCheckout() {
         this._loaderService.show();
 
-        this._productsService.createCheckoutSession(this.products)
+        this._productsService.createCheckoutSession(this.products, this.form.value?.['ship'], this.form.value?.['open'])
             .pipe(
                 untilDestroyed(this)
             )

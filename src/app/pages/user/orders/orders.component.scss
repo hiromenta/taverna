@@ -25,6 +25,18 @@ table {
                 &:has(.tag) {
                     display: flex;
                     justify-content: center;
+                    align-items: center;
+                }
+
+                .mark {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 0.25rem 0.5rem;
+
+                    img {
+                        width: 1rem;
+                    }
                 }
 
                 .tag {
