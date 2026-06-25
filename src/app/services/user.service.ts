@@ -50,30 +50,32 @@ export class UserService {
         }
     }
 
-    private _updateUserPipes() {
-        let originalResponse: LoginResponse | ErrorResponse;
+    private _updateUserPipes(response: LoginResponse | ErrorResponse) {
+        return of(response).pipe(
+            tap((res: LoginResponse | ErrorResponse) => {
+                if ((res as LoginResponse)?.token) {
+                    sessionStorage.setItem('token', (res as LoginResponse)?.token);
 
-        return tap((res: LoginResponse | ErrorResponse) => {
-            originalResponse = res;
+                    this.authenticated = true;
+                    this.user = (res as LoginResponse)?.user;
+                }
+            }),
+            switchMap(() => this._configService.getAppConfig()),
+            switchMap((appConfig) => {
+                this._sanitizeUser(appConfig);
+                this.roleChanged$.next(this.user!.role);
 
-            if ((res as LoginResponse)?.token) {
-                sessionStorage.setItem('token', (res as LoginResponse)?.token);
+                if (!(response as ErrorResponse).code && !(response as ErrorResponse).message) {
+                    (response as LoginResponse).user = this.user!;
+                }
 
-                this.authenticated = true;
-                this.user = (res as LoginResponse)?.user;
-            }
-        }),
-        switchMap(() => this._configService.getAppConfig()),
-        switchMap((appConfig) => {
-            this._sanitizeUser(appConfig);
-            this.roleChanged$.next(this.user!.role);
-
-            return of(originalResponse);
-        });
+                return of(response);
+            })
+        );
     }
 
     login(body: { usermail: string, password: string }): Observable<LoginResponse | ErrorResponse> {
-        return this._apiConfig.send('login', { body }).pipe(this._updateUserPipes());
+        return this._apiConfig.send('login', { body }).pipe(switchMap((res) => this._updateUserPipes(res)));
     }
 
     logout() {
@@ -112,7 +114,7 @@ export class UserService {
             return of(null);
         }
 
-        return this._apiConfig.send('user').pipe(this._updateUserPipes());
+        return this._apiConfig.send('user').pipe(switchMap((res) => this._updateUserPipes({ token, ...res })));
     }
 
     uploadAvatar(file: File) {

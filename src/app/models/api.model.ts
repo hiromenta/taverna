@@ -13,6 +13,7 @@ export interface ApiOptions {
 }
 
 export interface ErrorResponse {
-    code: string;
-    errno: number;
+    code?: string;
+    errno?: number;
+    message?: string;
 }

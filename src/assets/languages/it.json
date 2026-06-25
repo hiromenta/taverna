@@ -53,7 +53,7 @@
         "hint2": "Registrati"
     },
     "header": {
-        "hint": "- Spedizione gratis a partire da €49 -",
+        "hint": "- Benvenuti nella Taverna del Carrettiere -",
         "search": {
             "placeholder": "Cerca carte, espansioni, prodotti..."
         },
@@ -162,6 +162,7 @@
         "Invalid token": "Sessione scaduta",
         "url_invalid": "URL non valido",
         "amount_too_small": "Il prezzo del carrello non è valido (almeno €0.50)",
+        "Unauthorized": "Non sei autorizzato a questa risorsa",
         "ER_DUP_ENTRY": "Utente già esistente",
         "ER_BAD_FIELD_ERROR": "Colonna sconosciuta",
         "ER_PARSE_ERROR": "Valore invalido, impossibile convertire",
