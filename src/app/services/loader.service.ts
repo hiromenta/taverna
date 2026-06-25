@@ -13,6 +13,10 @@ export class LoaderService {
 
     show(subject?: string) {
         this._loaderQueue.push(subject || 'unknown');
+
+        setTimeout(() => {
+            this.hide(subject);
+        }, 10000);
     }
 
     hide(subject?: string) {

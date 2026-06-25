@@ -2,11 +2,11 @@
     <div class="poster">
         <div class="user-imgs">
             <div class="avatar">
-                <img *ngIf="getUserAvatar()" [src]="getUserAvatar()" alt="avatar">
+                <img *ngIf="getUserAvatar()" [src]="getUserAvatar()" alt="avatar" class="avatar-img">
                 <div class="pencil" (click)="onAvatarClick()"><img src="../../../../../assets/icons/matita.svg" alt="icon"></div>
             </div>
             <div class="poster">
-                <img *ngIf="getUserPoster()" [src]="getUserPoster()" alt="poster">
+                <img *ngIf="getUserPoster()" [src]="getUserPoster()" alt="poster" class="poster-img">
                 <div class="pencil" (click)="onPosterClick()"><img src="../../../../../assets/icons/matita.svg" alt="icon"></div>
             </div>
         </div>
