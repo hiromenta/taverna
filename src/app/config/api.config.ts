@@ -8,14 +8,14 @@ import { UtilsService } from "../services/utils.service";
 @Injectable()
 export class ApiConfig {
 
-    baseUrl: string = '';
+    apiUrl: string = '';
     apiEndpoints: Api[] = [];
 
     constructor (private _configService: ConfigService, private _http: HttpClient, private _utilsService: UtilsService) {}
 
     getApi(selector: string): Api | undefined {
         return this.apiEndpoints
-            .map(apis => ({ selector: apis.selector, url: this.baseUrl + apis.url, method: apis.method, delay: apis.delay }))
+            .map(apis => ({ selector: apis.selector, url: this.apiUrl + apis.url, method: apis.method, delay: apis.delay }))
             .find(api => api.selector === selector);
     }
 
@@ -26,7 +26,7 @@ export class ApiConfig {
 
         return this._configService.getAppConfig().pipe(
             switchMap((appConfig) => {
-                this.baseUrl = appConfig.baseUrl;
+                this.apiUrl = appConfig.apiUrl;
                 return this._configService.getApiConfig()
             }),
             switchMap((apiConfig) => {

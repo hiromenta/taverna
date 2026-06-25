@@ -32,6 +32,11 @@ export class ProductComponent {
     ) {}
 
     ngOnInit(): void {
+        if (!this._route.snapshot.queryParams['id']) {
+            this._router.navigate([Paths.SHOP]);
+            return;
+        }
+
         this._loaderService.show();
 
         this._productsService.getProduct(this._route.snapshot.queryParams['id'])
@@ -43,7 +48,10 @@ export class ProductComponent {
                 },
                 error: (err) => {
                     this._loaderService.hide();
-                    this._notificationsService.addNotification('danger', 'error.' + err.error.code);
+
+                    this._router.navigate([Paths.SHOP]).then(() => {
+                        this._notificationsService.addNotification('danger', 'error.' + err.error.code);
+                    });
                 }
             });
     }

@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     const path = location.pathname?.slice(1)?.split('/');
+    const search = location.search.split('?')[1].split('&');
 
     this._loaderService.show();
 
@@ -39,7 +40,7 @@ export class AppComponent implements OnInit {
           this._loaderService.hide();
 
           if (path.length) {
-            this._router.navigate(path);
+            this._router.navigate(path, { queryParams: this._getQueryParams(search) });
           }
         },
         error: (err) => {
@@ -49,6 +50,16 @@ export class AppComponent implements OnInit {
           this._userService.logout();
         }
       });
+  }
+
+  private _getQueryParams(paramsArray: string[]) {
+    const queryParams: { [key: string]: string } = {};
+
+    for (const param of paramsArray) {
+      queryParams[param.split('=')[0]] = param.split('=')[1];
+    }
+
+    return queryParams;
   }
 
 }
