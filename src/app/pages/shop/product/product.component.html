@@ -1,31 +1,37 @@
 <div class="actions">
     <!-- <a (click)="navigateShop()">{{ 'shop.product.back_to_shop' | translate }}</a> -->
 </div>
-<div class="main">
+<div class="main" *ngIf="product">
     <div class="img">
-        <img [src]="product?.imageUrl" alt="product">
+        <img [src]="product.imageUrl" alt="product">
     </div>
     <div class="info">
         <div>
             <div class="brand">
-                {{ product?.brand }}
+                {{ product.brand }}
                 <div class="heart" (click)="toggleFavorite()" [myFeature]="'favourites'">
                     <img *ngIf="!isFavorite()" src="../../../../../assets/icons/cuore_vuoto.svg" alt="icon">
                     <img *ngIf="isFavorite()" src="../../../../../assets/icons/cuore_pieno.svg" alt="icon">
                 </div>
             </div>
-            <div class="title">{{ product?.name }}</div>
+            <div class="title">{{ product.name }}</div>
         </div>
         <div>
-            <div class="price">{{ product?.price | currency:'EUR' }}</div>
-            <div class="description">{{ product?.description }}</div>
-            <div class="availability" *ngIf="product?.availability">{{ 'shop.product.available' | translate }}</div>
-            <div class="unavailability" *ngIf="!product?.availability">{{ 'shop.product.unavailable' | translate }}</div>
+            <div class="price">{{ product.price | currency:'EUR' }}</div>
+            <div class="description">{{ product.description }}</div>
+            <div class="availability" *ngIf="product.availability">{{ 'shop.product.available' | translate }}</div>
+            <div class="unavailability" *ngIf="!product.availability">{{ 'shop.product.unavailable' | translate }}</div>
 
             <div class="spacer start"><div></div></div>
 
             <div class="amount" [myFeature]="'cart'">{{ 'shop.product.amount' | translate }}: <div class="change-amount" (click)="decrease()">-</div> <span>{{ amount }}</span> <div class="change-amount" (click)="increase()">+</div></div>
             <button [myFeature]="'cart'" (click)="addToCart()" class="no-border">{{ 'shop.product.add_to_cart' | translate | uppercase }} <img src="../../../../../assets/icons/carrello_vuoto.svg" alt="icon"></button>
         </div>
+    </div>
+</div>
+
+<div class="main" *ngIf="!product">
+    <div class="no-items">
+        {{ 'error.ER_NO_ITEMS' | translate }}
     </div>
 </div>

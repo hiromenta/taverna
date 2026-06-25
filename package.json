@@ -1,6 +1,6 @@
 {
   "name": "la-taverna-del-carrettiere",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 4200 --proxy-config proxy.conf.json",

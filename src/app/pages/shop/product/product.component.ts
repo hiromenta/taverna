@@ -50,7 +50,9 @@ export class ProductComponent {
                     this._loaderService.hide();
 
                     this._router.navigate([Paths.SHOP]).then(() => {
+                        this._notificationsService.deleteAllNotifications();
                         this._notificationsService.addNotification('danger', 'error.' + err.error.code);
+                        this._loaderService.hide();
                     });
                 }
             });

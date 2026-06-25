@@ -3,7 +3,7 @@ import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, GuardResult, May
 import { Paths } from "../app-routing.module";
 import { UserService } from "../services/user.service";
 import { ConfigService } from "../services/config.service";
-import { firstValueFrom } from "rxjs";
+import { firstValueFrom, lastValueFrom } from "rxjs";
 
 @Injectable()
 export class FeatureGuard implements CanActivate, CanActivateChild {
@@ -30,6 +30,10 @@ export class FeatureGuard implements CanActivate, CanActivateChild {
 
         if (grantNone) {
             return this._fallBack();
+        }
+
+        if (!this._userService.user) {
+            await lastValueFrom(this._userService.getUserData());
         }
 
         if (grantAll || grant.includes(this._userService.user?.role || 0)) {
