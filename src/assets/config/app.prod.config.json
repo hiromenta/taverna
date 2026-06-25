@@ -1,5 +1,5 @@
 {
-    "baseUrl": "latavernadelcarrettiere.it",
-    "apiUrl": "taverna-be-production.up.railway.app",
+    "baseUrl": "https://www.latavernadelcarrettiere.it",
+    "apiUrl": "https://taverna-be-production.up.railway.app",
     "isWebsiteLive": true
 }
