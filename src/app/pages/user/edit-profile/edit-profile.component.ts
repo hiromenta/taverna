@@ -29,11 +29,19 @@ export class EditProfileComponent implements AfterViewInit {
     ngAfterViewInit(): void {
         this.form.controls.push(
             { selector: 'username', type: ControlType.TEXT, label: 'form.username', darkStyle: true, value: this.getUser()?.username, errors: [] },
+            { selector: 'firstName', type: ControlType.TEXT, label: 'form.firstName', darkStyle: true, value: this.getUser()?.firstName, errors: [], size: 6 },
+            { selector: 'lastName', type: ControlType.TEXT, label: 'form.lastName', darkStyle: true, value: this.getUser()?.lastName, errors: [], size: 6 },
             { selector: 'email', type: ControlType.EMAIL, label: 'form.email', darkStyle: true, value: this.getUser()?.email, errors: [] },
             { selector: 'phone', type: ControlType.PHONE, label: 'form.phone', darkStyle: true, value: this.getUser()?.phone, errors: [] },
-            { selector: 'bio', type: ControlType.TEXT, label: 'form.bio', darkStyle: true, value: this.getUser()?.bio, errors: [] },
-            { selector: 'address', type: ControlType.TEXT, label: 'form.address', darkStyle: true, value: this.getUser()?.address, errors: [] }
+            { selector: 'address', type: ControlType.TEXT, label: 'form.address', darkStyle: true, value: this.getUser()?.address, errors: [], size: 6 },
+            { selector: 'city', type: ControlType.TEXT, label: 'form.city', darkStyle: true, value: this.getUser()?.city, errors: [], size: 4 },
+            { selector: 'zipCode', type: ControlType.ZIPCODE, label: 'form.zipCode', darkStyle: true, value: this.getUser()?.zipCode, errors: [], size: 2 },
+            { selector: 'bio', type: ControlType.TEXT, label: 'form.bio', darkStyle: true, value: this.getUser()?.bio, errors: [] }
         );
+    }
+
+    getFormValidity() {
+        return this.form.valid;
     }
 
     onAvatarClick() {
@@ -93,9 +101,13 @@ export class EditProfileComponent implements AfterViewInit {
     }
 
     save() {
+        if (!this.getFormValidity) {
+            return;
+        }
+
         this._loaderService.show();
 
-        this._userService.updateUser((this.form.value as { username?: string, email?: string, phone?: string, bio?: string, address?: string }))
+        this._userService.updateUser((this.form.value as { username?: string, firstName?: string, lastName?: string, email?: string, phone?: string, bio?: string, address?: string, city?: string, zipCode?: string }))
             .pipe(
                 switchMap(() => {
                     if (this.avatarFile) {

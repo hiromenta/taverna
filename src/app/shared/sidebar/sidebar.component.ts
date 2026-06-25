@@ -134,15 +134,52 @@ export class SidebarComponent implements OnInit {
     }
 
     checkout() {
-        if (this._userService.user?.address) {
-            this._doCheckout();
+        if (!this._userService.user?.firstName) {
+            this._router.navigate([Paths.USER, Paths.EDIT_PROFILE]).then(() => {
+                this.close();
+                this._notificationsService.addNotification('warning', 'error.ER_FIRSTNAME_MISSING');
+            });
+
             return;
         }
 
-        this._router.navigate([Paths.USER, Paths.EDIT_PROFILE]).then(() => {
-            this.close();
-            this._notificationsService.addNotification('warning', 'error.ER_ADDRESS_MISSING');
-        });
+        if (!this._userService.user?.lastName) {
+            this._router.navigate([Paths.USER, Paths.EDIT_PROFILE]).then(() => {
+                this.close();
+                this._notificationsService.addNotification('warning', 'error.ER_LASTNAME_MISSING');
+            });
+
+            return;
+        }
+
+        if (!this._userService.user?.address) {
+            this._router.navigate([Paths.USER, Paths.EDIT_PROFILE]).then(() => {
+                this.close();
+                this._notificationsService.addNotification('warning', 'error.ER_ADDRESS_MISSING');
+            });
+
+            return;
+        }
+
+        if (!this._userService.user?.city) {
+            this._router.navigate([Paths.USER, Paths.EDIT_PROFILE]).then(() => {
+                this.close();
+                this._notificationsService.addNotification('warning', 'error.ER_CITY_MISSING');
+            });
+
+            return;
+        }
+
+        if (!this._userService.user?.zipCode) {
+            this._router.navigate([Paths.USER, Paths.EDIT_PROFILE]).then(() => {
+                this.close();
+                this._notificationsService.addNotification('warning', 'error.ER_ZIPCODE_MISSING');
+            });
+
+            return;
+        }
+
+        this._doCheckout();
     }
 
     private _doCheckout() {

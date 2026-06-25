@@ -14,7 +14,7 @@
         <my-form [form]="form" class="form"></my-form>
 
         <div class="actions">
-            <button class="primary" (click)="save()">{{ 'user.edit_profile.save' | translate }}</button>
+            <button class="primary" (click)="save()" [disabled]="!getFormValidity()">{{ 'user.edit_profile.save' | translate }}</button>
             <button class="secondary" (click)="cancel()">{{ 'user.edit_profile.cancel' | translate }}</button>
         </div>
     </div>

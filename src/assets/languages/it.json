@@ -1,7 +1,7 @@
 {
     "form": {
-        "firstname": "Nome",
-        "lastname": "Cognome",
+        "firstName": "Nome",
+        "lastName": "Cognome",
         "usermail": "Nome utente / Mail",
         "username": "Nome utente",
         "email": "Indirizzo mail",
@@ -9,6 +9,8 @@
         "bio": "Bio",
         "password": "Password",
         "address": "Indirizzo",
+        "city": "Città",
+        "zipCode": "CAP",
         "actions": {
             "register": "Registrati",
             "login": "Login"
@@ -173,7 +175,11 @@
         "ER_NO_ITEMS": "Nessun elemento presente",
         "ER_TRUNCATED_WRONG_VALUE": "Valore invalido per l'eliminazione",
         "ER_SESSION_EXPIRED": "Sessione scaduta",
+        "ER_FIRSTNAME_MISSING": "Aggiungere un nome prima di continuare",
+        "ER_LASTNAME_MISSING": "Aggiungere un cognome prima di continuare",
         "ER_ADDRESS_MISSING": "Aggiungere un indirizzo prima di continuare",
+        "ER_CITY_MISSING": "Aggiungere una città prima di continuare",
+        "ER_ZIPCODE_MISSING": "Aggiungere un CAP prima di continuare",
         "ER_NOT_ENOUGH_PRODUCTS": "Non ci sono abbastanza prodotti in stock",
         "ER_NO_DISCOUNTS": "Il codice inserito non è valido",
         "ER_TRUNCATED_WRONG_VALUE_FOR_FIELD": "Valore incorretto per il campo"

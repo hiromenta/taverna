@@ -3,7 +3,8 @@ export enum ControlType {
     PASSWORD = 'password',
     EMAIL = 'email',
     CHECKBOX = 'checkbox',
-    PHONE = 'phone'
+    PHONE = 'phone',
+    ZIPCODE = 'zipcode'
 }
 
 export const Errors = {
@@ -33,6 +34,7 @@ export interface Control {
     touched?: boolean;
     description?: string;
     darkStyle?: boolean;
+    size?: number;
 }
 
 export interface MyForm {

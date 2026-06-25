@@ -17,6 +17,10 @@ export interface User {
     bio?: string;
     phone?: string;
     address?: string;
+    city?: string;
+    zipCode?: string;
+    firstName?: string;
+    lastName?: string;
 }
 
 export interface RegisterResponse {

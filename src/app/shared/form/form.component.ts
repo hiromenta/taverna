@@ -15,7 +15,7 @@ export class FormComponent implements AfterContentInit, AfterViewInit {
 
     @ViewChildren('checkboxElement') checkboxElements?: CheckboxComponent[];
 
-    unregularInputs = [ControlType.CHECKBOX, ControlType.PHONE];
+    unregularInputs = [ControlType.CHECKBOX, ControlType.PHONE, ControlType.ZIPCODE];
 
     constructor() {}
 
@@ -37,6 +37,11 @@ export class FormComponent implements AfterContentInit, AfterViewInit {
                 switch (control.type) {
                     case ControlType.CHECKBOX:
                         this.updateValue(control, (this.checkboxElements || []).find(c => c.id === control.selector)!);
+                        break;
+                    case ControlType.PHONE:
+                    case ControlType.ZIPCODE:
+                        this.updateValue(control, document.querySelector('#' + control.selector) as HTMLInputElement);
+                        break;
                 }
             }
         }

@@ -37,8 +37,17 @@ export class UserService {
         if (['null', 'undefined', null, undefined].includes(this.user.posterUrl)) {
             this.user.posterUrl = '';
         }
-        if (['null', 'undefined', null, undefined].includes(this.user.subscriptionDate)) {
-            this.user.subscriptionDate = '';
+        if (['null', 'undefined', null, undefined].includes(this.user.firstName)) {
+            this.user.firstName = '';
+        }
+        if (['null', 'undefined', null, undefined].includes(this.user.lastName)) {
+            this.user.lastName = '';
+        }
+        if (['null', 'undefined', null, undefined].includes(this.user.city)) {
+            this.user.city = '';
+        }
+        if (['null', 'undefined', null, undefined].includes(this.user.zipCode)) {
+            this.user.zipCode = '';
         }
 
         if (this.user.avatarUrl) {
@@ -133,7 +142,7 @@ export class UserService {
         return this._apiConfig.send('poster', { body: formData } );
     }
 
-    updateUser(data: { username?: string, email?: string, phone?: string, bio?: string, address?: string }) {
+    updateUser(data: { username?: string, firstName?: string, lastName?: string, email?: string, phone?: string, bio?: string, address?: string, city?: string, zipCode?: string }) {
         const token = sessionStorage.getItem('token');
 
         if (!token) {
@@ -142,10 +151,14 @@ export class UserService {
 
         const sanified = {
             username: data.username || this.user?.username,
+            firstName: data.firstName || this.user?.firstName,
+            lastName: data.lastName || this.user?.lastName,
             email: data.email || this.user?.email,
             phone: data.phone?.replaceAll(' ', '').replaceAll('-', '') || this.user?.phone,
             bio: data.bio || this.user?.bio,
-            address: data.address || this.user?.address
+            address: data.address || this.user?.address,
+            city: data.city || this.user?.city,
+            zipCode: data.zipCode || this.user?.zipCode
         };
 
         return this._apiConfig.send('updateUser', { body: { ...sanified } } );

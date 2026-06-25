@@ -33,6 +33,7 @@
             justify-content: space-around;
             align-items: center;
             position: relative;
+            min-width: 375px;
 
             .avatar {
                 width: 12rem;
@@ -41,10 +42,12 @@
                 border: var(--border-dark);
                 overflow: hidden;
                 position: absolute;
-                left: -25%;
+                left: 0;
+                transform: translateX(-50%);
 
                 img {
                     width: 100%;
+                    background-color: var(--primary);
                 }
             }
 
