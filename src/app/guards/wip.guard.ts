@@ -21,7 +21,7 @@ export class WIPGuard implements CanActivate, CanActivateChild {
         const appConfig = await firstValueFrom(this._configService.getAppConfig());
 
         if (route.routeConfig?.path === Paths.WORK_IN_PROGRESS && appConfig.isWebsiteLive) {
-            this._router.navigate([Paths.NOT_FOUND]);
+            this._router.navigate([Paths.HOME]);
             return false;
         }
 
