@@ -1,9 +1,10 @@
 import { Injectable } from "@angular/core";
-import { Observable, of, Subject, tap } from "rxjs";
+import { Observable, of, Subject, switchMap, tap } from "rxjs";
 import { ApiConfig } from "../config/api.config";
 import { ErrorResponse } from "../models/api.model";
 import { FavoritesResponse, LoginResponse, RegisterResponse, Role, User } from "../models/user.model";
 import { FavoriteProduct } from "../models/product.model";
+import { ConfigService } from "./config.service";
 
 @Injectable()
 export class UserService {
@@ -14,9 +15,9 @@ export class UserService {
 
     roleChanged$: Subject<Role> = new Subject<Role>();
 
-    constructor(private _apiConfig: ApiConfig) {}
+    constructor(private _apiConfig: ApiConfig, private _configService: ConfigService) {}
 
-    private _sanitizeUser() {
+    private _sanitizeUser(appConfig: any) {
         if (!this.user) {
             return;
         }
@@ -39,23 +40,40 @@ export class UserService {
         if (['null', 'undefined', null, undefined].includes(this.user.subscriptionDate)) {
             this.user.subscriptionDate = '';
         }
+
+        if (this.user.avatarUrl) {
+            this.user.avatarUrl = appConfig.apiUrl + this.user.avatarUrl;
+        }
+
+        if (this.user.posterUrl) {
+            this.user.posterUrl = appConfig.apiUrl + this.user.posterUrl;
+        }
+    }
+
+    private _updateUserPipes() {
+        let originalResponse: LoginResponse | ErrorResponse;
+
+        return tap((res: LoginResponse | ErrorResponse) => {
+            originalResponse = res;
+
+            if ((res as LoginResponse)?.token) {
+                sessionStorage.setItem('token', (res as LoginResponse)?.token);
+
+                this.authenticated = true;
+                this.user = (res as LoginResponse)?.user;
+            }
+        }),
+        switchMap(() => this._configService.getAppConfig()),
+        switchMap((appConfig) => {
+            this._sanitizeUser(appConfig);
+            this.roleChanged$.next(this.user!.role);
+
+            return of(originalResponse);
+        });
     }
 
     login(body: { usermail: string, password: string }): Observable<LoginResponse | ErrorResponse> {
-        return this._apiConfig.send('login', { body }).pipe(
-            tap(res => {
-                if ((res as LoginResponse)?.token) {
-                    sessionStorage.setItem('token', (res as LoginResponse)?.token);
-
-                    this.authenticated = true;
-                    this.user = (res as LoginResponse)?.user;
-
-                    this._sanitizeUser();
-
-                    this.roleChanged$.next(this.user.role);
-                }
-            }
-        ));
+        return this._apiConfig.send('login', { body }).pipe(this._updateUserPipes());
     }
 
     logout() {
@@ -87,23 +105,14 @@ export class UserService {
         return this._apiConfig.send('removeFavorite', { queryParams: { userId: this.user?.id || -1, productId } } );
     }
 
-    getUserData() {
+    getUserData(): Observable<LoginResponse | ErrorResponse | null> {
         const token = sessionStorage.getItem('token');
 
         if (!token) {
             return of(null);
         }
 
-        return this._apiConfig.send('user').pipe(
-            tap(res => {
-                this.authenticated = true;
-                this.user = (res as LoginResponse)?.user;
-
-                this._sanitizeUser();
-
-                this.roleChanged$.next(this.user.role);
-            }
-        ));
+        return this._apiConfig.send('user').pipe(this._updateUserPipes());
     }
 
     uploadAvatar(file: File) {

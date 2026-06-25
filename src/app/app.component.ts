@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     const path = location.pathname?.slice(1)?.split('/');
-    const search = location.search.split('?')[1].split('&');
+    const search = location.search?.split('?')?.[1]?.split('&') || [];
 
     this._loaderService.show();
 
