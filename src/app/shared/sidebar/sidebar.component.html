@@ -6,7 +6,7 @@
         <div *ngFor="let item of products; last as last$">
             <div class="product">
                 <div class="img">
-                    <img [src]="(getAppConfig() | async) + item.product.imageUrl" [alt]="item.product.name">
+                    <img [src]="(getAppConfig() | async).apiUrl + item.product.imageUrl" [alt]="item.product.name">
                 </div>
                 <div class="info">
                     <div class="brand">{{ item.product.brand }}</div>

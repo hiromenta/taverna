@@ -3,7 +3,7 @@
 </div>
 <div class="main" *ngIf="product">
     <div class="img">
-        <img [src]="(getAppConfig() | async) + product.imageUrl" alt="product">
+        <img [src]="(getAppConfig() | async).apiUrl + product.imageUrl" alt="product">
     </div>
     <div class="info">
         <div>
