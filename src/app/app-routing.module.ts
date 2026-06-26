@@ -151,7 +151,7 @@ const routes: Routes = [
   },
   { path: Paths.HOME, pathMatch: 'full', redirectTo: '' },
   { path: Paths.PAYMENT_SUCCESS, component: PaymentSuccessComponent },
-  { path: Paths.PAYMENT_CANCEL, redirectTo: '' },
+  { path: Paths.PAYMENT_CANCEL, redirectTo: Paths.USER + '/' + Paths.ORDERS },
   {
     path: '**',
     component: NotFoundComponent

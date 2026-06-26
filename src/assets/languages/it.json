@@ -114,6 +114,9 @@
         "remove": "Rimuovi",
         "ship": "Spedisci",
         "open": "Apri in live",
+        "shipping_hint": "Compra qui la spedizione",
+        "login_hint": "Accedi per acquistare",
+        "note": "Note per l'ordine",
         "checkout": "Checkout"
     },
     "user": {
@@ -146,10 +149,12 @@
                 "id": "Id",
                 "date": "Data",
                 "total": "Totale",
+                "note": "Note",
                 "ship": "Spedisci",
                 "open": "Apri in live",
                 "status": "Stato"
             },
+            "load": "Carica informazioni",
             "status": {
                 "0": "In corso",
                 "1": "Pagato",

@@ -7,13 +7,15 @@
     { "selector": "games", "url": "/api/products/games", "method": "GET" },
     { "selector": "types", "url": "/api/products/types", "method": "GET" },
     { "selector": "languages", "url": "/api/products/languages", "method": "GET" },
-    { "selector": "favorites", "url": "/api/users/favorites?userId=[userId]", "method": "GET" },
+    { "selector": "favorites", "url": "/api/users/favorites", "method": "GET" },
     { "selector": "addFavorite", "url": "/api/users/favorite", "method": "POST" },
-    { "selector": "removeFavorite", "url": "/api/users/favorite?userId=[userId]&productId=[productId]", "method": "DELETE" },
+    { "selector": "removeFavorite", "url": "/api/users/favorite?productId=[productId]", "method": "DELETE" },
     { "selector": "user", "url": "/api/users", "method": "POST" },
     { "selector": "avatar", "url": "/api/users/avatar", "method": "POST" },
     { "selector": "poster", "url": "/api/users/poster", "method": "POST" },
     { "selector": "updateUser", "url": "/api/users/update", "method": "POST" },
     { "selector": "createCheckout", "url": "/api/products/create-checkout-session", "method": "POST" },
-    { "selector": "getOrders", "url": "/api/users/orders", "method": "GET" }
+    { "selector": "getOrders", "url": "/api/users/orders", "method": "GET" },
+    { "selector": "getAllOrders", "url": "/api/users/allOrders", "method": "GET" },
+    { "selector": "orderInfo", "url": "/api/users/loadOrderInfo?id=[id]", "method": "GET" }
 ]

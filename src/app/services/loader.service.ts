@@ -16,7 +16,7 @@ export class LoaderService {
 
         setTimeout(() => {
             this.hide(subject);
-        }, 10000);
+        }, 3000);
     }
 
     hide(subject?: string) {

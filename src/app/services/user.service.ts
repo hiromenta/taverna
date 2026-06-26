@@ -101,7 +101,7 @@ export class UserService {
     }
 
     getFavorites(): Observable<FavoritesResponse | ErrorResponse> {
-        return this._apiConfig.send('favorites', { queryParams: { userId: this.user?.id || -1 } }).pipe(tap(res => {
+        return this._apiConfig.send('favorites').pipe(tap(res => {
             if ((res as FavoritesResponse)?.favorites?.length) {
                 this.favorites = (res as FavoritesResponse)?.favorites?.map(f => f.productId);
             }
@@ -109,11 +109,11 @@ export class UserService {
     }
 
     addFavorite(productId: number): Observable<FavoriteProduct | ErrorResponse> {
-        return this._apiConfig.send('addFavorite', { body: { userId: this.user?.id || -1, productId } } );
+        return this._apiConfig.send('addFavorite', { body: { productId } } );
     }
 
     removeFavorite(productId: number): Observable<FavoriteProduct | ErrorResponse> {
-        return this._apiConfig.send('removeFavorite', { queryParams: { userId: this.user?.id || -1, productId } } );
+        return this._apiConfig.send('removeFavorite', { queryParams: { productId } } );
     }
 
     getUserData(): Observable<LoginResponse | ErrorResponse | null> {
@@ -150,22 +150,26 @@ export class UserService {
         }
 
         const sanified = {
-            username: data.username || this.user?.username,
-            firstName: data.firstName || this.user?.firstName,
-            lastName: data.lastName || this.user?.lastName,
-            email: data.email || this.user?.email,
-            phone: data.phone?.replaceAll(' ', '').replaceAll('-', '') || this.user?.phone,
-            bio: data.bio || this.user?.bio,
-            address: data.address || this.user?.address,
-            city: data.city || this.user?.city,
-            zipCode: data.zipCode || this.user?.zipCode
+            username: data.username ?? this.user?.username,
+            firstName: data.firstName ?? this.user?.firstName,
+            lastName: data.lastName ?? this.user?.lastName,
+            email: data.email ?? this.user?.email,
+            phone: data.phone?.replaceAll(' ', '').replaceAll('-', '') ?? this.user?.phone,
+            bio: data.bio ?? this.user?.bio,
+            address: data.address ?? this.user?.address,
+            city: data.city ?? this.user?.city,
+            zipCode: data.zipCode ?? this.user?.zipCode
         };
 
         return this._apiConfig.send('updateUser', { body: { ...sanified } } );
     }
 
-    getOrders() {
-        return this._apiConfig.send('getOrders');
+    getOrders(all = false) {
+        return this._apiConfig.send(all ? 'getAllOrders' : 'getOrders');
+    }
+
+    loadOrderInfo(id: number) {
+        return this._apiConfig.send('orderInfo', { queryParams: { id } });
     }
 
 }

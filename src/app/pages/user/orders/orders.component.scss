@@ -23,9 +23,11 @@ table {
                 border-bottom: var(--border);
 
                 &:has(.tag) {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
+                    div {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
                 }
 
                 .mark {

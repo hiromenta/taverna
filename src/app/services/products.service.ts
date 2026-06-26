@@ -68,8 +68,8 @@ export class ProductsService {
         return this._apiConfig.send('languages');
     }
 
-    createCheckoutSession(products: { product: Product, quantity: number }[], ship = true, open = false) {
-        return this._apiConfig.send('createCheckout', { body: { products, ship, open } });
+    createCheckoutSession(products: { product: Product, quantity: number }[], note = '', open = false) {
+        return this._apiConfig.send('createCheckout', { body: { products, note, open } });
     }
 
 }

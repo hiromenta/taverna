@@ -3,23 +3,33 @@
         <th>{{ 'user.orders.table.id' | translate }}</th>
         <th>{{ 'user.orders.table.date' | translate }}</th>
         <th>{{ 'user.orders.table.total' | translate }}</th>
-        <th>{{ 'user.orders.table.ship' | translate }}</th>
+        <th>{{ 'user.orders.table.note' | translate }}</th>
+        <!-- <th>{{ 'user.orders.table.ship' | translate }}</th> -->
         <th>{{ 'user.orders.table.open' | translate }}</th>
         <th>{{ 'user.orders.table.status' | translate }}</th>
+        <th *ngIf="isAdmin()"></th>
     </thead>
     <tbody>
         <tr *ngFor="let order of getOrders()">
             <td>{{ order.id }}</td>
             <td>{{ order.createdAt | date:'dd/MM/yyyy HH:mm' }}</td>
             <td>{{ order.total | currency:'EUR' }}</td>
-            <td>
+            <td>{{ order.note }}</td>
+            <!-- <td>
                 <div class="mark" *ngIf="order.ship"><img src="../../../../../assets/icons/x.svg" alt="icon"></div>
-            </td>
+            </td> -->
             <td>
                 <div class="mark" *ngIf="order.open"><img src="../../../../../assets/icons/x.svg" alt="icon"></div>
             </td>
             <td>
-                <div [class]="'tag s' + order.status">{{ 'user.orders.status.' + order.status | translate }}</div>
+                <div>
+                    <div [class]="'tag s' + order.status" >
+                        {{ 'user.orders.status.' + order.status | translate }}
+                    </div>
+                </div>
+            </td>
+            <td *ngIf="isAdmin()">
+                <button (click)="loadOrderInfo(order.id)">{{ 'user.orders.load' | translate | uppercase }}</button>
             </td>
         </tr>
     </tbody>

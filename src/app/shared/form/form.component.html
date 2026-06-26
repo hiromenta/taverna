@@ -1,6 +1,6 @@
 <div *ngIf="form" class="form">
     <ng-container *ngFor="let control of form.controls">
-        <div class="input-container" [style.grid-column]="'span ' + (control.size || 12)">
+        <div class="input-container" [style.grid-column]="'span ' + (control.size || 12)" [class.checkbox]="control.type === getControlType().CHECKBOX">
             <span class="label" [class.dark]="control.darkStyle" *ngIf="control.label">{{ (control.label || '') | translate | uppercase }}</span>
             <div class="input-element">
                 <input [class.dark]="control.darkStyle" *ngIf="!unregularInputs.includes(control.type)" #inputElement (blur)="updateFormValueAndValidity()" (focus)="control.touched = true" (input)="updateValue(control, inputElement)" [type]="control.type" [required]="control.required" [id]="control.selector" [placeholder]="(control.placeholder || '') | translate" [value]="control.value || ''">

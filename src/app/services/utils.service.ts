@@ -12,7 +12,7 @@ export class UtilsService {
         const cart: { product: Product; quantity: number }[] = JSON.parse(localStorage.getItem('cart') || '[]');
 
         if (cart.map(items => items.product.id).includes(item.id)) {
-            if (cart.find(items => items.product.id === item.id)!.quantity + quantity >= item.availability) {
+            if (item.availability !== -1 && cart.find(items => items.product.id === item.id)!.quantity + quantity > item.availability) {
                 throw { id: item.id, error: 'ER_NO_AVAILABILITY' };
             }
 

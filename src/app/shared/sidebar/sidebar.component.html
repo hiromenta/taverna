@@ -18,12 +18,17 @@
                 </div>
             </div>
 
-            <div class="spacer" *ngIf="!last$"><div></div></div>
+            <div class="spacer"><div></div></div>
         </div>
 
         <div class="checkout" *ngIf="showCheckout && products.length">
+            <div class="hint" (click)="goToShipping()">{{ 'sidebar.shipping_hint' | translate }}</div>
             <div class="settings"><my-form [form]="form"></my-form></div>
             <button class="primary" (click)="checkout()">{{ 'sidebar.checkout' | translate }}</button>
+        </div>
+
+        <div class="checkout" *ngIf="!showCheckout && products.length">
+            <div class="hint" (click)="goToLogin()">{{ 'sidebar.login_hint' | translate }}</div>
         </div>
     </div>
 </div>

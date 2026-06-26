@@ -45,6 +45,10 @@ export class ProductComponent {
                 next: (res) => {
                     this._loaderService.hide();
                     this.product = res as Product;
+
+                    if (this.product.availability === 0) {
+                        this.amount = 0;
+                    }
                 },
                 error: (err) => {
                     this._loaderService.hide();
@@ -73,8 +77,12 @@ export class ProductComponent {
     increase() {
         this.amount++;
 
-        if (this.amount > (this.product?.availability || Infinity)) {
-            this.amount = (this.product?.availability || Infinity);
+        if (this.product?.availability === -1) {
+            return;
+        }
+
+        if (this.amount > (this.product?.availability ?? Infinity)) {
+            this.amount = (this.product?.availability ?? Infinity);
         }
     }
 

@@ -27,7 +27,7 @@ export class ShopMenuComponent implements OnInit {
             .subscribe({
                 next: (res) => {
                     this._loaderService.hide();
-                    this.types = (res as { types: { id: number; description: string }[] }).types || [];
+                    this.types = (res as { types: { id: number; description: string; hidden: boolean }[] }).types.filter(t => !t.hidden) || [];
                 },
                 error: (err) => {
                     this._loaderService.hide();

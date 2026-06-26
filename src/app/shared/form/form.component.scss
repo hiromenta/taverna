@@ -11,6 +11,11 @@
         margin-bottom: 1rem;
         width: 100%;
 
+        &.checkbox {
+            justify-content: center;
+            // padding-top: 1rem;
+        }
+
         &:only-child {
             margin-bottom: 0;
         }

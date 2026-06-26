@@ -1,4 +1,6 @@
 import { Component, HostListener } from "@angular/core";
+import { Router } from "@angular/router";
+import { Paths } from "../../app-routing.module";
 
 @Component({
     selector: 'my-footer',
@@ -9,7 +11,7 @@ export class FooterComponent {
 
     pageSize = window.screen.width;
 
-    constructor() {}
+    constructor(private _router: Router) {}
 
     @HostListener('window:resize', [])
     onResize() {
@@ -18,6 +20,10 @@ export class FooterComponent {
 
     isSmallSize() {
         return this.pageSize < 750;
+    }
+
+    goHome() {
+        this._router.navigate([Paths.HOME]);
     }
 
 }

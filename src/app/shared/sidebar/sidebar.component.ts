@@ -26,8 +26,8 @@ export class SidebarComponent implements OnInit {
 
     form: MyForm = {
         controls: [
-            { selector: 'ship', type: ControlType.CHECKBOX, description: 'sidebar.ship' },
-            { selector: 'open', type: ControlType.CHECKBOX, description: 'sidebar.open' }
+            { selector: 'note', type: ControlType.TEXT, placeholder: 'sidebar.note', size: 8 },
+            { selector: 'open', type: ControlType.CHECKBOX, description: 'sidebar.open', size: 4 }
         ]
     };
 
@@ -185,7 +185,7 @@ export class SidebarComponent implements OnInit {
     private _doCheckout() {
         this._loaderService.show();
 
-        this._productsService.createCheckoutSession(this.products, this.form.value?.['ship'], this.form.value?.['open'])
+        this._productsService.createCheckoutSession(this.products, this.form.value?.['note'], this.form.value?.['open'])
             .pipe(
                 untilDestroyed(this)
             )
@@ -199,6 +199,18 @@ export class SidebarComponent implements OnInit {
                     this._notificationsService.addNotification('danger', 'error.' + err.error.code);
                 }
             });
+    }
+
+    goToShipping() {
+        this._router.navigate([Paths.SHOP, Paths.PRODUCT], { queryParams: { id: 1 } }).then(() => {
+            this.close();
+        });
+    }
+
+    goToLogin() {
+        this._router.navigate([Paths.LOGIN]).then(() => {
+            this.close();
+        });
     }
 
 }

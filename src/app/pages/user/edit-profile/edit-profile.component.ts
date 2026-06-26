@@ -118,7 +118,7 @@ export class EditProfileComponent implements AfterViewInit {
                 }),
                 switchMap(() => {
                     if (this.posterFile) {
-                        return this._userService.uploadAvatar(this.posterFile);
+                        return this._userService.uploadPoster(this.posterFile);
                     }
 
                     return of(null);

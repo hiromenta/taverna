@@ -25,7 +25,7 @@ export class CardComponent {
     }
 
     addToCart() {
-        if (this.product) {
+        if (this.product && this.product.availability !== -1 && this.product.availability >= 1) {
             try {
                 this._utilsService.addToCart(this.product, 1);
             } catch(e: any) {

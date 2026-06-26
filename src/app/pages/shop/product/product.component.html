@@ -18,7 +18,7 @@
         </div>
         <div>
             <div class="price">{{ product.price | currency:'EUR' }}</div>
-            <div class="description">{{ product.description }}</div>
+            <div class="description">{{ product.description | translate }}</div>
             <div class="availability" *ngIf="product.availability">{{ 'shop.product.available' | translate }}</div>
             <div class="unavailability" *ngIf="!product.availability">{{ 'shop.product.unavailable' | translate }}</div>
 
