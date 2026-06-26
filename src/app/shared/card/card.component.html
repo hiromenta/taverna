@@ -4,7 +4,7 @@
         <img *ngIf="isFavorite()" src="../../../../../assets/icons/cuore_pieno.svg" alt="icon">
     </div>
     <div class="top" (click)="navigate()">
-        <img [src]="product?.imageUrl" alt="product">
+        <img [src]="(getAppConfig() | async) + product?.imageUrl" alt="product">
     </div>
     <div class="bottom">
         <div>

@@ -8,6 +8,7 @@ import { Product } from "../../../models/product.model";
 import { UtilsService } from "../../../services/utils.service";
 import { NotificationsService } from "../../../services/notification.service";
 import { UserService } from "../../../services/user.service";
+import { ConfigService } from "../../../services/config.service";
 
 @UntilDestroy()
 @Component({
@@ -28,7 +29,8 @@ export class ProductComponent {
         private _productsService: ProductsService,
         private _utilsService: UtilsService,
         private _notificationsService: NotificationsService,
-        private _userService: UserService
+        private _userService: UserService,
+        private _configService: ConfigService
     ) {}
 
     ngOnInit(): void {
@@ -60,6 +62,10 @@ export class ProductComponent {
                     });
                 }
             });
+    }
+
+    getAppConfig() {
+        return this._configService.getAppConfig();
     }
 
     navigateShop() {

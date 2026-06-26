@@ -6,7 +6,7 @@ import { UtilsService } from "../../services/utils.service";
 import { NotificationsService } from "../../services/notification.service";
 import { UserService } from "../../services/user.service";
 import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
-import { LoaderService } from "../../services/loader.service";
+import { ConfigService } from "../../services/config.service";
 
 @UntilDestroy()
 @Component({
@@ -18,7 +18,7 @@ export class CardComponent {
 
     @Input() product?: Product;
 
-    constructor(private _router: Router, private _utilsService: UtilsService, private _notificationsService: NotificationsService, private _userService: UserService, private _loaderService: LoaderService) {}
+    constructor(private _router: Router, private _utilsService: UtilsService, private _notificationsService: NotificationsService, private _userService: UserService, private _configService: ConfigService) {}
 
     navigate() {
         this._router.navigate([Paths.SHOP, Paths.PRODUCT], { queryParams: { id: this.product?.id } });
@@ -40,6 +40,10 @@ export class CardComponent {
         } else {
             this._removeFavorite();
         }
+    }
+
+    getAppConfig() {
+        return this._configService.getAppConfig();
     }
 
     private _addFavorite() {

@@ -6,7 +6,7 @@ import { LoginComponent } from "./login/login.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { RegisterComponent } from "./register/register.component";
 import { SharedModule } from "../shared/shared.module";
-import { UpperCasePipe, NgForOf, CurrencyPipe, NgIf, DatePipe } from "@angular/common";
+import { UpperCasePipe, NgForOf, CurrencyPipe, NgIf, DatePipe, AsyncPipe } from "@angular/common";
 import { WorkInProgressComponent } from "./work-in-progress/work-in-progress.component";
 import { ShowcaseComponent } from "./home/showcase/showcase.component";
 import { FeaturedComponent } from "./home/featured/featured.component";
@@ -43,7 +43,8 @@ const COMPONENTS = [
 const PIPES = [
     UpperCasePipe,
     CurrencyPipe,
-    DatePipe
+    DatePipe,
+    AsyncPipe
 ];
 
 @NgModule({

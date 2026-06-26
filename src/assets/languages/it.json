@@ -100,6 +100,7 @@
             "available": "Disponibile",
             "unavailable": "Non disponibile",
             "amount": "Quantità",
+            "shipping_hint": "Aggiungi alle note dell'ordine quali prodotti vuoi far spedire. Se non specificati verranno spediti tutti i tuoi prodotti in magazzino",
             "add_to_cart": "Aggiungi al carrello"
         },
         "filters": {

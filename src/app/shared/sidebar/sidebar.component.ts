@@ -9,6 +9,7 @@ import { NotificationsService } from "../../services/notification.service";
 import { Router } from "@angular/router";
 import { Paths } from "../../app-routing.module";
 import { ControlType, MyForm } from "../../models/form.model";
+import { ConfigService } from "../../services/config.service";
 
 @UntilDestroy()
 @Component({
@@ -37,7 +38,8 @@ export class SidebarComponent implements OnInit {
         private _productsService: ProductsService,
         private _loaderService: LoaderService,
         private _notificationsService: NotificationsService,
-        private _router: Router
+        private _router: Router,
+        private _configService: ConfigService
     ) {}
 
     ngOnInit(): void {
@@ -48,6 +50,10 @@ export class SidebarComponent implements OnInit {
                 this._open(res);
             }
         });
+    }
+
+    getAppConfig() {
+        return this._configService.getAppConfig();
     }
 
     close() {
